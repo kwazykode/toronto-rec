@@ -153,9 +153,9 @@
   </section>
 
   <div class="source-notice">
-    Schedules and access can change. Confirm before visiting on the
+    Schedules may change. Check the
     <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map ↗</a>.
-    July 20–26 repeats the published weekly pattern.
+    July 20–26 repeats the published pattern.
   </div>
 
   <div class="filter-label">Centre</div>
@@ -350,8 +350,6 @@ function updateStats() {
   document.getElementById('costPerSession').textContent = attended ? `$${(PASS_COST / attended).toFixed(2)}` : '—';
   const breakEvenPercent = Math.round(attended / BREAK_EVEN_SESSIONS * 100);
   document.getElementById('breakEvenCount').textContent = `${breakEvenPercent}% · ${attended} sessions`;
-  // The first 100% occupies 8/10 of the track. Progress above the target is
-  // compressed into the final fifth so the percentage can grow without a cap.
   const breakEvenProgress = breakEvenPercent <= 100
     ? breakEvenPercent * 0.8
     : 80 + 20 * (1 - 100 / breakEvenPercent);
