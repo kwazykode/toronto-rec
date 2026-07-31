@@ -26,6 +26,10 @@ The interface follows the compact, single-file style of `atla-trivia` and `speed
 
 Schedules may change. Confirm sessions using the official City of Toronto drop-in sports map before attending.
 
+The page includes `noindex` instructions for search engines. This reduces
+discovery through search results but does not make a deployed page private;
+anyone with its address can open and share it.
+
 Access labels come from the City sports map's `res` field. Canoe Landing uses
 Reserve access for badminton and volleyball, offers both reservation and drop-in
 inventory for Tuesday/Wednesday pickleball, and lists Thursday pickleball as
