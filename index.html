@@ -79,6 +79,12 @@
     .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
+    .week-dropdown { margin-bottom: 10px; }
+    .week-dropdown summary { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: var(--btn); font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; }
+    .week-dropdown summary::-webkit-details-marker { display: none; }
+    .week-dropdown summary::after { content: '▾'; margin-left: 10px; }
+    .week-dropdown[open] summary::after { content: '▴'; }
+    .week-dropdown .chips { padding: 7px; margin: 4px 0 0; background: var(--surface); border: 1px solid var(--border); }
     .week-group { margin-bottom: 10px; }
     .week-hdr { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; }
     .week-hdr-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
@@ -107,13 +113,17 @@
       body { font-size: 14px; }
       header { padding: 12px 10px; }
       .content { padding: 10px 8px 40px; }
-      .cost-grid { grid-template-columns: repeat(2, 1fr); }
-      .cost-stat { min-width: 0; padding: 10px 6px; border-bottom: 1px solid var(--div); }
-      .cost-stat:nth-child(even) { border-right: 0; }
-      .cost-stat:last-child { grid-column: 1 / -1; border-bottom: 0; }
-      .cost-num { font-size: 1.3rem; }
+      .cost-grid { grid-template-columns: repeat(6, 1fr); }
+      .cost-stat { grid-column: span 2; min-width: 0; padding: 7px 3px; border-bottom: 1px solid var(--div); }
+      .cost-stat:nth-child(3) { border-right: 0; }
+      .cost-stat:nth-child(4), .cost-stat:nth-child(5) { grid-column: span 3; border-bottom: 0; }
+      .cost-stat:nth-child(4) { border-right: 1px solid var(--div); }
+      .cost-stat:last-child { border-right: 0; }
+      .cost-num { font-size: 1.05rem; }
+      .cost-label { font-size: 8px; letter-spacing: .5px; }
       .break-even-row { flex-direction: column; gap: 2px; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+      .week-dropdown .chips { flex-wrap: wrap; overflow: visible; padding: 7px; }
       .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
@@ -174,9 +184,12 @@
   </div>
 
   <div class="filter-label">Week</div>
-  <div class="chips" id="weekChips">
-    <button class="chip active" data-val="all">All Weeks</button>
-  </div>
+  <details class="week-dropdown">
+    <summary id="weekSummary">All Weeks</summary>
+    <div class="chips" id="weekChips">
+      <button class="chip active" data-val="all">All Weeks</button>
+    </div>
+  </details>
 
   <div class="filter-label">Access</div>
   <div class="chips" id="accessChips">
@@ -388,6 +401,15 @@ function updateChipStates(containerId, filterName, activeClass) {
     if (selected) chip.classList.add(activeClass(value));
     chip.setAttribute('aria-pressed', String(selected));
   });
+  if (filterName === 'week') {
+    const selected = filters.week;
+    const label = selected.size === 0
+      ? 'All Weeks'
+      : selected.size === 1
+        ? WEEKS.find(week => String(week.id) === [...selected][0]).label
+        : `${selected.size} Weeks`;
+    document.getElementById('weekSummary').textContent = label;
+  }
 }
 
 function wireChips(containerId, filterName, activeClass) {
