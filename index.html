@@ -133,7 +133,9 @@
       .source-notice { padding: 8px 9px; }
       .week-hdr { gap: 5px; }
       .session-item { padding: 9px; }
-      .session-top { gap: 5px; }
+      .session-top { flex-wrap: nowrap; gap: 3px; }
+      .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag { font-size: 8px; white-space: nowrap; }
+      .time-badge, .sport-tag, .centre-tag, .access-tag { padding: 1px 3px; }
       .status-btn { min-height: 30px; }
       .date-badge { min-width: auto; }
       .session-link { display: inline-block; padding: 3px 0; }
@@ -196,7 +198,7 @@
   <div class="filter-label">Access</div>
   <div class="chips" id="accessChips">
     <button class="chip active" data-val="all">All Access</button>
-    <button class="chip" data-val="dropin">Drop-in Only</button>
+    <button class="chip" data-val="dropin">Drop-in</button>
     <button class="chip" data-val="reserve">Reserve</button>
     <button class="chip" data-val="both">Drop-in + Reserve</button>
   </div>
@@ -256,15 +258,17 @@ const DAY_OFFSET = { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4
 const AGE_LABELS = { adult: '19 years and over' };
 const STATUSES = ['available', 'attended'];
 const STATUS_LABELS = { available: '○ Not Attended', attended: '✓ Attended' };
-const ACCESS_LABELS = { dropin: 'Drop-in Only', reserve: 'Reserve', both: 'Drop-in + Reserve' };
+const ACCESS_LABELS = { dropin: 'Drop-in', reserve: 'Reserve', both: 'Drop-in + Reserve' };
 
 function sportFrom(name) { return name.toLowerCase().split(' ')[0]; }
 function datePlus(iso, days) { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + days); return d.toISOString().slice(0, 10); }
-function time24(label) {
-  const first = label.split(' - ')[0]; const match = first.match(/(\d+):(\d+) (AM|PM)/); let h = Number(match[1]);
+function clock24(label) {
+  const match = label.match(/(\d+):(\d+) (AM|PM)/); let h = Number(match[1]);
   if (match[3] === 'PM' && h !== 12) h += 12; if (match[3] === 'AM' && h === 12) h = 0;
   return String(h).padStart(2, '0') + ':' + match[2];
 }
+function time24(label) { return clock24(label.split(' - ')[0]); }
+function formatTime(label) { return label.split(' - ').map(clock24).join('–'); }
 const SESSIONS = WEEKS.flatMap(({ id: week, start: weekStart }) => Object.entries(CENTRES).flatMap(([centre, info]) =>
   info.patterns.map((p, index) => {
     const date = datePlus(weekStart, DAY_OFFSET[p[2]]);
@@ -324,7 +328,7 @@ function buildItem(session) {
       <div class="session-top">
         <span class="date-badge">${formatDate(session.date)}</span>
         <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
-        <span class="time-badge">${session.time}</span>
+        <span class="time-badge">${formatTime(session.time)}</span>
         <span class="centre-tag">${centre.name}</span>
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
       </div>
