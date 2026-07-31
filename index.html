@@ -91,7 +91,7 @@
     .week-hdr-count { margin-left: auto; font-size: 10px; color: var(--muted); white-space: nowrap; }
     .week-summary { display: flex; justify-content: flex-end; gap: 14px; padding: 7px 10px; margin-top: 4px; background: var(--surface); border: 1px solid var(--border); font-size: 10px; color: var(--muted); }
     .week-summary strong { color: var(--attended); }
-    .session-item { background: var(--win); border: 1px solid var(--border); padding: 10px 12px; margin-bottom: 3px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: start; }
+    .session-item { background: var(--win); border: 1px solid var(--border); padding: 10px 12px; margin-bottom: 3px; }
     .session-item.attended { opacity: .55; }
     .session-item.cancelled { border-left: 3px solid var(--cancelled); }
     .session-left { display: flex; flex-direction: column; gap: 4px; min-width: 0; }.session-top { display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; }
@@ -99,14 +99,14 @@
     .time-badge, .sport-tag, .centre-tag, .access-tag { font-size: 10px; font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
     .time-badge { background: transparent; color: var(--text); border-color: var(--text); }
     .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }.sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }.sport-tag.badminton { color: var(--badminton); border-color: var(--badminton); }
-    .centre-tag { color: var(--highlight); border-color: var(--highlight); background: transparent; }.session-info { font-size: 11px; color: var(--detail-text); }.cancelled-note { color: var(--cancelled); font-weight: bold; }
+    .centre-tag { color: var(--highlight); border-color: var(--highlight); background: transparent; }.session-info { min-width: 0; font-size: 11px; color: var(--detail-text); }.cancelled-note { color: var(--cancelled); font-weight: bold; }
     .access-tag.dropin { color: var(--attended); border-color: var(--attended); }
     .access-tag.reserve { color: var(--reserve); border-color: var(--reserve); }
     .access-tag.both { color: var(--mixed); border-color: var(--mixed); }
     .session-link { font-size: 10px; color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
     .session-link-row { line-height: 1.2; }
-    .session-right { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
-    .status-btn { display: inline-flex; align-items: center; justify-content: center; padding: 3px 12px; min-width: 100px; font-family: inherit; font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
+    .session-info-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .status-btn { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: 2px 8px; min-width: 88px; min-height: 26px; font-family: inherit; font-size: 10px; font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
     .status-btn:hover { background: var(--surface); }.status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
     .status-btn:disabled { cursor: not-allowed; opacity: .5; }.empty-note { text-align: center; color: var(--muted); font-size: 12px; padding: 28px 0; }
     @media (max-width: 560px) {
@@ -129,10 +129,9 @@
       .source-notice { padding: 8px 9px; }
       .week-hdr { flex-wrap: wrap; gap: 5px; }
       .week-hdr-count { width: 100%; margin-left: 0; }
-      .session-item { grid-template-columns: 1fr; gap: 8px; padding: 9px; }
+      .session-item { padding: 9px; }
       .session-top { gap: 5px; }
-      .session-right { align-items: stretch; }
-      .status-btn { width: 100%; min-height: 40px; }
+      .status-btn { min-height: 30px; }
       .date-badge { min-width: auto; }
       .session-link { display: inline-block; padding: 3px 0; }
       .week-summary { justify-content: flex-start; }
@@ -325,10 +324,12 @@ function buildItem(session) {
         <span class="centre-tag">${centre.name}</span>
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
       </div>
-      <div class="session-info">${AGE_LABELS[session.age]} · ${centre.address}</div>
+      <div class="session-info-row">
+        <div class="session-info">${AGE_LABELS[session.age]} · ${centre.address}</div>
+        <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
+      </div>
       <div class="session-link-row"><a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name} ↗</a></div>
-    </div>
-    <div class="session-right"><button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button></div>`;
+    </div>`;
   item.querySelector('.status-btn').addEventListener('click', () => cycleStatus(session.id));
   return item;
 }
