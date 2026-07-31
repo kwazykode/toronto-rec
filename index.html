@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toronto Rec - Tracker</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #c8c8c8;
+      --win: #ebebeb;
+      --surface: #fff;
+      --btn: #dedede;
+      --border: #999;
+      --text: #000;
+      --muted: #555;
+      --accent: #666;
+      --acc-txt: #fff;
+      --inset: #d0d0d0;
+      --div: #bbb;
+      --pickleball: #2563c7;
+      --volleyball: #9275cf;
+      --reserve: #4f7773;
+      --badminton: #166534;
+      --attended: #166534;
+      --cancelled: #991b1b;
+      --highlight: #8a6d00;
+      --mixed: #c2410c;
+      --link: #005fcc;
+      --filter-accent: #666;
+      --detail-text: #333;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a; --win: #2e2e2e; --surface: #3a3a3a; --btn: #3c3c3c;
+        --border: #606060; --text: #eee; --muted: #aaa; --accent: #aaa;
+        --acc-txt: #fff; --inset: #222; --div: #444; --pickleball: #7db1ff;
+        --volleyball: #bca3f2; --reserve: #4f7773; --badminton: #72d38d;
+        --attended: #72d38d; --cancelled: #ff7777; --highlight: #f2cf4a; --mixed: #ff9a5c; --link: #a9ccff; --filter-accent: #777; --detail-text: #ddd;
+      }
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 13px; background: var(--bg); color: var(--text); min-height: 100vh;
+    }
+    header { background: var(--win); border-bottom: 2px solid var(--border); padding: 10px 16px 9px; text-align: center; }
+    .app-title { font-size: clamp(13px, 3vw, 17px); font-weight: bold; }
+    .content { max-width: 920px; margin: 0 auto; padding: 14px 14px 60px; }
+    .home-bar { background: var(--win); border: 1px solid var(--border); padding: 7px 12px; margin-bottom: 12px; font-size: 11px; color: var(--muted); text-align: center; }
+    .bottom-bar { margin-top: 14px; margin-bottom: 0; }
+    .cost-panel { background: var(--surface); border: 0; margin-bottom: 12px; }
+    .cost-title { background: var(--filter-accent); color: #fff; padding: 5px 9px; font-size: 10px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    .cost-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
+    .cost-stat { padding: 11px; text-align: center; border-right: 1px solid var(--div); }
+    .cost-stat:last-child { border-right: 0; }
+    .cost-num { font-size: 1.45rem; font-weight: 900; }
+    .cost-stat:nth-child(3) .cost-num, .cost-stat:nth-child(4) .cost-num { color: var(--attended); }
+    .cost-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+    .break-even { padding: 9px 11px 11px; border-top: 1px solid var(--div); }
+    .break-even-row { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 5px; font-size: 10px; color: var(--muted); }
+    .break-even-row strong { color: var(--text); white-space: nowrap; }
+    .break-even-track { position: relative; height: 9px; background: var(--inset); border: 1px solid var(--border); overflow: hidden; }
+    .break-even-fill { height: 100%; width: 0; background: var(--attended); transition: width .3s; }
+    .break-even-midpoint { position: absolute; z-index: 2; left: 80%; top: 0; bottom: 0; width: 2px; background: var(--text); transform: translateX(-1px); }
+    .break-even-scale { position: relative; height: 14px; margin-top: 3px; font-size: 9px; color: var(--muted); }
+    .break-even-scale span { position: absolute; white-space: nowrap; }.break-even-scale span:nth-child(1) { left: 0; }.break-even-scale span:nth-child(2) { left: 80%; transform: translateX(-50%); font-weight: bold; color: var(--text); }.break-even-scale span:nth-child(3) { right: 0; }
+    .source-notice { background: var(--surface); border: 0; padding: 8px 12px; font-size: 11px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+    .source-notice a { color: var(--link); font-weight: bold; }
+    .filter-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; font-weight: bold; }
+    .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
+    .chip { padding: 4px 11px; font-size: 11px; font-weight: bold; cursor: pointer; background: var(--btn); color: var(--text); border: 0; user-select: none; }
+    .chip:hover { background: var(--inset); }.chip.active { background: var(--filter-accent); color: #fff; }
+    .chip.active-location { background: var(--highlight); color: #fff; }
+    .chip.active-pickleball { background: var(--pickleball); color: #fff; }
+    .chip.active-volleyball { background: var(--volleyball); color: #fff; }
+    .chip.active-reserve { background: var(--reserve); color: #fff; }
+    .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
+    .chip.active-both { background: var(--mixed); color: #fff; }
+    .chip.active-available { background: var(--muted); color: #fff; }
+    .week-group { margin-bottom: 10px; }
+    .week-hdr { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; }
+    .week-hdr-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
+    .week-hdr-count { margin-left: auto; font-size: 10px; color: var(--muted); white-space: nowrap; }
+    .week-summary { display: flex; justify-content: flex-end; gap: 14px; padding: 7px 10px; margin-top: 4px; background: var(--surface); border: 1px solid var(--border); font-size: 10px; color: var(--muted); }
+    .week-summary strong { color: var(--attended); }
+    .session-item { background: var(--win); border: 1px solid var(--border); padding: 10px 12px; margin-bottom: 3px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 10px; align-items: start; }
+    .session-item.attended { opacity: .55; }
+    .session-item.cancelled { border-left: 3px solid var(--cancelled); }
+    .session-left { display: flex; flex-direction: column; gap: 4px; min-width: 0; }.session-top { display: flex; align-items: baseline; gap: 7px; flex-wrap: wrap; }
+    .date-badge { font-size: 10px; font-weight: bold; color: var(--detail-text); min-width: 62px; text-transform: uppercase; }
+    .time-badge, .sport-tag, .centre-tag, .access-tag { font-size: 10px; font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
+    .time-badge { background: transparent; color: var(--text); border-color: var(--text); }
+    .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }.sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }.sport-tag.badminton { color: var(--badminton); border-color: var(--badminton); }
+    .centre-tag { color: var(--highlight); border-color: var(--highlight); background: transparent; }.session-info { font-size: 11px; color: var(--detail-text); }.cancelled-note { color: var(--cancelled); font-weight: bold; }
+    .access-tag.dropin { color: var(--attended); border-color: var(--attended); }
+    .access-tag.reserve { color: var(--reserve); border-color: var(--reserve); }
+    .access-tag.both { color: var(--mixed); border-color: var(--mixed); }
+    .session-link { font-size: 10px; color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
+    .session-link-row { line-height: 1.2; }
+    .session-right { display: flex; flex-direction: column; gap: 6px; align-items: flex-end; }
+    .status-btn { display: inline-flex; align-items: center; justify-content: center; padding: 3px 12px; min-width: 100px; font-family: inherit; font-size: 11px; font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
+    .status-btn:hover { background: var(--surface); }.status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
+    .status-btn:disabled { cursor: not-allowed; opacity: .5; }.empty-note { text-align: center; color: var(--muted); font-size: 12px; padding: 28px 0; }
+    @media (max-width: 560px) {
+      body { font-size: 14px; }
+      header { padding: 12px 10px; }
+      .content { padding: 10px 8px 40px; }
+      .cost-grid { grid-template-columns: repeat(2, 1fr); }
+      .cost-stat { min-width: 0; padding: 10px 6px; border-bottom: 1px solid var(--div); }
+      .cost-stat:nth-child(even) { border-right: 0; }
+      .cost-stat:last-child { grid-column: 1 / -1; border-bottom: 0; }
+      .cost-num { font-size: 1.3rem; }
+      .break-even-row { flex-direction: column; gap: 2px; }
+      .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+      .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
+      .filter-label { margin-top: 2px; }
+      .source-notice { padding: 8px 9px; }
+      .week-hdr { flex-wrap: wrap; gap: 5px; }
+      .week-hdr-count { width: 100%; margin-left: 0; }
+      .session-item { grid-template-columns: 1fr; gap: 8px; padding: 9px; }
+      .session-top { gap: 5px; }
+      .session-right { align-items: stretch; }
+      .status-btn { width: 100%; min-height: 40px; }
+      .date-badge { min-width: auto; }
+      .session-link { display: inline-block; padding: 3px 0; }
+      .week-summary { justify-content: flex-start; }
+      .bottom-bar { line-height: 1.5; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="app-title">Toronto Rec - Tracker</div>
+</header>
+
+<main class="content">
+  <section class="cost-panel" aria-label="Six-month pass cost tracker">
+    <div class="cost-title">Tracker - 6 Month - Cost Analysis</div>
+    <div class="cost-grid">
+      <div class="cost-stat"><div class="cost-num">$159.80</div><div class="cost-label">Pass Cost</div></div>
+      <div class="cost-stat"><div class="cost-num" id="remainingCount">110</div><div class="cost-label">Not Attended</div></div>
+      <div class="cost-stat"><div class="cost-num" id="attendedCount">0</div><div class="cost-label">Attended</div></div>
+      <div class="cost-stat"><div class="cost-num" id="costPerSession">—</div><div class="cost-label">Cost / Session</div></div>
+      <div class="cost-stat"><div class="cost-num" id="nextCount">—</div><div class="cost-label">Next</div></div>
+    </div>
+    <div class="break-even">
+      <div class="break-even-row"><span>Break-even target · $4.96 per session</span><strong id="breakEvenCount">0% · 0 sessions</strong></div>
+      <div class="break-even-track" role="progressbar" aria-label="Unlimited break-even progress" aria-valuemin="0" aria-valuenow="0" aria-valuetext="0 percent"><div class="break-even-fill" id="breakEvenBar"></div><span class="break-even-midpoint" aria-hidden="true"></span></div>
+      <div class="break-even-scale" aria-hidden="true"><span>0%</span><span>100% · 33</span><span>∞</span></div>
+    </div>
+  </section>
+
+  <div class="source-notice">
+    Schedules and access can change. Confirm before visiting on the
+    <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map ↗</a>.
+    July 20–26 repeats the published weekly pattern.
+  </div>
+
+  <div class="filter-label">Centre</div>
+  <div class="chips" id="centreChips">
+    <button class="chip active" data-val="all">Both Centres</button>
+    <button class="chip" data-val="canoe">Canoe Landing</button>
+    <button class="chip" data-val="yonge">One Yonge</button>
+  </div>
+
+  <div class="filter-label">Sport</div>
+  <div class="chips" id="sportChips">
+    <button class="chip active" data-val="all">All Sports</button>
+    <button class="chip" data-val="pickleball">Pickleball (<span id="pickleballTotal">55</span>)</button>
+    <button class="chip" data-val="badminton">Badminton (<span id="badmintonTotal">30</span>)</button>
+    <button class="chip" data-val="volleyball">Volleyball (<span id="volleyballTotal">25</span>)</button>
+  </div>
+
+  <div class="filter-label">Week</div>
+  <div class="chips" id="weekChips">
+    <button class="chip active" data-val="all">All Weeks</button>
+  </div>
+
+  <div class="filter-label">Access</div>
+  <div class="chips" id="accessChips">
+    <button class="chip active" data-val="all">All Access</button>
+    <button class="chip" data-val="dropin">Drop-in Only</button>
+    <button class="chip" data-val="reserve">Reserve</button>
+    <button class="chip" data-val="both">Drop-in + Reserve</button>
+  </div>
+
+  <div class="filter-label">Tracking</div>
+  <div class="chips" id="statusChips">
+    <button class="chip active" data-val="all">All</button>
+    <button class="chip" data-val="available">Not Attended</button>
+    <button class="chip" data-val="attended">Attended</button>
+  </div>
+
+  <div id="sessionList"></div>
+
+  <div class="home-bar bottom-bar" id="homeBar">110 of 110 sessions shown · 5 tracked weeks · updated July 31, 2026</div>
+</main>
+
+<script>
+const WEEKS = [
+  { id: -1, label: 'Previous Week', start: '2026-07-20' },
+  { id: 0, label: 'Week 1', start: '2026-07-27' },
+  { id: 1, label: 'Week 2', start: '2026-08-03' },
+  { id: 2, label: 'Week 3', start: '2026-08-10' },
+  { id: 3, label: 'Week 4', start: '2026-08-17' }
+];
+const PASS_COST = 159.80;
+const TARGET_SESSION_COST = 4.96;
+const BREAK_EVEN_SESSIONS = Math.ceil(PASS_COST / TARGET_SESSION_COST);
+const CENTRES = {
+  canoe: { name: 'Canoe Landing', address: '45 Fort York Blvd', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3643', patterns: [
+    ['Badminton', 'adult', 'thursday', '07:00 PM - 08:30 PM', 'reserve'],
+    ['Badminton', 'adult', 'thursday', '08:30 PM - 10:00 PM', 'reserve'],
+    ['Badminton', 'adult', 'sunday', '01:00 PM - 02:30 PM', 'reserve'],
+    ['Pickleball', 'adult', 'tuesday', '06:00 PM - 08:00 PM', 'both'],
+    ['Pickleball', 'adult', 'tuesday', '08:00 PM - 10:00 PM', 'both'],
+    ['Pickleball', 'adult', 'wednesday', '06:00 PM - 08:00 PM', 'both'],
+    ['Pickleball', 'adult', 'wednesday', '08:00 PM - 10:00 PM', 'both'],
+    ['Pickleball', 'adult', 'thursday', '05:45 PM - 07:45 PM', 'dropin'],
+    ['Volleyball', 'adult', 'tuesday', '08:00 PM - 10:00 PM', 'reserve'],
+    ['Volleyball', 'adult', 'sunday', '03:30 PM - 05:30 PM', 'reserve']
+  ]},
+  yonge: { name: 'One Yonge', address: '24 Freeland St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3732', patterns: [
+    ['Badminton', 'adult', 'thursday', '11:30 AM - 01:30 PM', 'dropin'],
+    ['Badminton', 'adult', 'friday', '07:30 PM - 09:30 PM', 'dropin'],
+    ['Badminton', 'adult', 'sunday', '05:30 PM - 07:30 PM', 'dropin'],
+    ['Pickleball', 'adult', 'friday', '11:30 AM - 01:30 PM', 'dropin'],
+    ['Pickleball', 'adult', 'saturday', '09:30 AM - 11:30 AM', 'dropin'],
+    ['Pickleball', 'adult', 'saturday', '12:00 PM - 02:00 PM', 'dropin'],
+    ['Pickleball', 'adult', 'tuesday', '05:15 PM - 07:15 PM', 'dropin'],
+    ['Pickleball', 'adult', 'tuesday', '07:30 PM - 09:30 PM', 'dropin'],
+    ['Pickleball', 'adult', 'sunday', '01:30 PM - 03:30 PM', 'dropin'],
+    ['Volleyball', 'adult', 'thursday', '05:15 PM - 07:15 PM', 'dropin'],
+    ['Volleyball', 'adult', 'thursday', '07:30 PM - 09:30 PM', 'dropin'],
+    ['Volleyball', 'adult', 'saturday', '05:30 PM - 07:30 PM', 'dropin']
+  ]}
+};
+const DAY_OFFSET = { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4, saturday: 5, sunday: 6 };
+const AGE_LABELS = { adult: '19 years and over' };
+const STATUSES = ['available', 'attended'];
+const STATUS_LABELS = { available: '○ Not Attended', attended: '✓ Attended' };
+const ACCESS_LABELS = { dropin: 'Drop-in Only', reserve: 'Reserve', both: 'Drop-in + Reserve' };
+
+function sportFrom(name) { return name.toLowerCase().split(' ')[0]; }
+function datePlus(iso, days) { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + days); return d.toISOString().slice(0, 10); }
+function time24(label) {
+  const first = label.split(' - ')[0]; const match = first.match(/(\d+):(\d+) (AM|PM)/); let h = Number(match[1]);
+  if (match[3] === 'PM' && h !== 12) h += 12; if (match[3] === 'AM' && h === 12) h = 0;
+  return String(h).padStart(2, '0') + ':' + match[2];
+}
+const SESSIONS = WEEKS.flatMap(({ id: week, start: weekStart }) => Object.entries(CENTRES).flatMap(([centre, info]) =>
+  info.patterns.map((p, index) => {
+    const date = datePlus(weekStart, DAY_OFFSET[p[2]]);
+    return { id: `${centre}-${week}-${index}`, centre, week, date, name: p[0], age: p[1], day: p[2], time: p[3], access: p[4], sport: sportFrom(p[0]), timestamp: new Date(`${date}T${time24(p[3])}:00`).getTime(), status: 'active' };
+  })
+)).sort((a, b) => a.timestamp - b.timestamp || a.centre.localeCompare(b.centre));
+
+function loadState() { try { return JSON.parse(localStorage.getItem('toronto_rec_tracker') || '{}'); } catch { return {}; } }
+function saveState() { localStorage.setItem('toronto_rec_tracker', JSON.stringify(state)); }
+let state = loadState();
+const filters = {
+  centre: new Set(),
+  sport: new Set(),
+  week: new Set(),
+  access: new Set(),
+  status: new Set()
+};
+function getState(id) {
+  const saved = state[id] || { status: 'available', notes: '' };
+  return { ...saved, status: saved.status === 'attended' ? 'attended' : 'available' };
+}
+function setState(id, key, value) { if (!state[id]) state[id] = { status: 'available', notes: '' }; state[id][key] = value; saveState(); updateStats(); }
+
+function cycleStatus(id) {
+  const current = getState(id).status;
+  setState(id, 'status', STATUSES[(STATUSES.indexOf(current) + 1) % STATUSES.length]);
+  render();
+}
+
+function formatDate(iso) {
+  return new Intl.DateTimeFormat('en-CA', { weekday: 'short', month: 'short', day: 'numeric' }).format(new Date(iso + 'T12:00:00')).replace(',', '');
+}
+function formatWeek(iso) {
+  const start = new Date(iso + 'T12:00:00'), end = new Date(start); end.setDate(end.getDate() + 6);
+  return `${new Intl.DateTimeFormat('en-CA', { month: 'short', day: 'numeric' }).format(start)}–${new Intl.DateTimeFormat('en-CA', { month: 'short', day: 'numeric' }).format(end)}`;
+}
+
+function visibleSessions() {
+  return SESSIONS.filter(s => matchesFilter('centre', s.centre))
+    .filter(s => matchesFilter('sport', s.sport))
+    .filter(s => matchesFilter('week', s.week))
+    .filter(s => matchesFilter('access', s.access))
+    .filter(s => matchesFilter('status', getState(s.id).status));
+}
+
+function matchesFilter(name, value) {
+  return filters[name].size === 0 || filters[name].has(String(value));
+}
+
+function buildItem(session) {
+  const tracked = getState(session.id); const centre = CENTRES[session.centre];
+  const item = document.createElement('div');
+  item.className = `session-item ${tracked.status}` + (session.status === 'cancelled' ? ' cancelled' : '');
+  item.innerHTML = `
+    <div class="session-left">
+      <div class="session-top">
+        <span class="date-badge">${formatDate(session.date)}</span>
+        <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
+        <span class="time-badge">${session.time}</span>
+        <span class="centre-tag">${centre.name}</span>
+        <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
+      </div>
+      <div class="session-info">${AGE_LABELS[session.age]} · ${centre.address}</div>
+      <div class="session-link-row"><a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name} ↗</a></div>
+    </div>
+    <div class="session-right"><button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button></div>`;
+  item.querySelector('.status-btn').addEventListener('click', () => cycleStatus(session.id));
+  return item;
+}
+
+function render() {
+  const list = document.getElementById('sessionList'); list.innerHTML = '';
+  const visible = visibleSessions();
+  if (!visible.length) { list.innerHTML = '<div class="empty-note">No sessions match these filters.</div>'; updateStats(); return; }
+  WEEKS.forEach(({ id: week, label, start: weekStart }) => {
+    const sessions = visible.filter(s => s.week === week); if (!sessions.length) return;
+    const weekSessions = SESSIONS.filter(s => s.week === week)
+      .filter(s => matchesFilter('centre', s.centre))
+      .filter(s => matchesFilter('sport', s.sport))
+      .filter(s => matchesFilter('access', s.access));
+    const attended = weekSessions.filter(s => getState(s.id).status === 'attended').length;
+    const group = document.createElement('section'); group.className = 'week-group';
+    group.innerHTML = `<div class="week-hdr"><div class="week-hdr-label">${label} · ${formatWeek(weekStart)}</div><div class="week-hdr-count">${attended}/${weekSessions.length} attended</div></div>`;
+    sessions.forEach(s => group.appendChild(buildItem(s)));
+    const summary = document.createElement('div');
+    summary.className = 'week-summary';
+    summary.innerHTML = `<span>Week total: <strong>${attended} attended</strong></span>`;
+    group.appendChild(summary);
+    list.appendChild(group);
+  });
+  updateStats();
+}
+
+function updateStats() {
+  const attended = SESSIONS.filter(s => getState(s.id).status === 'attended').length;
+  document.getElementById('remainingCount').textContent = SESSIONS.length - attended;
+  document.getElementById('attendedCount').textContent = attended;
+  document.getElementById('costPerSession').textContent = attended ? `$${(PASS_COST / attended).toFixed(2)}` : '—';
+  const breakEvenPercent = Math.round(attended / BREAK_EVEN_SESSIONS * 100);
+  document.getElementById('breakEvenCount').textContent = `${breakEvenPercent}% · ${attended} sessions`;
+  // The first 100% occupies 8/10 of the track. Progress above the target is
+  // compressed into the final fifth so the percentage can grow without a cap.
+  const breakEvenProgress = breakEvenPercent <= 100
+    ? breakEvenPercent * 0.8
+    : 80 + 20 * (1 - 100 / breakEvenPercent);
+  const breakEvenTrack = document.querySelector('.break-even-track');
+  document.getElementById('breakEvenBar').style.width = `${breakEvenProgress}%`;
+  breakEvenTrack.setAttribute('aria-valuenow', String(attended));
+  breakEvenTrack.setAttribute('aria-valuetext', `${breakEvenPercent} percent, ${attended} sessions attended`);
+  const now = Date.now(); const next = SESSIONS.find(s => s.timestamp >= now && getState(s.id).status !== 'attended');
+  document.getElementById('nextCount').textContent = next ? formatDate(next.date).split(',')[0] : '—';
+  const shown = visibleSessions().length;
+  document.getElementById('homeBar').textContent = `${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated July 31, 2026`;
+}
+
+function populateDerivedFilters() {
+  const totals = { pickleball: 0, badminton: 0, volleyball: 0 };
+  SESSIONS.forEach(session => totals[session.sport]++);
+  Object.entries(totals).forEach(([sport, total]) => {
+    document.getElementById(`${sport}Total`).textContent = total;
+  });
+
+  const weekChips = document.getElementById('weekChips');
+  WEEKS.forEach(week => {
+    const button = document.createElement('button');
+    button.className = 'chip';
+    button.dataset.val = String(week.id);
+    button.textContent = `${week.label} · ${formatWeek(week.start)}`;
+    weekChips.appendChild(button);
+  });
+}
+
+function updateChipStates(containerId, filterName, activeClass) {
+  document.getElementById(containerId).querySelectorAll('.chip').forEach(chip => {
+    const value = chip.dataset.val;
+    const selected = value === 'all' ? filters[filterName].size === 0 : filters[filterName].has(value);
+    chip.className = 'chip';
+    if (selected) chip.classList.add(activeClass(value));
+    chip.setAttribute('aria-pressed', String(selected));
+  });
+}
+
+function wireChips(containerId, filterName, activeClass) {
+  document.getElementById(containerId).addEventListener('click', event => {
+    const chip = event.target.closest('.chip'); if (!chip) return;
+    const value = chip.dataset.val;
+    const selected = filters[filterName];
+    if (value === 'all') selected.clear();
+    else if (selected.has(value)) selected.delete(value);
+    else selected.add(value);
+    updateChipStates(containerId, filterName, activeClass);
+    render();
+  });
+  updateChipStates(containerId, filterName, activeClass);
+}
+populateDerivedFilters();
+wireChips('centreChips', 'centre', value => value === 'all' ? 'active' : 'active-location');
+wireChips('sportChips', 'sport', value => value === 'all' ? 'active' : `active-${value}`);
+wireChips('weekChips', 'week', () => 'active');
+wireChips('accessChips', 'access', value => value === 'all' ? 'active' : `active-${value}`);
+wireChips('statusChips', 'status', value => value === 'all' ? 'active' : `active-${value}`);
+render();
+</script>
+</body>
+</html>
