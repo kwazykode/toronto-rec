@@ -86,7 +86,11 @@
     .week-dropdown[open] summary::after { content: '▴'; }
     .week-dropdown .chips { padding: 7px; margin: 4px 0 0; background: var(--surface); border: 1px solid var(--border); }
     .week-group { margin-bottom: 10px; }
-    .week-hdr { display: flex; align-items: center; gap: 10px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; }
+    .week-hdr { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; cursor: pointer; list-style: none; }
+    .week-hdr::-webkit-details-marker { display: none; }
+    .week-hdr::before { content: '▾'; color: var(--muted); }
+    .week-group:not([open]) .week-hdr::before { content: '▸'; }
+    .week-group:not([open]) .week-hdr { margin-bottom: 0; }
     .week-hdr-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
     .week-hdr-count { margin-left: auto; font-size: 10px; color: var(--muted); white-space: nowrap; }
     .week-summary { display: flex; justify-content: flex-end; gap: 14px; padding: 7px 10px; margin-top: 4px; background: var(--surface); border: 1px solid var(--border); font-size: 10px; color: var(--muted); }
@@ -127,8 +131,7 @@
       .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
-      .week-hdr { flex-wrap: wrap; gap: 5px; }
-      .week-hdr-count { width: 100%; margin-left: 0; }
+      .week-hdr { gap: 5px; }
       .session-item { padding: 9px; }
       .session-top { gap: 5px; }
       .status-btn { min-height: 30px; }
@@ -212,11 +215,11 @@
 
 <script>
 const WEEKS = [
-  { id: -1, label: 'Previous Week', start: '2026-07-20' },
-  { id: 0, label: 'Week 1', start: '2026-07-27' },
-  { id: 1, label: 'Week 2', start: '2026-08-03' },
-  { id: 2, label: 'Week 3', start: '2026-08-10' },
-  { id: 3, label: 'Week 4', start: '2026-08-17' }
+  { id: -1, start: '2026-07-20' },
+  { id: 0, start: '2026-07-27' },
+  { id: 1, start: '2026-08-03' },
+  { id: 2, start: '2026-08-10' },
+  { id: 3, start: '2026-08-17' }
 ];
 const PASS_COST = 159.80;
 const TARGET_SESSION_COST = 4.96;
@@ -279,6 +282,7 @@ const filters = {
   access: new Set(),
   status: new Set()
 };
+const collapsedWeeks = new Set();
 function getState(id) {
   const saved = state[id] || { status: 'available', notes: '' };
   return { ...saved, status: saved.status === 'attended' ? 'attended' : 'available' };
@@ -338,19 +342,21 @@ function render() {
   const list = document.getElementById('sessionList'); list.innerHTML = '';
   const visible = visibleSessions();
   if (!visible.length) { list.innerHTML = '<div class="empty-note">No sessions match these filters.</div>'; updateStats(); return; }
-  WEEKS.forEach(({ id: week, label, start: weekStart }) => {
+  WEEKS.forEach(({ id: week, start: weekStart }) => {
     const sessions = visible.filter(s => s.week === week); if (!sessions.length) return;
     const weekSessions = SESSIONS.filter(s => s.week === week)
       .filter(s => matchesFilter('centre', s.centre))
       .filter(s => matchesFilter('sport', s.sport))
       .filter(s => matchesFilter('access', s.access));
     const attended = weekSessions.filter(s => getState(s.id).status === 'attended').length;
-    const group = document.createElement('section'); group.className = 'week-group';
-    group.innerHTML = `<div class="week-hdr"><div class="week-hdr-label">${label} · ${formatWeek(weekStart)}</div><div class="week-hdr-count">${attended}/${weekSessions.length} attended</div></div>`;
+    const group = document.createElement('details'); group.className = 'week-group';
+    group.open = !collapsedWeeks.has(String(week));
+    group.innerHTML = `<summary class="week-hdr"><div class="week-hdr-label">${formatWeek(weekStart)}</div><div class="week-hdr-count">${attended}/${weekSessions.length} attended</div></summary>`;
+    group.addEventListener('toggle', () => group.open ? collapsedWeeks.delete(String(week)) : collapsedWeeks.add(String(week)));
     sessions.forEach(s => group.appendChild(buildItem(s)));
     const summary = document.createElement('div');
     summary.className = 'week-summary';
-    summary.innerHTML = `<span>Week total: <strong>${attended} attended</strong></span>`;
+    summary.innerHTML = `<strong>${attended} attended</strong>`;
     group.appendChild(summary);
     list.appendChild(group);
   });
@@ -389,7 +395,7 @@ function populateDerivedFilters() {
     const button = document.createElement('button');
     button.className = 'chip';
     button.dataset.val = String(week.id);
-    button.textContent = `${week.label} · ${formatWeek(week.start)}`;
+    button.textContent = formatWeek(week.start);
     weekChips.appendChild(button);
   });
 }
@@ -407,7 +413,7 @@ function updateChipStates(containerId, filterName, activeClass) {
     const label = selected.size === 0
       ? 'All Weeks'
       : selected.size === 1
-        ? WEEKS.find(week => String(week.id) === [...selected][0]).label
+        ? formatWeek(WEEKS.find(week => String(week.id) === [...selected][0]).start)
         : `${selected.size} Weeks`;
     document.getElementById('weekSummary').textContent = label;
   }
