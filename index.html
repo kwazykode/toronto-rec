@@ -79,15 +79,13 @@
     .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
-    .centre-picker, .week-picker, .day-picker { width: min(360px, 100%); margin-bottom: 6px; }
-    .centre-summary, .week-filter-summary, .day-filter-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
-    .centre-expanded, .week-expanded, .day-expanded { display: grid; grid-template-columns: repeat(2, max-content); width: fit-content; max-width: 100%; gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: .5px solid var(--border); }
-    .day-expanded { grid-template-columns: repeat(4, max-content); }
-    .centre-expanded[hidden], .week-expanded[hidden], .day-expanded[hidden] { display: none; }
-    .centre-expanded .chip, .week-expanded .chip, .day-expanded .chip { min-width: 0; }
-    .centre-expanded, .week-expanded, .day-expanded { justify-items: start; }
-    .day-filter-summary .chip { min-height: 30px; padding: 2px 6px; font-size: 12px; }
-    .day-filter-summary .chip:disabled { cursor: default; opacity: .35; }
+    .centre-picker, .week-picker { width: min(360px, 100%); margin-bottom: 6px; }
+    .centre-summary, .week-filter-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
+    .centre-expanded, .week-expanded { display: grid; grid-template-columns: repeat(2, max-content); width: fit-content; max-width: 100%; gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: .5px solid var(--border); }
+    .centre-expanded[hidden], .week-expanded[hidden] { display: none; }
+    .centre-expanded .chip, .week-expanded .chip { min-width: 0; }
+    .centre-expanded, .week-expanded { justify-items: start; }
+    .day-chips { width: fit-content; max-width: 100%; flex-wrap: wrap; overflow: visible; }
     .week-group { margin-bottom: 10px; }
     .week-hdr { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; cursor: pointer; list-style: none; }
     .week-hdr::-webkit-details-marker { display: none; }
@@ -125,8 +123,9 @@
       .break-even { padding: 6px 8px 8px; }
       .break-even-row { flex-direction: row; gap: 6px; font-size: 8.5px; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-      .centre-summary, .centre-expanded, .week-filter-summary, .week-expanded, .day-filter-summary, .day-expanded { overflow: visible; }
-      .centre-expanded, .week-expanded, .day-expanded { padding: 7px; }
+      .centre-summary, .centre-expanded, .week-filter-summary, .week-expanded, .day-chips { overflow: visible; }
+      .centre-expanded, .week-expanded { padding: 7px; }
+      .day-chips { flex-wrap: wrap; }
       .chip { flex: 0 0 auto; min-height: 30px; padding: 2px 6px; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
@@ -208,17 +207,8 @@
   </div>
 
   <div class="filter-label">Day</div>
-  <div class="day-picker">
-    <div class="chips day-filter-summary" id="daySummaryChips">
-      <button class="chip active" data-val="all">All</button>
-      <button class="chip" data-val="tuesday">Tue</button>
-      <button class="chip" data-val="thursday">Thu</button>
-      <button class="chip" data-val="saturday">Sat</button>
-      <button class="chip" id="dayMoreButton" type="button" aria-expanded="false" aria-controls="dayChips" aria-label="Show all days">…</button>
-    </div>
-    <div class="chips day-expanded" id="dayChips" hidden>
-      <button class="chip active" data-val="all">All</button>
-    </div>
+  <div class="chips day-chips" id="dayChips">
+    <button class="chip active" data-val="all">All</button>
   </div>
 
   <div class="filter-label">Access</div>
@@ -420,31 +410,6 @@ function renderDayChips() {
     panel.appendChild(button);
   });
   updateChipStates('dayChips', 'day', () => 'active');
-
-  const summary = document.getElementById('daySummaryChips');
-  summary.replaceChildren();
-  const preferred = ['tuesday', 'thursday', 'saturday'];
-  ['all', ...preferred].forEach(value => {
-    const button = document.createElement('button');
-    button.className = 'chip';
-    button.dataset.val = value;
-    button.textContent = value === 'all' ? 'All' : DAY_FILTER_LABELS[value];
-    const selected = value === 'all' ? filters.day.size === 0 : filters.day.has(value);
-    if (selected) button.classList.add('active');
-    if (value !== 'all' && !available.has(value)) button.disabled = true;
-    button.setAttribute('aria-pressed', String(selected));
-    summary.appendChild(button);
-  });
-  const more = document.createElement('button');
-  more.className = 'chip';
-  more.id = 'dayMoreButton';
-  more.type = 'button';
-  more.textContent = '…';
-  if ([...filters.day].some(day => !preferred.includes(day))) more.classList.add('active');
-  more.setAttribute('aria-label', panel.hidden ? 'Show all days' : 'Hide day list');
-  more.setAttribute('aria-expanded', String(!panel.hidden));
-  more.setAttribute('aria-controls', 'dayChips');
-  summary.appendChild(more);
 }
 
 function buildItem(session) {
@@ -616,21 +581,6 @@ document.getElementById('weekSummaryChips').addEventListener('click', event => {
   render();
 });
 
-document.getElementById('daySummaryChips').addEventListener('click', event => {
-  const button = event.target.closest('.chip'); if (!button || button.disabled) return;
-  const panel = document.getElementById('dayChips');
-  if (button.id === 'dayMoreButton') {
-    panel.hidden = !panel.hidden;
-    renderDayChips();
-    return;
-  }
-  const value = button.dataset.val;
-  if (value === 'all') filters.day.clear();
-  else if (filters.day.has(value)) filters.day.delete(value);
-  else filters.day.add(value);
-  render();
-});
-
 function closeSelectorsOutside(event) {
   const centrePicker = document.querySelector('.centre-picker');
   const centrePanel = document.getElementById('centreChips');
@@ -644,12 +594,6 @@ function closeSelectorsOutside(event) {
     weekPanel.hidden = true;
     renderWeekSummary();
   }
-  const dayPicker = document.querySelector('.day-picker');
-  const dayPanel = document.getElementById('dayChips');
-  if (!dayPicker.contains(event.target) && !dayPanel.hidden) {
-    dayPanel.hidden = true;
-    renderDayChips();
-  }
 }
 
 document.addEventListener('pointerdown', closeSelectorsOutside, { capture: true });
@@ -660,10 +604,8 @@ document.addEventListener('keydown', event => {
   const centrePanel = document.getElementById('centreChips');
   centrePanel.hidden = true;
   document.getElementById('weekChips').hidden = true;
-  document.getElementById('dayChips').hidden = true;
   renderCentreSummary();
   renderWeekSummary();
-  renderDayChips();
 });
 
 function updateChipStates(containerId, filterName, activeClass) {
