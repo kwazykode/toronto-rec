@@ -117,7 +117,6 @@
     .access-tag.reserve { color: var(--reserve); border-color: var(--reserve); }
     .access-tag.both { color: var(--mixed); border-color: var(--mixed); }
     .session-link { font-size: 10px; color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
-    .session-link-row { line-height: 1.2; }
     .session-info-row { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
     .status-btn { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: 2px 8px; min-width: 88px; min-height: 26px; font-family: inherit; font-size: 10px; font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
     .status-btn:hover { background: var(--surface); }.status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
@@ -421,10 +420,9 @@ function buildItem(session) {
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
       </div>
       <div class="session-info-row">
-        <div class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}</div>
+        <div class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address} · <a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name} ↗</a></div>
         <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
       </div>
-      <div class="session-link-row"><a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name} ↗</a></div>
     </div>`;
   item.querySelector('.status-btn').addEventListener('click', () => cycleStatus(session.id));
   return item;
