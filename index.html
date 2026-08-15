@@ -30,6 +30,7 @@
       --link: #005fcc;
       --filter-accent: #666;
       --detail-text: #333;
+      --dropdown: #e5e5e5;
     }
     @media (prefers-color-scheme: dark) {
       :root {
@@ -37,7 +38,7 @@
         --border: #606060; --text: #eee; --muted: #aaa; --accent: #aaa;
         --acc-txt: #fff; --inset: #222; --div: #444; --pickleball: #7db1ff;
         --volleyball: #bca3f2; --reserve: #4f7773; --badminton: #72d38d;
-        --attended: #72d38d; --cancelled: #ff7777; --highlight: #f2cf4a; --mixed: #ff9a5c; --link: #a9ccff; --filter-accent: #777; --detail-text: #ddd;
+        --attended: #72d38d; --cancelled: #ff7777; --highlight: #f2cf4a; --mixed: #ff9a5c; --link: #a9ccff; --filter-accent: #777; --detail-text: #ddd; --dropdown: #454545;
       }
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -81,7 +82,7 @@
     .chip.active-available { background: var(--muted); color: #fff; }
     .centre-picker, .week-picker { width: min(360px, 100%); margin-bottom: 6px; }
     .centre-summary, .week-filter-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
-    .centre-expanded, .week-expanded { display: grid; grid-template-columns: repeat(2, max-content); width: fit-content; max-width: 100%; gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: .5px solid var(--border); }
+    .centre-expanded, .week-expanded { display: grid; grid-template-columns: repeat(2, max-content); width: fit-content; max-width: 100%; gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--dropdown); border: .5px solid var(--border); }
     .centre-expanded[hidden], .week-expanded[hidden] { display: none; }
     .centre-expanded .chip, .week-expanded .chip { min-width: 0; }
     .centre-expanded, .week-expanded { justify-items: start; }
