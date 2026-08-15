@@ -93,9 +93,6 @@
     .week-group:not([open]) .week-hdr::before { content: '▸'; }
     .week-group:not([open]) .week-hdr { margin-bottom: 0; }
     .week-hdr-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
-    .week-hdr-count { margin-left: auto; font-size: 10px; color: var(--muted); white-space: nowrap; }
-    .week-summary { display: flex; justify-content: flex-end; gap: 14px; padding: 7px 10px; margin-top: 4px; background: var(--surface); border: 1px solid var(--border); font-size: 10px; color: var(--muted); }
-    .week-summary strong { color: var(--attended); }
     .session-item { background: var(--win); border: 1px solid var(--border); padding: 10px 12px; margin-bottom: 3px; }
     .session-item.attended { opacity: .55; }
     .session-item.cancelled { border-left: 3px solid var(--cancelled); }
@@ -140,7 +137,6 @@
       .status-btn { min-height: 30px; }
       .date-badge { min-width: auto; }
       .session-link { display: inline-block; padding: 3px 0; }
-      .week-summary { justify-content: flex-start; }
       .bottom-bar { line-height: 1.5; }
     }
   </style>
@@ -241,7 +237,7 @@
 
   <div id="sessionList"></div>
 
-  <div class="home-bar bottom-bar" id="homeBar">225 of 225 sessions shown · 7 tracked weeks · updated August 15, 2026</div>
+  <div class="home-bar bottom-bar" id="homeBar">0 attended · 225 of 225 sessions shown · 7 tracked weeks · updated August 15, 2026</div>
 </main>
 
 <script>
@@ -452,21 +448,11 @@ function render() {
   if (!visible.length) { list.innerHTML = '<div class="empty-note">No sessions match these filters.</div>'; updateStats(); return; }
   WEEKS.forEach(({ id: week, start: weekStart }) => {
     const sessions = visible.filter(s => s.week === week); if (!sessions.length) return;
-    const weekSessions = SESSIONS.filter(s => s.week === week)
-      .filter(s => matchesFilter('centre', s.centre))
-      .filter(s => matchesFilter('sport', s.sport))
-      .filter(s => matchesFilter('day', s.day))
-      .filter(s => matchesFilter('access', s.access));
-    const attended = weekSessions.filter(s => getState(s.id).status === 'attended').length;
     const group = document.createElement('details'); group.className = 'week-group';
     group.open = !collapsedWeeks.has(String(week));
-    group.innerHTML = `<summary class="week-hdr"><div class="week-hdr-label">${formatWeek(weekStart)}</div><div class="week-hdr-count">${attended}/${weekSessions.length} attended</div></summary>`;
+    group.innerHTML = `<summary class="week-hdr"><div class="week-hdr-label">${formatWeek(weekStart)}</div></summary>`;
     group.addEventListener('toggle', () => group.open ? collapsedWeeks.delete(String(week)) : collapsedWeeks.add(String(week)));
     sessions.forEach(s => group.appendChild(buildItem(s)));
-    const summary = document.createElement('div');
-    summary.className = 'week-summary';
-    summary.innerHTML = `<strong>${attended} attended</strong>`;
-    group.appendChild(summary);
     list.appendChild(group);
   });
   updateStats();
@@ -489,7 +475,7 @@ function updateStats() {
   const now = Date.now(); const next = SESSIONS.find(s => s.timestamp >= now && getState(s.id).status !== 'attended');
   document.getElementById('nextCount').textContent = next ? formatDate(next.date).split(',')[0] : '—';
   const shown = visibleSessions().length;
-  document.getElementById('homeBar').textContent = `${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated August 15, 2026`;
+  document.getElementById('homeBar').textContent = `${attended} attended · ${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated August 15, 2026`;
 }
 
 function populateDerivedFilters() {
