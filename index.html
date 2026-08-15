@@ -79,6 +79,11 @@
     .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
+    .centre-picker { position: relative; margin-bottom: 10px; }
+    .centre-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
+    .centre-more-panel { position: absolute; z-index: 10; top: calc(100% + 4px); left: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: min(360px, 100%); gap: 5px; padding: 7px; margin: 0; background: var(--surface); border: 1px solid var(--border); box-shadow: 0 4px 10px #0003; }
+    .centre-more-panel[hidden] { display: none; }
+    .centre-more-panel .chip { min-width: 0; }
     .week-dropdown { width: min(230px, 100%); margin-bottom: 10px; }
     .week-dropdown summary { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: var(--btn); font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; }
     .week-dropdown summary::-webkit-details-marker { display: none; }
@@ -129,6 +134,8 @@
       .cost-label { font-size: 8px; letter-spacing: .5px; }
       .break-even-row { flex-direction: column; gap: 2px; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+      .centre-summary { flex-wrap: wrap; overflow: visible; padding-bottom: 0; }
+      .centre-more-panel { overflow: visible; padding: 7px; }
       .week-dropdown .chips { overflow: visible; padding: 6px; }
       .week-dropdown .chip { min-height: 30px; padding: 5px 4px; }
       .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
@@ -176,14 +183,22 @@
   </div>
 
   <div class="filter-label">Centre</div>
-  <div class="chips" id="centreChips">
-    <button class="chip active" data-val="all">All</button>
-    <button class="chip" data-val="canoe">Canoe Landing</button>
-    <button class="chip" data-val="yonge">One Yonge</button>
-    <button class="chip" data-val="stlawrence">St. Lawrence</button>
-    <button class="chip" data-val="johninnes">John Innes</button>
-    <button class="chip" data-val="waterfront">Waterfront</button>
-    <button class="chip" data-val="eastbayfront">East Bayfront</button>
+  <div class="centre-picker">
+    <div class="chips centre-summary" id="centreSummaryChips">
+      <button class="chip active" data-val="all">All</button>
+      <button class="chip" data-val="canoe">Canoe</button>
+      <button class="chip" data-val="yonge">Yonge</button>
+      <button class="chip" id="centreMoreButton" type="button" aria-expanded="false" aria-controls="centreChips">…</button>
+    </div>
+    <div class="chips centre-more-panel" id="centreChips" hidden>
+      <button class="chip active" data-val="all">All</button>
+      <button class="chip" data-val="canoe">Canoe</button>
+      <button class="chip" data-val="yonge">Yonge</button>
+      <button class="chip" data-val="stlawrence">St. Lawrence</button>
+      <button class="chip" data-val="johninnes">John Innes</button>
+      <button class="chip" data-val="waterfront">Waterfront</button>
+      <button class="chip" data-val="eastbayfront">East Bay</button>
+    </div>
   </div>
 
   <div class="filter-label">Sport</div>
@@ -337,6 +352,11 @@ const filters = {
   access: new Set(),
   status: new Set()
 };
+const CENTRE_FILTER_LABELS = {
+  all: 'All', canoe: 'Canoe', yonge: 'Yonge', stlawrence: 'St. Lawrence',
+  johninnes: 'John Innes', waterfront: 'Waterfront', eastbayfront: 'East Bay'
+};
+const CENTRE_FILTER_ORDER = ['canoe', 'yonge', 'stlawrence', 'johninnes', 'waterfront', 'eastbayfront'];
 const collapsedWeeks = new Set();
 function getState(id) {
   const saved = state[id] || { status: 'available', notes: '' };
@@ -456,6 +476,57 @@ function populateDerivedFilters() {
   });
 }
 
+function renderCentreSummary() {
+  const summary = document.getElementById('centreSummaryChips');
+  const panel = document.getElementById('centreChips');
+  const values = filters.centre.size
+    ? CENTRE_FILTER_ORDER.filter(value => filters.centre.has(value))
+    : ['all', 'canoe', 'yonge'];
+  summary.replaceChildren();
+  values.forEach(value => {
+    const button = document.createElement('button');
+    button.className = 'chip';
+    button.dataset.val = value;
+    button.textContent = CENTRE_FILTER_LABELS[value];
+    const selected = value === 'all' || filters.centre.has(value);
+    if (selected) button.classList.add(value === 'all' ? 'active' : 'active-location');
+    button.setAttribute('aria-pressed', String(selected));
+    summary.appendChild(button);
+  });
+  const more = document.createElement('button');
+  more.className = 'chip';
+  more.id = 'centreMoreButton';
+  more.type = 'button';
+  more.textContent = '…';
+  more.setAttribute('aria-label', 'More centres');
+  more.setAttribute('aria-expanded', String(!panel.hidden));
+  more.setAttribute('aria-controls', 'centreChips');
+  summary.appendChild(more);
+}
+
+document.getElementById('centreSummaryChips').addEventListener('click', event => {
+  const button = event.target.closest('.chip'); if (!button) return;
+  const panel = document.getElementById('centreChips');
+  if (button.id === 'centreMoreButton') {
+    panel.hidden = !panel.hidden;
+    renderCentreSummary();
+    return;
+  }
+  const value = button.dataset.val;
+  if (value === 'all') filters.centre.clear();
+  else if (filters.centre.has(value)) filters.centre.delete(value);
+  else filters.centre.add(value);
+  updateChipStates('centreChips', 'centre', selected => selected === 'all' ? 'active' : 'active-location');
+  renderCentreSummary();
+  render();
+});
+
+document.addEventListener('click', event => {
+  if (event.target.closest('.centre-picker')) return;
+  const panel = document.getElementById('centreChips');
+  if (!panel.hidden) { panel.hidden = true; renderCentreSummary(); }
+});
+
 function updateChipStates(containerId, filterName, activeClass) {
   document.getElementById(containerId).querySelectorAll('.chip').forEach(chip => {
     const value = chip.dataset.val;
@@ -484,12 +555,14 @@ function wireChips(containerId, filterName, activeClass) {
     else if (selected.has(value)) selected.delete(value);
     else selected.add(value);
     updateChipStates(containerId, filterName, activeClass);
+    if (filterName === 'centre') renderCentreSummary();
     render();
   });
   updateChipStates(containerId, filterName, activeClass);
 }
 populateDerivedFilters();
 wireChips('centreChips', 'centre', value => value === 'all' ? 'active' : 'active-location');
+renderCentreSummary();
 wireChips('sportChips', 'sport', value => value === 'all' ? 'active' : `active-${value}`);
 wireChips('weekChips', 'week', () => 'active');
 wireChips('accessChips', 'access', value => value === 'all' ? 'active' : `active-${value}`);
