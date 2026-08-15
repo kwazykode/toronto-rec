@@ -603,6 +603,8 @@ function closeSelectorsOutside(event) {
 }
 
 document.addEventListener('pointerdown', closeSelectorsOutside, { capture: true });
+document.addEventListener('touchstart', closeSelectorsOutside, { capture: true, passive: true });
+document.addEventListener('click', closeSelectorsOutside, { capture: true });
 
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
