@@ -92,7 +92,6 @@
     .week-dropdown .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 6px; margin: 4px 0 0; background: var(--surface); border: 1px solid var(--border); }
     .week-dropdown .chip { min-width: 0; padding: 5px 6px; font-size: 10px; }
     .week-dropdown .chip:first-child { grid-column: 1 / -1; }
-    .day-filter[hidden] { display: none; }
     .day-chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: min(360px, 100%); overflow: visible; }
     .day-chips .chip { min-width: 0; }
     .week-group { margin-bottom: 10px; }
@@ -218,7 +217,7 @@
     </div>
   </details>
 
-  <div class="day-filter" id="dayFilter" hidden>
+  <div class="day-filter" id="dayFilter">
     <div class="filter-label">Day</div>
     <div class="chips day-chips" id="dayChips">
       <button class="chip active" data-val="all">All</button>
@@ -539,16 +538,6 @@ document.getElementById('centreSummaryChips').addEventListener('click', event =>
   render();
 });
 
-function updateDayFilterVisibility() {
-  const dayFilter = document.getElementById('dayFilter');
-  const show = filters.week.size > 0;
-  dayFilter.hidden = !show;
-  if (!show && filters.day.size) {
-    filters.day.clear();
-    updateChipStates('dayChips', 'day', () => 'active');
-  }
-}
-
 document.addEventListener('pointerdown', event => {
   const centrePicker = document.querySelector('.centre-picker');
   const centrePanel = document.getElementById('centreChips');
@@ -597,7 +586,6 @@ function wireChips(containerId, filterName, activeClass) {
     else selected.add(value);
     updateChipStates(containerId, filterName, activeClass);
     if (filterName === 'centre') renderCentreSummary();
-    if (filterName === 'week') updateDayFilterVisibility();
     render();
   });
   updateChipStates(containerId, filterName, activeClass);
@@ -608,7 +596,6 @@ renderCentreSummary();
 wireChips('sportChips', 'sport', value => value === 'all' ? 'active' : `active-${value}`);
 wireChips('weekChips', 'week', () => 'active');
 wireChips('dayChips', 'day', () => 'active');
-updateDayFilterVisibility();
 wireChips('accessChips', 'access', value => value === 'all' ? 'active' : `active-${value}`);
 wireChips('statusChips', 'status', value => value === 'all' ? 'active' : `active-${value}`);
 render();
