@@ -101,7 +101,8 @@
     .session-left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .session-top, .session-labels { display: flex; align-items: baseline; gap: 5px; flex-wrap: wrap; }
     .date-badge { font-size: .625rem; font-weight: bold; color: var(--detail-text); min-width: 62px; text-transform: uppercase; }
-    .time-badge, .sport-tag, .centre-tag, .access-tag { font-size: .625rem; font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
+    .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: .625rem; font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
+    .cost-tag { color: var(--attended); border-color: var(--attended); }
     .time-badge { background: transparent; color: var(--text); border-color: var(--text); }
     .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }.sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }.sport-tag.badminton { color: var(--badminton); border-color: var(--badminton); }
     .centre-tag { color: var(--highlight); border-color: var(--highlight); background: transparent; }.session-info { min-width: 0; font-size: .6875rem; color: var(--detail-text); }.cancelled-note { color: var(--cancelled); font-weight: bold; }
@@ -136,8 +137,8 @@
       .week-hdr { gap: 5px; }
       .session-item { padding: 6px 7px; }
       .session-top, .session-labels { flex-wrap: wrap; gap: 3px; }
-      .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag { font-size: .53125rem; white-space: nowrap; }
-      .time-badge, .sport-tag, .centre-tag, .access-tag { padding: 1px 3px; }
+      .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: .53125rem; white-space: nowrap; }
+      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { padding: 1px 3px; }
       .status-btn { min-height: 30px; }
       .date-badge { min-width: auto; }
       .session-link, .reserve-link { display: inline-block; padding: 2px 0; }
@@ -283,7 +284,7 @@ const CENTRES = {
     ['Volleyball', 'adult', 'wednesday', '06:30 PM - 08:45 PM', 'dropin'],
     ['Badminton', 'adult', 'thursday', '06:30 PM - 08:45 PM', 'dropin']
   ]},
-  johninnes: { name: 'John Innes', address: '150 Sherbourne St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=63', startDate: '2026-08-15', patterns: [
+  johninnes: { name: 'John Innes', address: '150 Sherbourne St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=63', startDate: '2026-08-15', free: true, patterns: [
     ['Badminton', 'adult', 'saturday', '01:15 PM - 04:45 PM', 'dropin'],
     ['Pickleball', 'adult', 'sunday', '02:30 PM - 04:30 PM', 'dropin'],
     ['Badminton', 'adult', 'monday', '08:00 PM - 09:30 PM', 'dropin'],
@@ -421,6 +422,7 @@ function buildItem(session) {
     <div class="session-left">
       <div class="session-top">
         <span class="date-badge">${formatDate(session.date)}</span>
+        <span class="cost-tag">${centre.free ? '$0 Free' : '$4.96'}</span>
       </div>
       <div class="session-labels">
         <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
