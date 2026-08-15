@@ -125,7 +125,7 @@
       .break-even { padding: 6px 8px 8px; }
       .break-even-row { flex-direction: row; gap: 6px; font-size: .53125rem; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-      .centre-summary, .week-filter-summary { width: 100%; max-width: 100%; flex-wrap: wrap; overflow: visible; }
+      .centre-summary, .week-filter-summary { width: fit-content; max-width: 100%; flex-wrap: wrap; overflow: visible; }
       .centre-expanded, .week-expanded, .day-chips { max-width: 100%; overflow: visible; }
       .centre-expanded, .week-expanded { padding: 7px; }
       .day-chips { flex-wrap: wrap; }
@@ -590,16 +590,18 @@ document.getElementById('weekSummaryChips').addEventListener('click', event => {
 
 function closeSelectorsOutside(event) {
   const path = typeof event.composedPath === 'function' ? event.composedPath() : [];
-  const centrePicker = document.querySelector('.centre-picker');
   const centrePanel = document.getElementById('centreChips');
-  const insideCentre = path.includes(centrePicker) || centrePicker.contains(event.target);
+  const centreSummary = document.getElementById('centreSummaryChips');
+  const insideCentre = path.includes(centrePanel) || path.includes(centreSummary)
+    || centrePanel.contains(event.target) || centreSummary.contains(event.target);
   if (!insideCentre && !centrePanel.hidden) {
     centrePanel.hidden = true;
     renderCentreSummary();
   }
-  const weekPicker = document.querySelector('.week-picker');
   const weekPanel = document.getElementById('weekChips');
-  const insideWeek = path.includes(weekPicker) || weekPicker.contains(event.target);
+  const weekSummary = document.getElementById('weekSummaryChips');
+  const insideWeek = path.includes(weekPanel) || path.includes(weekSummary)
+    || weekPanel.contains(event.target) || weekSummary.contains(event.target);
   if (!insideWeek && !weekPanel.hidden) {
     weekPanel.hidden = true;
     renderWeekSummary();
