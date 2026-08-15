@@ -79,16 +79,11 @@
     .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
-    .centre-dropdown { width: min(360px, 100%); margin-bottom: 10px; }
-    .centre-dropdown summary { display: flex; align-items: center; justify-content: space-between; gap: 8px; min-height: 31px; padding: 5px 10px; background: var(--btn); cursor: pointer; list-style: none; }
-    .centre-dropdown summary::-webkit-details-marker { display: none; }
-    .centre-dropdown summary::after { content: '▾'; margin-left: auto; }
-    .centre-dropdown[open] summary::after { content: '▴'; }
-    .centre-summary-items { display: flex; align-items: center; gap: 4px; min-width: 0; overflow: hidden; }
-    .centre-summary-tag { padding: 2px 6px; background: var(--surface); font-size: 10px; font-weight: bold; white-space: nowrap; }
-    .centre-summary-tag.selected { background: var(--highlight); color: #fff; }
-    .centre-dropdown .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: 1px solid var(--border); }
-    .centre-dropdown .chip { min-width: 0; }
+    .centre-picker { width: min(360px, 100%); margin-bottom: 10px; }
+    .centre-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
+    .centre-expanded { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: 1px solid var(--border); }
+    .centre-expanded[hidden] { display: none; }
+    .centre-expanded .chip { min-width: 0; }
     .week-dropdown { width: min(230px, 100%); margin-bottom: 10px; }
     .week-dropdown summary { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: var(--btn); font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; }
     .week-dropdown summary::-webkit-details-marker { display: none; }
@@ -139,7 +134,8 @@
       .cost-label { font-size: 8px; letter-spacing: .5px; }
       .break-even-row { flex-direction: column; gap: 2px; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-      .centre-dropdown .chips { overflow: visible; padding: 7px; }
+      .centre-summary, .centre-expanded { overflow: visible; }
+      .centre-expanded { padding: 7px; }
       .week-dropdown .chips { overflow: visible; padding: 6px; }
       .week-dropdown .chip { min-height: 30px; padding: 5px 4px; }
       .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
@@ -187,9 +183,14 @@
   </div>
 
   <div class="filter-label">Centre</div>
-  <details class="centre-dropdown" id="centreDropdown">
-    <summary><span class="centre-summary-items" id="centreSummaryItems"><span class="centre-summary-tag">All</span><span class="centre-summary-tag">Canoe</span><span class="centre-summary-tag">Yonge</span><span>…</span></span></summary>
-    <div class="chips" id="centreChips">
+  <div class="centre-picker">
+    <div class="chips centre-summary" id="centreSummaryChips">
+      <button class="chip active" data-val="all">All</button>
+      <button class="chip" data-val="canoe">Canoe</button>
+      <button class="chip" data-val="yonge">Yonge</button>
+      <button class="chip" id="centreMoreButton" type="button" aria-expanded="false" aria-controls="centreChips" aria-label="Show all centres">…</button>
+    </div>
+    <div class="chips centre-expanded" id="centreChips" hidden>
       <button class="chip active" data-val="all">All</button>
       <button class="chip" data-val="canoe">Canoe</button>
       <button class="chip" data-val="yonge">Yonge</button>
@@ -198,7 +199,7 @@
       <button class="chip" data-val="waterfront">Waterfront</button>
       <button class="chip" data-val="eastbayfront">East Bay</button>
     </div>
-  </details>
+  </div>
 
   <div class="filter-label">Sport</div>
   <div class="chips" id="sportChips">
@@ -476,22 +477,49 @@ function populateDerivedFilters() {
 }
 
 function renderCentreSummary() {
-  const summary = document.getElementById('centreSummaryItems');
+  const summary = document.getElementById('centreSummaryChips');
+  const panel = document.getElementById('centreChips');
   const values = filters.centre.size
     ? CENTRE_FILTER_ORDER.filter(value => filters.centre.has(value))
     : ['all', 'canoe', 'yonge'];
   summary.replaceChildren();
   values.forEach(value => {
-    const tag = document.createElement('span');
-    tag.className = 'centre-summary-tag';
-    tag.textContent = CENTRE_FILTER_LABELS[value];
-    if (filters.centre.has(value)) tag.classList.add('selected');
-    summary.appendChild(tag);
+    const button = document.createElement('button');
+    button.className = 'chip';
+    button.dataset.val = value;
+    button.textContent = CENTRE_FILTER_LABELS[value];
+    const selected = value === 'all' || filters.centre.has(value);
+    if (selected) button.classList.add(value === 'all' ? 'active' : 'active-location');
+    button.setAttribute('aria-pressed', String(selected));
+    summary.appendChild(button);
   });
-  const more = document.createElement('span');
+  const more = document.createElement('button');
+  more.className = 'chip';
+  more.id = 'centreMoreButton';
+  more.type = 'button';
   more.textContent = '…';
+  more.setAttribute('aria-label', panel.hidden ? 'Show all centres' : 'Hide centre list');
+  more.setAttribute('aria-expanded', String(!panel.hidden));
+  more.setAttribute('aria-controls', 'centreChips');
   summary.appendChild(more);
 }
+
+document.getElementById('centreSummaryChips').addEventListener('click', event => {
+  const button = event.target.closest('.chip'); if (!button) return;
+  const panel = document.getElementById('centreChips');
+  if (button.id === 'centreMoreButton') {
+    panel.hidden = !panel.hidden;
+    renderCentreSummary();
+    return;
+  }
+  const value = button.dataset.val;
+  if (value === 'all') filters.centre.clear();
+  else if (filters.centre.has(value)) filters.centre.delete(value);
+  else filters.centre.add(value);
+  updateChipStates('centreChips', 'centre', selected => selected === 'all' ? 'active' : 'active-location');
+  renderCentreSummary();
+  render();
+});
 
 function updateChipStates(containerId, filterName, activeClass) {
   document.getElementById(containerId).querySelectorAll('.chip').forEach(chip => {
