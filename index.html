@@ -211,9 +211,9 @@
   <div class="day-picker">
     <div class="chips day-filter-summary" id="daySummaryChips">
       <button class="chip active" data-val="all">All</button>
-      <button class="chip" data-val="tuesday">Tu</button>
-      <button class="chip" data-val="thursday">Th</button>
-      <button class="chip" data-val="saturday">Sa</button>
+      <button class="chip" data-val="tuesday">Tue</button>
+      <button class="chip" data-val="thursday">Thu</button>
+      <button class="chip" data-val="saturday">Sat</button>
       <button class="chip" id="dayMoreButton" type="button" aria-expanded="false" aria-controls="dayChips" aria-label="Show all days">…</button>
     </div>
     <div class="chips day-expanded" id="dayChips" hidden>
@@ -362,7 +362,7 @@ const CENTRE_FILTER_LABELS = {
   johninnes: 'John Innes', waterfront: 'Waterfront', eastbayfront: 'East Bay'
 };
 const CENTRE_FILTER_ORDER = ['canoe', 'yonge', 'stlawrence', 'johninnes', 'waterfront', 'eastbayfront'];
-const DAY_FILTER_LABELS = { monday: 'Mo', tuesday: 'Tu', wednesday: 'We', thursday: 'Th', friday: 'Fr', saturday: 'Sa', sunday: 'Su' };
+const DAY_FILTER_LABELS = { monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thursday: 'Thu', friday: 'Fri', saturday: 'Sat', sunday: 'Sun' };
 const collapsedWeeks = new Set();
 function getState(id) {
   const saved = state[id] || { status: 'available', notes: '' };
