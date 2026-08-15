@@ -521,6 +521,7 @@ function renderCentreSummary() {
 document.getElementById('centreSummaryChips').addEventListener('click', event => {
   const button = event.target.closest('.chip'); if (!button) return;
   const panel = document.getElementById('centreChips');
+  const keepOpen = !panel.hidden;
   if (button.id === 'centreMoreButton') {
     panel.hidden = !panel.hidden;
     renderCentreSummary();
@@ -530,6 +531,7 @@ document.getElementById('centreSummaryChips').addEventListener('click', event =>
   if (value === 'all') filters.centre.clear();
   else if (filters.centre.has(value)) filters.centre.delete(value);
   else filters.centre.add(value);
+  panel.hidden = !keepOpen;
   updateChipStates('centreChips', 'centre', selected => selected === 'all' ? 'active' : 'active-location');
   renderCentreSummary();
   render();
@@ -568,6 +570,7 @@ function renderWeekSummary() {
 document.getElementById('weekSummaryChips').addEventListener('click', event => {
   const button = event.target.closest('.chip'); if (!button) return;
   const panel = document.getElementById('weekChips');
+  const keepOpen = !panel.hidden;
   if (button.id === 'weekMoreButton') {
     panel.hidden = !panel.hidden;
     renderWeekSummary();
@@ -577,6 +580,7 @@ document.getElementById('weekSummaryChips').addEventListener('click', event => {
   if (value === 'all') filters.week.clear();
   else if (filters.week.has(value)) filters.week.delete(value);
   else filters.week.add(value);
+  panel.hidden = !keepOpen;
   updateChipStates('weekChips', 'week', () => 'active');
   renderWeekSummary();
   render();
@@ -598,7 +602,6 @@ function closeSelectorsOutside(event) {
 }
 
 document.addEventListener('pointerdown', closeSelectorsOutside, { capture: true });
-document.addEventListener('touchstart', closeSelectorsOutside, { capture: true, passive: true });
 
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
@@ -622,6 +625,8 @@ function updateChipStates(containerId, filterName, activeClass) {
 function wireChips(containerId, filterName, activeClass) {
   document.getElementById(containerId).addEventListener('click', event => {
     const chip = event.target.closest('.chip'); if (!chip) return;
+    const container = document.getElementById(containerId);
+    const keepOpen = (filterName === 'centre' || filterName === 'week') && !container.hidden;
     const value = chip.dataset.val;
     const selected = filters[filterName];
     if (value === 'all') selected.clear();
@@ -630,6 +635,7 @@ function wireChips(containerId, filterName, activeClass) {
     updateChipStates(containerId, filterName, activeClass);
     if (filterName === 'centre') renderCentreSummary();
     if (filterName === 'week') renderWeekSummary();
+    if (keepOpen) container.hidden = false;
     render();
   });
   updateChipStates(containerId, filterName, activeClass);
