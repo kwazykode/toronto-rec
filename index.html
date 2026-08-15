@@ -127,15 +127,13 @@
       body { font-size: 14px; }
       header { padding: 12px 10px; }
       .content { padding: 10px 8px 40px; }
-      .cost-grid { grid-template-columns: repeat(6, 1fr); }
-      .cost-stat { grid-column: span 2; min-width: 0; padding: 7px 3px; border-bottom: 1px solid var(--div); }
-      .cost-stat:nth-child(3) { border-right: 0; }
-      .cost-stat:nth-child(4), .cost-stat:nth-child(5) { grid-column: span 3; border-bottom: 0; }
-      .cost-stat:nth-child(4) { border-right: 1px solid var(--div); }
+      .cost-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .cost-stat, .cost-stat:nth-child(4), .cost-stat:nth-child(5) { grid-column: auto; min-width: 0; padding: 6px 2px; border-bottom: 0; border-right: 1px solid var(--div); }
       .cost-stat:last-child { border-right: 0; }
-      .cost-num { font-size: 1.05rem; }
-      .cost-label { font-size: 8px; letter-spacing: .5px; }
-      .break-even-row { flex-direction: column; gap: 2px; }
+      .cost-num { font-size: .95rem; }
+      .cost-label { font-size: 7px; line-height: 1.1; letter-spacing: .25px; }
+      .break-even { padding: 6px 8px 8px; }
+      .break-even-row { flex-direction: row; gap: 6px; font-size: 9px; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
       .centre-summary, .centre-expanded { overflow: visible; }
       .centre-expanded { padding: 7px; }
@@ -174,16 +172,14 @@
       <div class="cost-stat"><div class="cost-num" id="nextCount">—</div><div class="cost-label">Next</div></div>
     </div>
     <div class="break-even">
-      <div class="break-even-row"><span>Break-even target · $4.96 per session</span><strong id="breakEvenCount">0% · 0 sessions</strong></div>
+      <div class="break-even-row"><span>Break-even · $4.96/session</span><strong id="breakEvenCount">0% · 0 sessions</strong></div>
       <div class="break-even-track" role="progressbar" aria-label="Unlimited break-even progress" aria-valuemin="0" aria-valuenow="0" aria-valuetext="0 percent"><div class="break-even-fill" id="breakEvenBar"></div><span class="break-even-midpoint" aria-hidden="true"></span></div>
       <div class="break-even-scale" aria-hidden="true"><span>0%</span><span>100% · 33</span><span>∞</span></div>
     </div>
   </section>
 
   <div class="source-notice">
-    Schedules may change. Check the
-    <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map ↗</a>.
-    Waterfront has separate drop-in fees. Confirm details before attending.
+    Confirm schedules: <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map ↗</a> · Waterfront fees differ.
   </div>
 
   <div class="filter-label">Centre</div>
@@ -244,7 +240,7 @@
     <button class="chip" data-val="both">Drop-in + Reserve</button>
   </div>
 
-  <div class="filter-label">Tracking</div>
+  <div class="filter-label">Attendance</div>
   <div class="chips" id="statusChips">
     <button class="chip active" data-val="all">All</button>
     <button class="chip" data-val="available">Not Attended</button>
