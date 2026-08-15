@@ -68,9 +68,9 @@
     .break-even-scale span { position: absolute; white-space: nowrap; }.break-even-scale span:nth-child(1) { left: 0; }.break-even-scale span:nth-child(2) { left: 80%; transform: translateX(-50%); font-weight: bold; color: var(--text); }.break-even-scale span:nth-child(3) { right: 0; }
     .source-notice { background: var(--surface); border: 0; padding: 8px 12px; font-size: 11px; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
     .source-notice a { color: var(--link); font-weight: bold; }
-    .filter-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; font-weight: bold; }
-    .chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 10px; }
-    .chip { padding: 4px 11px; font-size: 11px; font-weight: bold; cursor: pointer; background: var(--btn); color: var(--text); border: 0; user-select: none; }
+    .filter-label { font-size: 10px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; font-weight: bold; }
+    .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
+    .chip { min-height: 26px; padding: 2px 6px; font-size: 10px; font-weight: bold; cursor: pointer; background: var(--btn); color: var(--text); border: 0; user-select: none; }
     .chip:hover { background: var(--inset); }.chip.active { background: var(--filter-accent); color: #fff; }
     .chip.active-location { background: var(--highlight); color: #fff; }
     .chip.active-pickleball { background: var(--pickleball); color: #fff; }
@@ -79,15 +79,14 @@
     .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
-    .centre-picker, .week-picker, .day-picker { width: min(360px, 100%); margin-bottom: 10px; }
+    .centre-picker, .week-picker, .day-picker { width: min(360px, 100%); margin-bottom: 6px; }
     .centre-summary, .week-filter-summary, .day-filter-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
     .centre-expanded, .week-expanded, .day-expanded { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: .5px solid var(--border); }
     .day-expanded { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .centre-expanded[hidden], .week-expanded[hidden], .day-expanded[hidden] { display: none; }
     .centre-expanded .chip, .week-expanded .chip, .day-expanded .chip { min-width: 0; }
-    .centre-summary .chip, .centre-expanded .chip { min-height: 26px; padding: 2px 6px; font-size: 10px; }
-    .centre-expanded { justify-items: start; }
-    .day-filter-summary .chip { min-height: 30px; padding: 5px 9px; font-size: 10px; }
+    .centre-expanded, .week-expanded, .day-expanded { justify-items: start; }
+    .day-filter-summary .chip { min-height: 26px; padding: 2px 6px; font-size: 10px; }
     .day-filter-summary .chip:disabled { cursor: default; opacity: .35; }
     .week-group { margin-bottom: 10px; }
     .week-hdr { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; cursor: pointer; list-style: none; }
@@ -126,10 +125,10 @@
       .cost-label { font-size: 6.5px; line-height: 1.1; letter-spacing: 0; }
       .break-even { padding: 6px 8px 8px; }
       .break-even-row { flex-direction: row; gap: 6px; font-size: 8.5px; }
-      .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+      .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
       .centre-summary, .centre-expanded, .week-filter-summary, .week-expanded, .day-filter-summary, .day-expanded { overflow: visible; }
       .centre-expanded, .week-expanded, .day-expanded { padding: 7px; }
-      .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
+      .chip { flex: 0 0 auto; min-height: 26px; padding: 2px 6px; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
       .week-hdr { gap: 5px; }
