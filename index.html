@@ -170,7 +170,7 @@
   </section>
 
   <div class="source-notice">
-    Confirm schedules: <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map ↗</a>
+    Confirm schedules: <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map</a>
   </div>
 
   <div class="filter-label">Centre</div>
@@ -415,7 +415,7 @@ function buildItem(session) {
   const tracked = getState(session.id); const centre = CENTRES[session.centre];
   const audience = session.name.match(/\((.+)\)/)?.[1];
   const reserveLink = ['reserve', 'both'].includes(session.access)
-    ? ` · Thu 08:00 · <a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Res ↗</a>`
+    ? ` · Thu 08:00 · <a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Res</a>`
     : '';
   const item = document.createElement('div');
   item.className = `session-item ${tracked.status}` + (session.status === 'cancelled' ? ' cancelled' : '');
@@ -432,7 +432,7 @@ function buildItem(session) {
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
       </div>
       <div class="session-info-row">
-        <span class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address} · <a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name} ↗</a>${reserveLink}</span>
+        <span class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address} · <a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
         <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
       </div>
     </div>`;
