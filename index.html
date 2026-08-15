@@ -85,6 +85,8 @@
     .day-expanded { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .centre-expanded[hidden], .week-expanded[hidden], .day-expanded[hidden] { display: none; }
     .centre-expanded .chip, .week-expanded .chip, .day-expanded .chip { min-width: 0; }
+    .centre-summary .chip, .centre-expanded .chip { min-height: 26px; padding: 2px 6px; font-size: 10px; }
+    .centre-expanded { justify-items: start; }
     .day-filter-summary .chip { min-height: 30px; padding: 5px 9px; font-size: 10px; }
     .day-filter-summary .chip:disabled { cursor: default; opacity: .35; }
     .week-group { margin-bottom: 10px; }
