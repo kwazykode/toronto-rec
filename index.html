@@ -81,8 +81,8 @@
     .chip.active-available { background: var(--muted); color: #fff; }
     .centre-picker, .week-picker, .day-picker { width: min(360px, 100%); margin-bottom: 6px; }
     .centre-summary, .week-filter-summary, .day-filter-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
-    .centre-expanded, .week-expanded, .day-expanded { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: .5px solid var(--border); }
-    .day-expanded { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .centre-expanded, .week-expanded, .day-expanded { display: grid; grid-template-columns: repeat(2, max-content); width: fit-content; max-width: 100%; gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: .5px solid var(--border); }
+    .day-expanded { grid-template-columns: repeat(4, max-content); }
     .centre-expanded[hidden], .week-expanded[hidden], .day-expanded[hidden] { display: none; }
     .centre-expanded .chip, .week-expanded .chip, .day-expanded .chip { min-width: 0; }
     .centre-expanded, .week-expanded, .day-expanded { justify-items: start; }
@@ -631,7 +631,7 @@ document.getElementById('daySummaryChips').addEventListener('click', event => {
   render();
 });
 
-document.addEventListener('pointerdown', event => {
+function closeSelectorsOutside(event) {
   const centrePicker = document.querySelector('.centre-picker');
   const centrePanel = document.getElementById('centreChips');
   if (!centrePicker.contains(event.target) && !centrePanel.hidden) {
@@ -650,7 +650,10 @@ document.addEventListener('pointerdown', event => {
     dayPanel.hidden = true;
     renderDayChips();
   }
-});
+}
+
+document.addEventListener('pointerdown', closeSelectorsOutside, { capture: true });
+document.addEventListener('touchstart', closeSelectorsOutside, { capture: true, passive: true });
 
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
