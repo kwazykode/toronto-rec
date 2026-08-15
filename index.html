@@ -415,7 +415,7 @@ function buildItem(session) {
   const tracked = getState(session.id); const centre = CENTRES[session.centre];
   const audience = session.name.match(/\((.+)\)/)?.[1];
   const reserveLink = ['reserve', 'both'].includes(session.access)
-    ? ` · <a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Reserve · Thu 08:00 ↗</a>`
+    ? ` · Thu 08:00 · <a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Res ↗</a>`
     : '';
   const item = document.createElement('div');
   item.className = `session-item ${tracked.status}` + (session.status === 'cancelled' ? ' cancelled' : '');
