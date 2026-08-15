@@ -99,7 +99,10 @@
     .session-item.attended { opacity: .55; }
     .session-item.cancelled { border-left: 3px solid var(--cancelled); }
     .session-left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
-    .session-top, .session-details-row { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+    .session-top { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+    .session-details-row { display: block; line-height: 1.55; }
+    .session-details-row > span { margin-right: 2px; }
+    .session-details-row::after { content: ''; display: block; clear: both; }
     .date-badge { font-size: .625rem; font-weight: bold; color: var(--detail-text); min-width: 62px; text-transform: uppercase; }
     .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: .625rem; font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
     .cost-tag { color: var(--attended); border-color: var(--attended); }
@@ -110,8 +113,7 @@
     .access-tag.reserve { color: var(--reserve); border-color: var(--reserve); }
     .access-tag.both { color: var(--mixed); border-color: var(--mixed); }
     .session-link, .reserve-link { font-size: .625rem; color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
-    .session-info { margin-right: 4px; }
-    .session-details-row .status-btn { margin-left: auto; }
+    .session-details-row .status-btn { float: right; margin-left: 4px; }
     .status-btn { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: 2px 8px; min-width: 88px; min-height: 26px; font-family: inherit; font-size: .625rem; font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
     .status-btn:hover { background: var(--surface); }.status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
     .status-btn:disabled { cursor: not-allowed; opacity: .5; }.empty-note { text-align: center; color: var(--muted); font-size: .75rem; padding: 28px 0; }
@@ -137,7 +139,7 @@
       .source-notice { padding: 8px 9px; }
       .week-hdr { gap: 5px; }
       .session-item { padding: 6px 7px; }
-      .session-top, .session-details-row { flex-wrap: wrap; gap: 3px; }
+      .session-top { flex-wrap: wrap; gap: 3px; }
       .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: .53125rem; white-space: nowrap; }
       .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { padding: 1px 3px; }
       .status-btn { min-height: 30px; }
@@ -306,10 +308,10 @@ const CENTRES = {
   ]}
 };
 const DAY_OFFSET = { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4, saturday: 5, sunday: 6 };
-const AGE_LABELS = { adult: '19 years and over' };
+const AGE_LABELS = { adult: '19+' };
 const STATUSES = ['available', 'attended'];
 const STATUS_LABELS = { available: '○ Not Attended', attended: '✓ Attended' };
-const ACCESS_LABELS = { dropin: 'Drop-in', reserve: 'Reserve', both: 'Drop-in + Reserve' };
+const ACCESS_LABELS = { dropin: 'Drop-in', reserve: 'Reserve', both: 'Drop-in + Res' };
 const RESERVE_URL = 'https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/';
 
 function sportFrom(name) { return name.toLowerCase().split(' ')[0]; }
@@ -423,15 +425,15 @@ function buildItem(session) {
     <div class="session-left">
       <div class="session-top">
         <span class="date-badge">${formatDate(session.date)}</span>
-        <span class="cost-tag">${centre.free ? '$0 Free' : '$4.96'}</span>
+        ${centre.free ? '<span class="cost-tag">$0 Free</span>' : ''}
       </div>
       <div class="session-details-row">
+        <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
         <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
         <span class="time-badge">${formatTime(session.time)}</span>
         <span class="centre-tag">${centre.name}</span>
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
         <span class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address} · <a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name} ↗</a>${reserveLink}</span>
-        <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
       </div>
     </div>`;
   item.querySelector('.status-btn').addEventListener('click', () => cycleStatus(session.id));
