@@ -432,7 +432,7 @@ function buildItem(session) {
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
       </div>
       <div class="session-info-row">
-        <span class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address} · <a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
+        <span class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}<br><a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
         <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
       </div>
     </div>`;
