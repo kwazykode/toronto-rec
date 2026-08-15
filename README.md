@@ -1,13 +1,13 @@
 # Toronto Rec Tracker
 
-Mobile attendance and pass-cost tracker for adult pickleball, badminton, and
-volleyball at six downtown Toronto community centres (City 19+, Waterfront 18+).
+Mobile attendance and pass-cost tracker for 19+ pickleball, badminton, and
+volleyball at five downtown Toronto community centres.
 
 [Open tracker](https://kwazykode.github.io/toronto-rec/)
 
 ## Features
 
-- 225 sessions from July 20–September 6, 2026; new locations begin August 15
+- 214 sessions from July 20–September 6, 2026; new locations begin August 15
 - Centre, sport, week, day, access, and attendance filters
 - $159.80 pass analysis with a $4.96 per-session target
 - Device-local attendance storage
