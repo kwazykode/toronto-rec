@@ -589,23 +589,27 @@ document.getElementById('weekSummaryChips').addEventListener('click', event => {
 });
 
 function closeSelectorsOutside(event) {
+  const path = typeof event.composedPath === 'function' ? event.composedPath() : [];
   const centrePicker = document.querySelector('.centre-picker');
   const centrePanel = document.getElementById('centreChips');
-  if (!centrePicker.contains(event.target) && !centrePanel.hidden) {
+  const insideCentre = path.includes(centrePicker) || centrePicker.contains(event.target);
+  if (!insideCentre && !centrePanel.hidden) {
     centrePanel.hidden = true;
     renderCentreSummary();
   }
   const weekPicker = document.querySelector('.week-picker');
   const weekPanel = document.getElementById('weekChips');
-  if (!weekPicker.contains(event.target) && !weekPanel.hidden) {
+  const insideWeek = path.includes(weekPicker) || weekPicker.contains(event.target);
+  if (!insideWeek && !weekPanel.hidden) {
     weekPanel.hidden = true;
     renderWeekSummary();
   }
 }
 
-document.addEventListener('pointerdown', closeSelectorsOutside, { capture: true });
-document.addEventListener('touchstart', closeSelectorsOutside, { capture: true, passive: true });
-document.addEventListener('click', closeSelectorsOutside, { capture: true });
+window.addEventListener('pointerdown', closeSelectorsOutside, { capture: true });
+window.addEventListener('touchstart', closeSelectorsOutside, { capture: true, passive: true });
+window.addEventListener('mousedown', closeSelectorsOutside, { capture: true });
+window.addEventListener('click', closeSelectorsOutside, { capture: true });
 
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
