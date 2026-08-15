@@ -79,21 +79,13 @@
     .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
-    .centre-picker { width: min(360px, 100%); margin-bottom: 10px; }
-    .centre-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
-    .centre-expanded { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: 1px solid var(--border); }
-    .centre-expanded[hidden] { display: none; }
-    .centre-expanded .chip { min-width: 0; }
-    .week-dropdown { width: min(230px, 100%); margin-bottom: 10px; }
-    .week-dropdown summary { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: var(--btn); font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; }
-    .week-dropdown summary::-webkit-details-marker { display: none; }
-    .week-dropdown summary::after { content: '▾'; margin-left: 10px; }
-    .week-dropdown[open] summary::after { content: '▴'; }
-    .week-dropdown .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 6px; margin: 4px 0 0; background: var(--surface); border: 1px solid var(--border); }
-    .week-dropdown .chip { min-width: 0; padding: 5px 6px; font-size: 10px; }
-    .week-dropdown .chip:first-child { grid-column: 1 / -1; }
-    .day-chips { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: min(360px, 100%); overflow: visible; }
-    .day-chips .chip { min-width: 0; }
+    .centre-picker, .week-picker { width: min(360px, 100%); margin-bottom: 10px; }
+    .centre-summary, .week-filter-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
+    .centre-expanded, .week-expanded { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--surface); border: 1px solid var(--border); }
+    .centre-expanded[hidden], .week-expanded[hidden] { display: none; }
+    .centre-expanded .chip, .week-expanded .chip { min-width: 0; }
+    .day-chips { display: flex; flex-wrap: nowrap; gap: 4px; width: min(360px, 100%); overflow: visible; }
+    .day-chips .chip { flex: 0 1 auto; min-width: 0; min-height: 0; padding: 4px 7px; font-size: 9px; }
     .week-group { margin-bottom: 10px; }
     .week-hdr { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; cursor: pointer; list-style: none; }
     .week-hdr::-webkit-details-marker { display: none; }
@@ -134,11 +126,9 @@
       .break-even { padding: 6px 8px 8px; }
       .break-even-row { flex-direction: row; gap: 6px; font-size: 8.5px; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-      .centre-summary, .centre-expanded { overflow: visible; }
-      .centre-expanded { padding: 7px; }
-      .week-dropdown .chips { overflow: visible; padding: 6px; }
-      .week-dropdown .chip { min-height: 30px; padding: 5px 4px; }
-      .day-chips { display: grid; overflow: visible; padding-bottom: 0; }
+      .centre-summary, .centre-expanded, .week-filter-summary, .week-expanded { overflow: visible; }
+      .centre-expanded, .week-expanded { padding: 7px; }
+      .day-chips { display: flex; overflow: visible; padding-bottom: 0; }
       .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
@@ -210,24 +200,27 @@
   </div>
 
   <div class="filter-label">Week</div>
-  <details class="week-dropdown">
-    <summary id="weekSummary">All Weeks</summary>
-    <div class="chips" id="weekChips">
+  <div class="week-picker">
+    <div class="chips week-filter-summary" id="weekSummaryChips">
+      <button class="chip active" data-val="all">All Weeks</button>
+      <button class="chip" id="weekMoreButton" type="button" aria-expanded="false" aria-controls="weekChips" aria-label="Show all weeks">…</button>
+    </div>
+    <div class="chips week-expanded" id="weekChips" hidden>
       <button class="chip active" data-val="all">All Weeks</button>
     </div>
-  </details>
+  </div>
 
   <div class="day-filter" id="dayFilter">
     <div class="filter-label">Day</div>
     <div class="chips day-chips" id="dayChips">
       <button class="chip active" data-val="all">All</button>
-      <button class="chip" data-val="monday">Mon</button>
-      <button class="chip" data-val="tuesday">Tue</button>
-      <button class="chip" data-val="wednesday">Wed</button>
-      <button class="chip" data-val="thursday">Thu</button>
-      <button class="chip" data-val="friday">Fri</button>
-      <button class="chip" data-val="saturday">Sat</button>
-      <button class="chip" data-val="sunday">Sun</button>
+      <button class="chip" data-val="monday">Mo</button>
+      <button class="chip" data-val="tuesday">Tu</button>
+      <button class="chip" data-val="wednesday">We</button>
+      <button class="chip" data-val="thursday">Th</button>
+      <button class="chip" data-val="friday">Fr</button>
+      <button class="chip" data-val="saturday">Sa</button>
+      <button class="chip" data-val="sunday">Su</button>
     </div>
   </div>
 
@@ -372,6 +365,7 @@ const CENTRE_FILTER_LABELS = {
   johninnes: 'John Innes', waterfront: 'Waterfront', eastbayfront: 'East Bay'
 };
 const CENTRE_FILTER_ORDER = ['canoe', 'yonge', 'stlawrence', 'johninnes', 'waterfront', 'eastbayfront'];
+const DAY_FILTER_LABELS = { monday: 'Mo', tuesday: 'Tu', wednesday: 'We', thursday: 'Th', friday: 'Fr', saturday: 'Sa', sunday: 'Su' };
 const collapsedWeeks = new Set();
 function getState(id) {
   const saved = state[id] || { status: 'available', notes: '' };
@@ -406,6 +400,28 @@ function matchesFilter(name, value) {
   return filters[name].size === 0 || filters[name].has(String(value));
 }
 
+function renderDayChips() {
+  const available = new Set(SESSIONS
+    .filter(s => matchesFilter('centre', s.centre))
+    .filter(s => matchesFilter('sport', s.sport))
+    .filter(s => matchesFilter('week', s.week))
+    .filter(s => matchesFilter('access', s.access))
+    .filter(s => matchesFilter('status', getState(s.id).status))
+    .map(s => s.day));
+  [...filters.day].forEach(day => { if (!available.has(day)) filters.day.delete(day); });
+  const container = document.getElementById('dayChips');
+  container.replaceChildren();
+  const values = ['all', ...Object.keys(DAY_FILTER_LABELS).filter(day => available.has(day))];
+  values.forEach(value => {
+    const button = document.createElement('button');
+    button.className = 'chip';
+    button.dataset.val = value;
+    button.textContent = value === 'all' ? 'All' : DAY_FILTER_LABELS[value];
+    container.appendChild(button);
+  });
+  updateChipStates('dayChips', 'day', () => 'active');
+}
+
 function buildItem(session) {
   const tracked = getState(session.id); const centre = CENTRES[session.centre];
   const audience = session.name.match(/\((.+)\)/)?.[1];
@@ -430,6 +446,7 @@ function buildItem(session) {
 }
 
 function render() {
+  renderDayChips();
   const list = document.getElementById('sessionList'); list.innerHTML = '';
   const visible = visibleSessions();
   if (!visible.length) { list.innerHTML = '<div class="empty-note">No sessions match these filters.</div>'; updateStats(); return; }
@@ -537,6 +554,53 @@ document.getElementById('centreSummaryChips').addEventListener('click', event =>
   render();
 });
 
+function renderWeekSummary() {
+  const summary = document.getElementById('weekSummaryChips');
+  const panel = document.getElementById('weekChips');
+  const values = filters.week.size
+    ? WEEKS.map(week => String(week.id)).filter(value => filters.week.has(value))
+    : ['all', ...WEEKS.slice(0, 3).map(week => String(week.id))];
+  summary.replaceChildren();
+  values.forEach(value => {
+    const button = document.createElement('button');
+    button.className = 'chip';
+    button.dataset.val = value;
+    button.textContent = value === 'all'
+      ? 'All Weeks'
+      : formatWeek(WEEKS.find(week => String(week.id) === value).start);
+    const selected = value === 'all' || filters.week.has(value);
+    if (selected) button.classList.add('active');
+    button.setAttribute('aria-pressed', String(selected));
+    summary.appendChild(button);
+  });
+  const more = document.createElement('button');
+  more.className = 'chip';
+  more.id = 'weekMoreButton';
+  more.type = 'button';
+  more.textContent = '…';
+  more.setAttribute('aria-label', panel.hidden ? 'Show all weeks' : 'Hide week list');
+  more.setAttribute('aria-expanded', String(!panel.hidden));
+  more.setAttribute('aria-controls', 'weekChips');
+  summary.appendChild(more);
+}
+
+document.getElementById('weekSummaryChips').addEventListener('click', event => {
+  const button = event.target.closest('.chip'); if (!button) return;
+  const panel = document.getElementById('weekChips');
+  if (button.id === 'weekMoreButton') {
+    panel.hidden = !panel.hidden;
+    renderWeekSummary();
+    return;
+  }
+  const value = button.dataset.val;
+  if (value === 'all') filters.week.clear();
+  else if (filters.week.has(value)) filters.week.delete(value);
+  else filters.week.add(value);
+  updateChipStates('weekChips', 'week', () => 'active');
+  renderWeekSummary();
+  render();
+});
+
 document.addEventListener('pointerdown', event => {
   const centrePicker = document.querySelector('.centre-picker');
   const centrePanel = document.getElementById('centreChips');
@@ -544,16 +608,21 @@ document.addEventListener('pointerdown', event => {
     centrePanel.hidden = true;
     renderCentreSummary();
   }
-  const weekDropdown = document.querySelector('.week-dropdown');
-  if (!weekDropdown.contains(event.target)) weekDropdown.open = false;
+  const weekPicker = document.querySelector('.week-picker');
+  const weekPanel = document.getElementById('weekChips');
+  if (!weekPicker.contains(event.target) && !weekPanel.hidden) {
+    weekPanel.hidden = true;
+    renderWeekSummary();
+  }
 });
 
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
   const centrePanel = document.getElementById('centreChips');
   centrePanel.hidden = true;
-  document.querySelector('.week-dropdown').open = false;
+  document.getElementById('weekChips').hidden = true;
   renderCentreSummary();
+  renderWeekSummary();
 });
 
 function updateChipStates(containerId, filterName, activeClass) {
@@ -564,15 +633,6 @@ function updateChipStates(containerId, filterName, activeClass) {
     if (selected) chip.classList.add(activeClass(value));
     chip.setAttribute('aria-pressed', String(selected));
   });
-  if (filterName === 'week') {
-    const selected = filters.week;
-    const label = selected.size === 0
-      ? 'All Weeks'
-      : selected.size === 1
-        ? formatWeek(WEEKS.find(week => String(week.id) === [...selected][0]).start)
-        : `${selected.size} Weeks`;
-    document.getElementById('weekSummary').textContent = label;
-  }
 }
 
 function wireChips(containerId, filterName, activeClass) {
@@ -585,6 +645,7 @@ function wireChips(containerId, filterName, activeClass) {
     else selected.add(value);
     updateChipStates(containerId, filterName, activeClass);
     if (filterName === 'centre') renderCentreSummary();
+    if (filterName === 'week') renderWeekSummary();
     render();
   });
   updateChipStates(containerId, filterName, activeClass);
@@ -594,6 +655,7 @@ wireChips('centreChips', 'centre', value => value === 'all' ? 'active' : 'active
 renderCentreSummary();
 wireChips('sportChips', 'sport', value => value === 'all' ? 'active' : `active-${value}`);
 wireChips('weekChips', 'week', () => 'active');
+renderWeekSummary();
 wireChips('dayChips', 'day', () => 'active');
 wireChips('accessChips', 'access', value => value === 'all' ? 'active' : `active-${value}`);
 wireChips('statusChips', 'status', value => value === 'all' ? 'active' : `active-${value}`);
