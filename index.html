@@ -157,7 +157,7 @@
     <div class="cost-title">Tracker - 6 Month - Cost Analysis</div>
     <div class="cost-grid">
       <div class="cost-stat"><div class="cost-num">$159.80</div><div class="cost-label">Pass Cost</div></div>
-      <div class="cost-stat"><div class="cost-num" id="remainingCount">110</div><div class="cost-label">Not Attended</div></div>
+      <div class="cost-stat"><div class="cost-num" id="remainingCount">320</div><div class="cost-label">Not Attended</div></div>
       <div class="cost-stat"><div class="cost-num" id="attendedCount">0</div><div class="cost-label">Attended</div></div>
       <div class="cost-stat"><div class="cost-num" id="costPerSession">—</div><div class="cost-label">Cost / Session</div></div>
       <div class="cost-stat"><div class="cost-num" id="nextCount">—</div><div class="cost-label">Next</div></div>
@@ -172,7 +172,7 @@
   <div class="source-notice">
     Schedules may change. Check the
     <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map ↗</a>.
-    July 20–26 repeats the published pattern.
+    Waterfront has separate drop-in fees. Confirm details before attending.
   </div>
 
   <div class="filter-label">Centre</div>
@@ -180,6 +180,10 @@
     <button class="chip active" data-val="all">All</button>
     <button class="chip" data-val="canoe">Canoe Landing</button>
     <button class="chip" data-val="yonge">One Yonge</button>
+    <button class="chip" data-val="stlawrence">St. Lawrence</button>
+    <button class="chip" data-val="johninnes">John Innes</button>
+    <button class="chip" data-val="waterfront">Waterfront</button>
+    <button class="chip" data-val="eastbayfront">East Bayfront</button>
   </div>
 
   <div class="filter-label">Sport</div>
@@ -200,7 +204,7 @@
 
   <div class="filter-label">Access</div>
   <div class="chips" id="accessChips">
-    <button class="chip active" data-val="all">All Access</button>
+    <button class="chip active" data-val="all">All</button>
     <button class="chip" data-val="dropin">Drop-in</button>
     <button class="chip" data-val="reserve">Reserve</button>
     <button class="chip" data-val="both">Drop-in + Reserve</button>
@@ -215,7 +219,7 @@
 
   <div id="sessionList"></div>
 
-  <div class="home-bar bottom-bar" id="homeBar">110 of 110 sessions shown · 5 tracked weeks · updated July 31, 2026</div>
+  <div class="home-bar bottom-bar" id="homeBar">320 of 320 sessions shown · 7 tracked weeks · updated August 15, 2026</div>
 </main>
 
 <script>
@@ -224,13 +228,15 @@ const WEEKS = [
   { id: 0, start: '2026-07-27' },
   { id: 1, start: '2026-08-03' },
   { id: 2, start: '2026-08-10' },
-  { id: 3, start: '2026-08-17' }
+  { id: 3, start: '2026-08-17' },
+  { id: 4, start: '2026-08-24' },
+  { id: 5, start: '2026-08-31' }
 ];
 const PASS_COST = 159.80;
 const TARGET_SESSION_COST = 4.96;
 const BREAK_EVEN_SESSIONS = Math.ceil(PASS_COST / TARGET_SESSION_COST);
 const CENTRES = {
-  canoe: { name: 'Canoe Landing', address: '45 Fort York Blvd', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3643', patterns: [
+  canoe: { name: 'Canoe Landing', address: '45 Fort York Blvd', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3643', throughWeek: 4, patterns: [
     ['Badminton', 'adult', 'thursday', '07:00 PM - 08:30 PM', 'reserve'],
     ['Badminton', 'adult', 'thursday', '08:30 PM - 10:00 PM', 'reserve'],
     ['Badminton', 'adult', 'sunday', '01:00 PM - 02:30 PM', 'reserve'],
@@ -255,10 +261,45 @@ const CENTRES = {
     ['Volleyball', 'adult', 'thursday', '05:15 PM - 07:15 PM', 'dropin'],
     ['Volleyball', 'adult', 'thursday', '07:30 PM - 09:30 PM', 'dropin'],
     ['Volleyball', 'adult', 'saturday', '05:30 PM - 07:30 PM', 'dropin']
+  ]},
+  stlawrence: { name: 'St. Lawrence', address: '230 The Esplanade', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=272', patterns: [
+    ['Badminton', 'adult', 'saturday', '11:00 AM - 02:00 PM', 'dropin'],
+    ['Pickleball', 'adult', 'saturday', '02:30 PM - 04:30 PM', 'dropin'],
+    ['Volleyball', 'adult', 'sunday', '12:30 PM - 03:45 PM', 'dropin'],
+    ['Badminton', 'adult', 'sunday', '04:00 PM - 07:00 PM', 'dropin'],
+    ['Pickleball', 'adult', 'tuesday', '06:30 PM - 08:45 PM', 'dropin'],
+    ['Volleyball', 'adult', 'wednesday', '06:30 PM - 08:45 PM', 'dropin'],
+    ['Badminton', 'adult', 'thursday', '06:30 PM - 08:45 PM', 'dropin']
+  ]},
+  johninnes: { name: 'John Innes', address: '150 Sherbourne St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=63', patterns: [
+    ['Badminton', 'adult', 'saturday', '01:15 PM - 04:45 PM', 'dropin'],
+    ['Pickleball', 'adult', 'sunday', '02:30 PM - 04:30 PM', 'dropin'],
+    ['Badminton', 'adult', 'monday', '08:00 PM - 09:30 PM', 'dropin'],
+    ['Pickleball', 'adult', 'tuesday', '05:15 PM - 07:15 PM', 'dropin']
+  ]},
+  waterfront: { name: 'Waterfront', address: '627 Queen’s Quay West', url: 'https://waterfrontnc.ca/programguide/adult/', throughWeek: 4, patterns: [
+    ['Badminton', 'adult18', 'tuesday', '07:30 PM - 09:15 PM', 'dropin'],
+    ['Pickleball', 'adult18', 'tuesday', '06:00 PM - 07:15 PM', 'dropin'],
+    ['Pickleball', 'adult18', 'saturday', '02:30 PM - 04:15 PM', 'dropin'],
+    ['Volleyball', 'adult18', 'monday', '07:30 PM - 09:15 PM', 'dropin'],
+    ['Volleyball', 'adult18', 'wednesday', '07:30 PM - 09:15 PM', 'dropin']
+  ]},
+  eastbayfront: { name: 'East Bayfront', address: '261 Queens Quay East', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3857', patterns: [
+    ['Pickleball', 'adult', 'saturday', '11:45 AM - 01:45 PM', 'dropin', 4],
+    ['Pickleball (2SLGBTQ+)', 'adult', 'saturday', '02:00 PM - 03:30 PM', 'dropin', 4],
+    ['Volleyball (2SLGBTQ+)', 'adult', 'saturday', '03:45 PM - 05:15 PM', 'dropin', 4],
+    ['Badminton', 'adult', 'sunday', '11:30 AM - 01:30 PM', 'dropin'],
+    ['Pickleball', 'adult', 'sunday', '05:45 PM - 07:45 PM', 'dropin', 4],
+    ['Pickleball', 'adult', 'monday', '08:30 AM - 10:30 AM', 'dropin', 4],
+    ['Pickleball', 'adult', 'wednesday', '08:30 AM - 10:30 AM', 'dropin', 4],
+    ['Badminton (Women)', 'adult', 'thursday', '04:30 PM - 06:30 PM', 'dropin'],
+    ['Pickleball', 'adult', 'friday', '08:30 AM - 10:30 AM', 'dropin', 4],
+    ['Badminton', 'adult', 'friday', '04:30 PM - 06:30 PM', 'dropin'],
+    ['Volleyball', 'adult', 'friday', '06:45 PM - 08:45 PM', 'dropin']
   ]}
 };
 const DAY_OFFSET = { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4, saturday: 5, sunday: 6 };
-const AGE_LABELS = { adult: '19 years and over' };
+const AGE_LABELS = { adult: '19 years and over', adult18: '18 years and over' };
 const STATUSES = ['available', 'attended'];
 const STATUS_LABELS = { available: '○ Not Attended', attended: '✓ Attended' };
 const ACCESS_LABELS = { dropin: 'Drop-in', reserve: 'Reserve', both: 'Drop-in + Reserve' };
@@ -272,10 +313,16 @@ function clock24(label) {
 }
 function time24(label) { return clock24(label.split(' - ')[0]); }
 function formatTime(label) { return label.split(' - ').map(clock24).join('–'); }
+function isScheduled(centre, info, pattern, week, date) {
+  if (info.throughWeek !== undefined && week > info.throughWeek) return false;
+  if (pattern[5] !== undefined && week > pattern[5]) return false;
+  return !(centre === 'waterfront' && date === '2026-08-03' && pattern[0] === 'Volleyball');
+}
 const SESSIONS = WEEKS.flatMap(({ id: week, start: weekStart }) => Object.entries(CENTRES).flatMap(([centre, info]) =>
-  info.patterns.map((p, index) => {
+  info.patterns.flatMap((p, index) => {
     const date = datePlus(weekStart, DAY_OFFSET[p[2]]);
-    return { id: `${centre}-${week}-${index}`, centre, week, date, name: p[0], age: p[1], day: p[2], time: p[3], access: p[4], sport: sportFrom(p[0]), timestamp: new Date(`${date}T${time24(p[3])}:00`).getTime(), status: 'active' };
+    if (!isScheduled(centre, info, p, week, date)) return [];
+    return [{ id: `${centre}-${week}-${index}`, centre, week, date, name: p[0], age: p[1], day: p[2], time: p[3], access: p[4], sport: sportFrom(p[0]), timestamp: new Date(`${date}T${time24(p[3])}:00`).getTime(), status: 'active' }];
   })
 )).sort((a, b) => a.timestamp - b.timestamp || a.centre.localeCompare(b.centre));
 
@@ -324,6 +371,7 @@ function matchesFilter(name, value) {
 
 function buildItem(session) {
   const tracked = getState(session.id); const centre = CENTRES[session.centre];
+  const audience = session.name.match(/\((.+)\)/)?.[1];
   const item = document.createElement('div');
   item.className = `session-item ${tracked.status}` + (session.status === 'cancelled' ? ' cancelled' : '');
   item.innerHTML = `
@@ -336,7 +384,7 @@ function buildItem(session) {
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
       </div>
       <div class="session-info-row">
-        <div class="session-info">${AGE_LABELS[session.age]} · ${centre.address}</div>
+        <div class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}</div>
         <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
       </div>
       <div class="session-link-row"><a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name} ↗</a></div>
@@ -387,7 +435,7 @@ function updateStats() {
   const now = Date.now(); const next = SESSIONS.find(s => s.timestamp >= now && getState(s.id).status !== 'attended');
   document.getElementById('nextCount').textContent = next ? formatDate(next.date).split(',')[0] : '—';
   const shown = visibleSessions().length;
-  document.getElementById('homeBar').textContent = `${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated July 31, 2026`;
+  document.getElementById('homeBar').textContent = `${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated August 15, 2026`;
 }
 
 function populateDerivedFilters() {
