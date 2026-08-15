@@ -423,7 +423,7 @@ function buildItem(session) {
     <div class="session-left">
       <div class="session-top">
         <span class="date-badge">${formatDate(session.date)}</span>
-        ${centre.free ? '<span class="cost-tag">$0 Free</span>' : ''}
+        ${centre.free ? '<span class="cost-tag">Free</span>' : ''}
       </div>
       <div class="session-labels">
         <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
