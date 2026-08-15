@@ -79,12 +79,14 @@
     .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
-    .week-dropdown { margin-bottom: 10px; }
+    .week-dropdown { width: min(230px, 100%); margin-bottom: 10px; }
     .week-dropdown summary { display: flex; align-items: center; justify-content: space-between; padding: 7px 10px; background: var(--btn); font-size: 11px; font-weight: bold; cursor: pointer; list-style: none; }
     .week-dropdown summary::-webkit-details-marker { display: none; }
     .week-dropdown summary::after { content: '▾'; margin-left: 10px; }
     .week-dropdown[open] summary::after { content: '▴'; }
-    .week-dropdown .chips { padding: 7px; margin: 4px 0 0; background: var(--surface); border: 1px solid var(--border); }
+    .week-dropdown .chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px; padding: 6px; margin: 4px 0 0; background: var(--surface); border: 1px solid var(--border); }
+    .week-dropdown .chip { min-width: 0; padding: 5px 6px; font-size: 10px; }
+    .week-dropdown .chip:first-child { grid-column: 1 / -1; }
     .week-group { margin-bottom: 10px; }
     .week-hdr { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; cursor: pointer; list-style: none; }
     .week-hdr::-webkit-details-marker { display: none; }
@@ -127,7 +129,8 @@
       .cost-label { font-size: 8px; letter-spacing: .5px; }
       .break-even-row { flex-direction: column; gap: 2px; }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 5px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-      .week-dropdown .chips { flex-wrap: wrap; overflow: visible; padding: 7px; }
+      .week-dropdown .chips { overflow: visible; padding: 6px; }
+      .week-dropdown .chip { min-height: 30px; padding: 5px 4px; }
       .chip { flex: 0 0 auto; min-height: 36px; padding: 7px 12px; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
