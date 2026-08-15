@@ -7,7 +7,7 @@ volleyball at six downtown Toronto community centres (City 19+, Waterfront 18+).
 
 ## Features
 
-- 320 sessions from July 20–September 6, 2026
+- 225 sessions from July 20–September 6, 2026; new locations begin August 15
 - Centre, sport, week, access, and attendance filters
 - $159.80 pass analysis with a $4.96 per-session target
 - Device-local attendance storage

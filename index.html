@@ -157,7 +157,7 @@
     <div class="cost-title">Tracker - 6 Month - Cost Analysis</div>
     <div class="cost-grid">
       <div class="cost-stat"><div class="cost-num">$159.80</div><div class="cost-label">Pass Cost</div></div>
-      <div class="cost-stat"><div class="cost-num" id="remainingCount">320</div><div class="cost-label">Not Attended</div></div>
+      <div class="cost-stat"><div class="cost-num" id="remainingCount">225</div><div class="cost-label">Not Attended</div></div>
       <div class="cost-stat"><div class="cost-num" id="attendedCount">0</div><div class="cost-label">Attended</div></div>
       <div class="cost-stat"><div class="cost-num" id="costPerSession">—</div><div class="cost-label">Cost / Session</div></div>
       <div class="cost-stat"><div class="cost-num" id="nextCount">—</div><div class="cost-label">Next</div></div>
@@ -219,7 +219,7 @@
 
   <div id="sessionList"></div>
 
-  <div class="home-bar bottom-bar" id="homeBar">320 of 320 sessions shown · 7 tracked weeks · updated August 15, 2026</div>
+  <div class="home-bar bottom-bar" id="homeBar">225 of 225 sessions shown · 7 tracked weeks · updated August 15, 2026</div>
 </main>
 
 <script>
@@ -262,7 +262,7 @@ const CENTRES = {
     ['Volleyball', 'adult', 'thursday', '07:30 PM - 09:30 PM', 'dropin'],
     ['Volleyball', 'adult', 'saturday', '05:30 PM - 07:30 PM', 'dropin']
   ]},
-  stlawrence: { name: 'St. Lawrence', address: '230 The Esplanade', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=272', patterns: [
+  stlawrence: { name: 'St. Lawrence', address: '230 The Esplanade', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=272', startDate: '2026-08-15', patterns: [
     ['Badminton', 'adult', 'saturday', '11:00 AM - 02:00 PM', 'dropin'],
     ['Pickleball', 'adult', 'saturday', '02:30 PM - 04:30 PM', 'dropin'],
     ['Volleyball', 'adult', 'sunday', '12:30 PM - 03:45 PM', 'dropin'],
@@ -271,20 +271,20 @@ const CENTRES = {
     ['Volleyball', 'adult', 'wednesday', '06:30 PM - 08:45 PM', 'dropin'],
     ['Badminton', 'adult', 'thursday', '06:30 PM - 08:45 PM', 'dropin']
   ]},
-  johninnes: { name: 'John Innes', address: '150 Sherbourne St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=63', patterns: [
+  johninnes: { name: 'John Innes', address: '150 Sherbourne St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=63', startDate: '2026-08-15', patterns: [
     ['Badminton', 'adult', 'saturday', '01:15 PM - 04:45 PM', 'dropin'],
     ['Pickleball', 'adult', 'sunday', '02:30 PM - 04:30 PM', 'dropin'],
     ['Badminton', 'adult', 'monday', '08:00 PM - 09:30 PM', 'dropin'],
     ['Pickleball', 'adult', 'tuesday', '05:15 PM - 07:15 PM', 'dropin']
   ]},
-  waterfront: { name: 'Waterfront', address: '627 Queen’s Quay West', url: 'https://waterfrontnc.ca/programguide/adult/', throughWeek: 4, patterns: [
+  waterfront: { name: 'Waterfront', address: '627 Queen’s Quay West', url: 'https://waterfrontnc.ca/programguide/adult/', startDate: '2026-08-15', throughWeek: 4, patterns: [
     ['Badminton', 'adult18', 'tuesday', '07:30 PM - 09:15 PM', 'dropin'],
     ['Pickleball', 'adult18', 'tuesday', '06:00 PM - 07:15 PM', 'dropin'],
     ['Pickleball', 'adult18', 'saturday', '02:30 PM - 04:15 PM', 'dropin'],
     ['Volleyball', 'adult18', 'monday', '07:30 PM - 09:15 PM', 'dropin'],
     ['Volleyball', 'adult18', 'wednesday', '07:30 PM - 09:15 PM', 'dropin']
   ]},
-  eastbayfront: { name: 'East Bayfront', address: '261 Queens Quay East', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3857', patterns: [
+  eastbayfront: { name: 'East Bayfront', address: '261 Queens Quay East', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3857', startDate: '2026-08-15', patterns: [
     ['Pickleball', 'adult', 'saturday', '11:45 AM - 01:45 PM', 'dropin', 4],
     ['Pickleball (2SLGBTQ+)', 'adult', 'saturday', '02:00 PM - 03:30 PM', 'dropin', 4],
     ['Volleyball (2SLGBTQ+)', 'adult', 'saturday', '03:45 PM - 05:15 PM', 'dropin', 4],
@@ -314,6 +314,7 @@ function clock24(label) {
 function time24(label) { return clock24(label.split(' - ')[0]); }
 function formatTime(label) { return label.split(' - ').map(clock24).join('–'); }
 function isScheduled(centre, info, pattern, week, date) {
+  if (info.startDate && date < info.startDate) return false;
   if (info.throughWeek !== undefined && week > info.throughWeek) return false;
   if (pattern[5] !== undefined && week > pattern[5]) return false;
   return !(centre === 'waterfront' && date === '2026-08-03' && pattern[0] === 'Volleyball');
