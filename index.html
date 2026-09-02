@@ -19,13 +19,23 @@
       --acc-txt: #fff;
       --inset: #d0d0d0;
       --div: #bbb;
-      --pickleball: #2563c7;
-      --volleyball: #9275cf;
-      --reserve: #4f7773;
-      --badminton: #166534;
+      --pickleball: #2e7d32;
+      --pickleball-active: #2e7d32;
+      --volleyball: #a16207;
+      --volleyball-active: #a16207;
+      --volleyball-active-text: #fff;
+      --reserve: #026cdf;
+      --reserve-active: #026cdf;
+      --dropin: #b0128c;
+      --dropin-active: #b0128c;
+      --dropin-active-text: #fff;
+      --badminton: #c8102e;
+      --badminton-active: #a60d25;
       --attended: #166534;
       --cancelled: #991b1b;
-      --highlight: #8a6d00;
+      --centre: #278fd0;
+      --centre-active: #1e6fa8;
+      --centre-active-text: #fff;
       --mixed: #c2410c;
       --link: #005fcc;
       --filter-accent: #666;
@@ -36,9 +46,10 @@
       :root {
         --bg: #1a1a1a; --win: #2e2e2e; --surface: #3a3a3a; --btn: #3c3c3c;
         --border: #606060; --text: #eee; --muted: #aaa; --accent: #aaa;
-        --acc-txt: #fff; --inset: #222; --div: #444; --pickleball: #7db1ff;
-        --volleyball: #bca3f2; --reserve: #4f7773; --badminton: #72d38d;
-        --attended: #72d38d; --cancelled: #ff7777; --highlight: #f2cf4a; --mixed: #ff9a5c; --link: #a9ccff; --filter-accent: #777; --detail-text: #ddd; --dropdown: #454545;
+        --acc-txt: #fff; --inset: #222; --div: #444; --pickleball: #7edc82; --pickleball-active: #2e7d32;
+        --volleyball: #facc15; --volleyball-active: #facc15; --volleyball-active-text: #111; --reserve: #66a8ff; --reserve-active: #026cdf; --badminton: #ff6b7a; --badminton-active: #a60d25;
+        --dropin: #ff6bd6; --dropin-active: #ff6bd6; --dropin-active-text: #111;
+        --attended: #72d38d; --cancelled: #ff7777; --centre: #9bdcff; --centre-active: #1e6fa8; --centre-active-text: #fff; --mixed: #ff9a5c; --link: #a9ccff; --filter-accent: #777; --detail-text: #ddd; --dropdown: #454545;
       }
     }
     html { font: -apple-system-body; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -49,36 +60,38 @@
     }
     header { background: var(--win); border-bottom: 2px solid var(--border); padding: 10px 16px 9px; text-align: center; }
     .app-title { font-size: clamp(.8125rem, 3vw, 1.0625rem); font-weight: bold; }
-    .content { max-width: 920px; margin: 0 auto; padding: 14px 14px 60px; }
-    .home-bar { background: var(--win); border: 1px solid var(--border); padding: 7px 12px; margin-bottom: 12px; font-size: .6875rem; color: var(--muted); text-align: center; }
+    .content { max-width: 920px; margin: 0 auto; padding: 14px 14px 60px; font-size: calc(100% + 1px); }
+    .home-bar { background: var(--win); border: 1px solid var(--border); padding: 7px 12px; margin-bottom: 12px; font-size: calc(.6875rem + 1px); color: var(--muted); text-align: center; }
     .bottom-bar { margin-top: 14px; margin-bottom: 0; }
     .cost-panel { background: var(--surface); border: 0; margin-bottom: 12px; }
-    .cost-title { background: var(--filter-accent); color: #fff; padding: 5px 9px; font-size: .625rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
+    .cost-title { background: var(--filter-accent); color: #fff; padding: 5px 9px; font-size: calc(.625rem + 1px); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
     .cost-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
     .cost-stat { padding: 11px; text-align: center; border-right: 1px solid var(--div); }
     .cost-stat:last-child { border-right: 0; }
-    .cost-num { font-size: 1.45rem; font-weight: 900; }
+    .cost-num { font-size: calc(1.45rem + 1px); font-weight: 900; }
     .cost-stat:nth-child(3) .cost-num, .cost-stat:nth-child(4) .cost-num { color: var(--attended); }
-    .cost-label { font-size: .625rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+    .cost-label { font-size: calc(.625rem + 1px); color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
     .break-even { padding: 9px 11px 11px; border-top: 1px solid var(--div); }
-    .break-even-row { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 5px; font-size: .625rem; color: var(--muted); }
+    .break-even-row { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 5px; font-size: calc(.625rem + 1px); color: var(--muted); }
     .break-even-row strong { color: var(--text); white-space: nowrap; }
     .break-even-track { position: relative; height: 9px; background: var(--inset); border: 1px solid var(--border); overflow: hidden; }
     .break-even-fill { height: 100%; width: 0; background: var(--attended); transition: width .3s; }
     .break-even-midpoint { position: absolute; z-index: 2; left: 80%; top: 0; bottom: 0; width: 2px; background: var(--text); transform: translateX(-1px); }
-    .break-even-scale { position: relative; height: 14px; margin-top: 3px; font-size: .5625rem; color: var(--muted); }
+    .break-even-scale { position: relative; height: 14px; margin-top: 3px; font-size: calc(.5625rem + 1px); color: var(--muted); }
     .break-even-scale span { position: absolute; white-space: nowrap; }.break-even-scale span:nth-child(1) { left: 0; }.break-even-scale span:nth-child(2) { left: 80%; transform: translateX(-50%); font-weight: bold; color: var(--text); }.break-even-scale span:nth-child(3) { right: 0; }
-    .source-notice { background: var(--surface); border: 0; padding: 8px 12px; font-size: .6875rem; color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+    .source-notice { background: var(--surface); border: 0; padding: 8px 12px; font-size: calc(.6875rem + 1px); color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
     .source-notice a { color: var(--link); font-weight: bold; }
-    .filter-label { font-size: .625rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; font-weight: bold; }
+    .filter-label { font-size: calc(.625rem + 1px); color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; font-weight: bold; }
     .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
-    .chip { min-height: 30px; padding: 2px 6px; font-size: .75rem; font-weight: bold; cursor: pointer; background: var(--btn); color: var(--text); border: 0; user-select: none; }
+    .chip { min-height: 30px; padding: 2px 6px; font-size: calc(.75rem + 1px); font-weight: bold; cursor: pointer; background: var(--btn); color: var(--text); border: 0; user-select: none; }
     .chip:hover { background: var(--inset); }.chip.active { background: var(--filter-accent); color: #fff; }
-    .chip.active-location { background: var(--highlight); color: #fff; }
-    .chip.active-pickleball { background: var(--pickleball); color: #fff; }
-    .chip.active-volleyball { background: var(--volleyball); color: #fff; }
-    .chip.active-reserve { background: var(--reserve); color: #fff; }
-    .chip.active-badminton, .chip.active-dropin, .chip.active-attended { background: var(--badminton); color: #fff; }
+    .chip.active-location { background: var(--centre-active); color: var(--centre-active-text); }
+    .chip.active-pickleball { background: var(--pickleball-active); color: #fff; }
+    .chip.active-volleyball { background: var(--volleyball-active); color: var(--volleyball-active-text); }
+    .chip.active-reserve { background: var(--reserve-active); color: #fff; }
+    .chip.active-badminton { background: var(--badminton-active); color: #fff; }
+    .chip.active-attended { background: var(--attended); color: #fff; }
+    .chip.active-dropin { background: var(--dropin-active); color: var(--dropin-active-text); }
     .chip.active-both { background: var(--mixed); color: #fff; }
     .chip.active-available { background: var(--muted); color: #fff; }
     .centre-picker, .week-picker { width: min(360px, 100%); margin-bottom: 6px; }
@@ -94,27 +107,29 @@
     .week-hdr::before { content: '▾'; color: var(--muted); }
     .week-group:not([open]) .week-hdr::before { content: '▸'; }
     .week-group:not([open]) .week-hdr { margin-bottom: 0; }
-    .week-hdr-label { font-size: .6875rem; text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
+    .week-hdr-label { font-size: calc(.6875rem + 3px); text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
     .session-item { background: var(--win); border: 1px solid var(--border); padding: 7px 9px; margin-bottom: 2px; }
     .session-item.attended { opacity: .55; }
     .session-item.cancelled { border-left: 3px solid var(--cancelled); }
     .session-left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .session-top { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
-    .session-labels, .session-info-row { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
-    .date-badge { font-size: .625rem; font-weight: bold; color: var(--detail-text); min-width: 62px; text-transform: uppercase; }
-    .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: .625rem; font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
+    .session-info-row { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+    .date-badge { font-size: calc(.625rem + 3px); font-weight: bold; color: var(--detail-text); min-width: 62px; text-transform: uppercase; }
+    .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.625rem + 3px); font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
     .cost-tag { color: var(--attended); border-color: var(--attended); }
+    .session-primary-info { white-space: nowrap; }
+    .session-primary-info .cost-tag { font-size: calc(.5rem + 3px); padding: 0 2px; vertical-align: middle; }
     .time-badge { background: transparent; color: var(--text); border-color: var(--text); }
     .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }.sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }.sport-tag.badminton { color: var(--badminton); border-color: var(--badminton); }
-    .centre-tag { color: var(--highlight); border-color: var(--highlight); background: transparent; }.session-info { min-width: 0; font-size: .6875rem; color: var(--detail-text); }.cancelled-note { color: var(--cancelled); font-weight: bold; }
-    .access-tag.dropin { color: var(--attended); border-color: var(--attended); }
+    .centre-tag { color: var(--centre); border-color: var(--centre); background: transparent; }.session-info { min-width: 0; font-size: calc(.6875rem + 3px); color: var(--detail-text); }.cancelled-note { color: var(--cancelled); font-weight: bold; }
+    .access-tag.dropin { color: var(--dropin); border-color: var(--dropin); }
     .access-tag.reserve { color: var(--reserve); border-color: var(--reserve); }
     .access-tag.both { color: var(--mixed); border-color: var(--mixed); }
-    .session-link, .reserve-link { font-size: .625rem; color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
+    .session-link, .reserve-link { font-size: calc(.625rem + 3px); color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
     .session-info-row .status-btn { margin-left: auto; }
-    .status-btn { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: 2px 8px; min-width: 88px; min-height: 26px; font-family: inherit; font-size: .625rem; font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
+    .status-btn { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: 2px 8px; min-width: 88px; min-height: 26px; font-family: inherit; font-size: calc(.625rem + 1px); font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
     .status-btn:hover { background: var(--surface); }.status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
-    .status-btn:disabled { cursor: not-allowed; opacity: .5; }.empty-note { text-align: center; color: var(--muted); font-size: .75rem; padding: 28px 0; }
+    .status-btn:disabled { cursor: not-allowed; opacity: .5; }.empty-note { text-align: center; color: var(--muted); font-size: calc(.75rem + 3px); padding: 28px 0; }
     @media (max-width: 560px) {
       body { font-size: .875rem; }
       header { padding: 12px 10px; }
@@ -122,11 +137,11 @@
       .cost-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
       .cost-stat, .cost-stat:nth-child(4), .cost-stat:nth-child(5) { grid-column: auto; min-width: 0; padding: 6px 2px; border-bottom: 0; border-right: 1px solid var(--div); }
       .cost-stat:last-child { border-right: 0; }
-      .cost-title { font-size: .5rem; letter-spacing: .7px; }
-      .cost-num { font-size: .7rem; white-space: nowrap; }
-      .cost-label { font-size: .40625rem; line-height: 1.1; letter-spacing: 0; }
+      .cost-title { font-size: calc(.5rem + 1px); letter-spacing: .7px; }
+      .cost-num { font-size: calc(.7rem + 1px); white-space: nowrap; }
+      .cost-label { font-size: calc(.40625rem + 1px); line-height: 1.1; letter-spacing: 0; }
       .break-even { padding: 6px 8px 8px; }
-      .break-even-row { flex-direction: row; gap: 6px; font-size: .53125rem; }
+      .break-even-row { flex-direction: row; gap: 6px; font-size: calc(.53125rem + 1px); }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
       .centre-summary, .week-filter-summary { width: fit-content; max-width: 100%; flex-wrap: wrap; overflow: visible; }
       .centre-expanded, .week-expanded, .day-chips { max-width: 100%; overflow: visible; }
@@ -135,14 +150,16 @@
       .chip { flex: 0 0 auto; min-height: 30px; padding: 2px 6px; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
-      .week-hdr { gap: 5px; }
-      .session-item { padding: 6px 7px; }
-      .session-top, .session-labels, .session-info-row { flex-wrap: wrap; gap: 3px; }
-      .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: .53125rem; white-space: nowrap; }
-      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { padding: 1px 3px; }
+      .week-hdr { gap: 5px; padding: 9px 0 4px; }
+      .session-item { padding: 3px 7px; }
+      .session-left { gap: 0; }
+      .session-top, .session-info-row { flex-wrap: wrap; column-gap: 3px; row-gap: 1px; }
+      .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.53125rem + 3px); white-space: nowrap; }
+      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: 0 3px; }
+      .session-info { line-height: 1.15; }
       .status-btn { min-height: 30px; }
       .date-badge { min-width: auto; }
-      .session-link, .reserve-link { display: inline-block; padding: 2px 0; }
+      .session-link, .reserve-link { display: inline-block; padding: 0; line-height: 1.15; }
       .bottom-bar { line-height: 1.5; }
     }
   </style>
@@ -170,7 +187,7 @@
   </section>
 
   <div class="source-notice">
-    Confirm schedules: <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto City Sports Map</a>
+    Confirm schedules: <a href="https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/" target="_blank" rel="noreferrer">Toronto Community Centre Map</a>
   </div>
 
   <div class="filter-label">Centre</div>
@@ -236,8 +253,9 @@
   <div class="home-bar bottom-bar" id="homeBar">0 attended · 214 of 214 sessions shown · 7 tracked weeks · updated August 15, 2026</div>
 </main>
 
+<script src="schedule-data.js"></script>
 <script>
-const WEEKS = [
+const STATIC_WEEKS = [
   { id: -1, start: '2026-07-20' },
   { id: 0, start: '2026-07-27' },
   { id: 1, start: '2026-08-03' },
@@ -246,6 +264,31 @@ const WEEKS = [
   { id: 4, start: '2026-08-24' },
   { id: 5, start: '2026-08-31' }
 ];
+const GENERATED_DATA = window.TORONTO_REC_GENERATED || { updated: null, sessions: [] };
+function mondayFor(iso) {
+  const date = new Date(`${iso}T12:00:00`);
+  const day = date.getDay() || 7;
+  date.setDate(date.getDate() - day + 1);
+  return date.toISOString().slice(0, 10);
+}
+const generatedWeekStarts = [...new Set(GENERATED_DATA.sessions.map(session => mondayFor(session.date)))];
+const WEEKS = [
+  ...STATIC_WEEKS,
+  ...generatedWeekStarts
+    .filter(start => !STATIC_WEEKS.some(week => week.start === start))
+    .map(start => ({ id: `auto-${start}`, start }))
+].sort((a, b) => a.start.localeCompare(b.start));
+const today = new Date();
+today.setHours(12, 0, 0, 0);
+const currentWeekIndex = WEEKS.findIndex(week => {
+  const start = new Date(`${week.start}T12:00:00`);
+  const end = new Date(start);
+  end.setDate(end.getDate() + 7);
+  return today >= start && today < end;
+});
+const WEEK_FILTER_ORDER = currentWeekIndex === -1
+  ? [...WEEKS]
+  : [...WEEKS.slice(currentWeekIndex), ...WEEKS.slice(0, currentWeekIndex)];
 const PASS_COST = 159.80;
 const TARGET_SESSION_COST = 4.96;
 const BREAK_EVEN_SESSIONS = Math.ceil(PASS_COST / TARGET_SESSION_COST);
@@ -327,13 +370,39 @@ function isScheduled(info, pattern, week, date) {
   if (pattern[5] !== undefined && week > pattern[5]) return false;
   return true;
 }
-const SESSIONS = WEEKS.flatMap(({ id: week, start: weekStart }) => Object.entries(CENTRES).flatMap(([centre, info]) =>
+const STATIC_SESSIONS = STATIC_WEEKS.flatMap(({ id: week, start: weekStart }) => Object.entries(CENTRES).flatMap(([centre, info]) =>
   info.patterns.flatMap((p, index) => {
     const date = datePlus(weekStart, DAY_OFFSET[p[2]]);
     if (!isScheduled(info, p, week, date)) return [];
     return [{ id: `${centre}-${week}-${index}`, centre, week, date, name: p[0], age: p[1], day: p[2], time: p[3], access: p[4], sport: sportFrom(p[0]), timestamp: new Date(`${date}T${time24(p[3])}:00`).getTime(), status: 'active' }];
   })
-)).sort((a, b) => a.timestamp - b.timestamp || a.centre.localeCompare(b.centre));
+));
+const GENERATED_SESSIONS = GENERATED_DATA.sessions
+  .filter(session => session.date > '2026-09-06' && CENTRES[session.centre])
+  .map(session => ({
+    ...session,
+    week: `auto-${mondayFor(session.date)}`,
+    age: session.age || 'adult',
+    sport: session.sport || sportFrom(session.name),
+    status: session.status || 'active',
+    timestamp: new Date(`${session.date}T${time24(session.time)}:00`).getTime()
+  }));
+const SESSIONS = [...STATIC_SESSIONS, ...GENERATED_SESSIONS]
+  .sort((a, b) => a.timestamp - b.timestamp || a.centre.localeCompare(b.centre));
+function sessionsForWeek(week) {
+  return SESSIONS.filter(session => String(session.week) === String(week.id));
+}
+function isElapsedWeek(week) {
+  const sessions = sessionsForWeek(week);
+  return sessions.length > 0 && sessions.every(session => session.timestamp < Date.now());
+}
+const SESSION_WEEK_ORDER = [
+  ...WEEKS.filter(week => !isElapsedWeek(week)),
+  ...WEEKS.filter(isElapsedWeek).reverse()
+];
+const UPDATED_LABEL = GENERATED_DATA.updated
+  ? new Intl.DateTimeFormat('en-CA', { month: 'long', day: 'numeric', year: 'numeric' }).format(new Date(`${GENERATED_DATA.updated}T12:00:00`))
+  : 'August 15, 2026';
 
 function loadState() { try { return JSON.parse(localStorage.getItem('toronto_rec_tracker') || '{}'); } catch { return {}; } }
 function saveState() { localStorage.setItem('toronto_rec_tracker', JSON.stringify(state)); }
@@ -346,13 +415,17 @@ const filters = {
   access: new Set(),
   status: new Set()
 };
+let centreQuickAnchor = null;
+let weekQuickAnchor = null;
 const CENTRE_FILTER_LABELS = {
   all: 'All', canoe: 'Canoe', yonge: 'Yonge', stlawrence: 'St. Lawrence',
   johninnes: 'John Innes', eastbayfront: 'East Bay'
 };
 const CENTRE_FILTER_ORDER = ['canoe', 'yonge', 'stlawrence', 'johninnes', 'eastbayfront'];
 const DAY_FILTER_LABELS = { monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thursday: 'Thu', friday: 'Fri', saturday: 'Sat', sunday: 'Sun' };
-const collapsedWeeks = new Set();
+const collapsedWeeks = new Set(WEEKS
+  .filter(isElapsedWeek)
+  .map(week => String(week.id)));
 function getState(id) {
   const saved = state[id] || { status: 'available', notes: '' };
   return { ...saved, status: saved.status === 'attended' ? 'attended' : 'available' };
@@ -423,16 +496,13 @@ function buildItem(session) {
     <div class="session-left">
       <div class="session-top">
         <span class="date-badge">${formatDate(session.date)}</span>
-        ${centre.free ? '<span class="cost-tag">Free</span>' : ''}
-      </div>
-      <div class="session-labels">
         <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
         <span class="time-badge">${formatTime(session.time)}</span>
         <span class="centre-tag">${centre.name}</span>
         <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
       </div>
       <div class="session-info-row">
-        <span class="session-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}<br><a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
+        <span class="session-info"><span class="session-primary-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}${centre.free ? ' · <span class="cost-tag">Free</span>' : ''}</span><br><a class="session-link" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
         <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
       </div>
     </div>`;
@@ -445,7 +515,7 @@ function render() {
   const list = document.getElementById('sessionList'); list.innerHTML = '';
   const visible = visibleSessions();
   if (!visible.length) { list.innerHTML = '<div class="empty-note">No sessions match these filters.</div>'; updateStats(); return; }
-  WEEKS.forEach(({ id: week, start: weekStart }) => {
+  SESSION_WEEK_ORDER.forEach(({ id: week, start: weekStart }) => {
     const sessions = visible.filter(s => s.week === week); if (!sessions.length) return;
     const group = document.createElement('details'); group.className = 'week-group';
     group.open = !collapsedWeeks.has(String(week));
@@ -474,7 +544,7 @@ function updateStats() {
   const now = Date.now(); const next = SESSIONS.find(s => s.timestamp >= now && getState(s.id).status !== 'attended');
   document.getElementById('nextCount').textContent = next ? formatDate(next.date).split(',')[0] : '—';
   const shown = visibleSessions().length;
-  document.getElementById('homeBar').textContent = `${attended} attended · ${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated August 15, 2026`;
+  document.getElementById('homeBar').textContent = `${attended} attended · ${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated ${UPDATED_LABEL}`;
 }
 
 function populateDerivedFilters() {
@@ -485,7 +555,7 @@ function populateDerivedFilters() {
   });
 
   const weekChips = document.getElementById('weekChips');
-  WEEKS.forEach(week => {
+  WEEK_FILTER_ORDER.forEach(week => {
     const button = document.createElement('button');
     button.className = 'chip';
     button.dataset.val = String(week.id);
@@ -497,9 +567,14 @@ function populateDerivedFilters() {
 function renderCentreSummary() {
   const summary = document.getElementById('centreSummaryChips');
   const panel = document.getElementById('centreChips');
-  const values = filters.centre.size
-    ? CENTRE_FILTER_ORDER.filter(value => filters.centre.has(value))
-    : ['all', 'canoe', 'yonge', 'stlawrence'];
+  const selectedValues = [
+    ...(centreQuickAnchor && filters.centre.has(centreQuickAnchor) ? [centreQuickAnchor] : []),
+    ...CENTRE_FILTER_ORDER.filter(value => filters.centre.has(value) && value !== centreQuickAnchor)
+  ];
+  const unselectedValues = CENTRE_FILTER_ORDER
+    .filter(value => !filters.centre.has(value))
+    .slice(0, selectedValues.length ? 2 : 3);
+  const values = ['all', ...selectedValues, ...unselectedValues];
   summary.replaceChildren();
   values.forEach(value => {
     const button = document.createElement('button');
@@ -532,9 +607,16 @@ document.getElementById('centreSummaryChips').addEventListener('click', event =>
     return;
   }
   const value = button.dataset.val;
-  if (value === 'all') filters.centre.clear();
-  else if (filters.centre.has(value)) filters.centre.delete(value);
-  else filters.centre.add(value);
+  if (value === 'all') {
+    filters.centre.clear();
+    centreQuickAnchor = null;
+  } else if (filters.centre.has(value)) {
+    filters.centre.delete(value);
+    centreQuickAnchor = filters.centre.size ? [...filters.centre].pop() : null;
+  } else {
+    filters.centre.add(value);
+    centreQuickAnchor = value;
+  }
   panel.hidden = !keepOpen;
   updateChipStates('centreChips', 'centre', selected => selected === 'all' ? 'active' : 'active-location');
   renderCentreSummary();
@@ -544,9 +626,30 @@ document.getElementById('centreSummaryChips').addEventListener('click', event =>
 function renderWeekSummary() {
   const summary = document.getElementById('weekSummaryChips');
   const panel = document.getElementById('weekChips');
-  const values = filters.week.size
-    ? WEEKS.map(week => String(week.id)).filter(value => filters.week.has(value))
-    : ['all', ...WEEKS.slice(0, 3).map(week => String(week.id))];
+  const anchorIndex = WEEKS.findIndex(week => String(week.id) === weekQuickAnchor);
+  const quickWeeks = anchorIndex === -1
+    ? WEEK_FILTER_ORDER.slice(0, 3)
+    : [
+        ...WEEKS.slice(anchorIndex, anchorIndex + 3),
+        ...(anchorIndex > 0 ? [WEEKS[anchorIndex - 1]] : [])
+      ];
+  const quickValues = quickWeeks.map(week => String(week.id));
+  const selectedValues = [
+    ...(weekQuickAnchor && filters.week.has(weekQuickAnchor) ? [weekQuickAnchor] : []),
+    ...WEEK_FILTER_ORDER
+      .map(week => String(week.id))
+      .filter(value => filters.week.has(value) && value !== weekQuickAnchor)
+  ];
+  const unselectedValues = quickValues.filter(value => !filters.week.has(value));
+  const previousValue = anchorIndex > 0 ? String(WEEKS[anchorIndex - 1].id) : null;
+  const orderedValues = anchorIndex === -1
+    ? [...selectedValues, ...unselectedValues]
+    : [
+        ...(previousValue ? [previousValue] : []),
+        ...selectedValues,
+        ...unselectedValues.filter(value => value !== previousValue)
+      ];
+  const values = ['all', ...new Set(orderedValues)];
   summary.replaceChildren();
   values.forEach(value => {
     const button = document.createElement('button');
@@ -581,9 +684,16 @@ document.getElementById('weekSummaryChips').addEventListener('click', event => {
     return;
   }
   const value = button.dataset.val;
-  if (value === 'all') filters.week.clear();
-  else if (filters.week.has(value)) filters.week.delete(value);
-  else filters.week.add(value);
+  if (value === 'all') {
+    filters.week.clear();
+    weekQuickAnchor = null;
+  } else if (filters.week.has(value)) {
+    filters.week.delete(value);
+    weekQuickAnchor = filters.week.size ? [...filters.week].pop() : null;
+  } else {
+    filters.week.add(value);
+    weekQuickAnchor = value;
+  }
   panel.hidden = !keepOpen;
   updateChipStates('weekChips', 'week', () => 'active');
   renderWeekSummary();
@@ -641,9 +751,19 @@ function wireChips(containerId, filterName, activeClass) {
     const keepOpen = (filterName === 'centre' || filterName === 'week') && !container.hidden;
     const value = chip.dataset.val;
     const selected = filters[filterName];
-    if (value === 'all') selected.clear();
-    else if (selected.has(value)) selected.delete(value);
-    else selected.add(value);
+    if (value === 'all') {
+      selected.clear();
+      if (filterName === 'centre') centreQuickAnchor = null;
+      if (filterName === 'week') weekQuickAnchor = null;
+    } else if (selected.has(value)) {
+      selected.delete(value);
+      if (filterName === 'centre') centreQuickAnchor = selected.size ? [...selected].pop() : null;
+      if (filterName === 'week') weekQuickAnchor = selected.size ? [...selected].pop() : null;
+    } else {
+      selected.add(value);
+      if (filterName === 'centre') centreQuickAnchor = value;
+      if (filterName === 'week') weekQuickAnchor = value;
+    }
     updateChipStates(containerId, filterName, activeClass);
     if (filterName === 'centre') renderCentreSummary();
     if (filterName === 'week') renderWeekSummary();
