@@ -15,8 +15,6 @@
       --border: #999;
       --text: #000;
       --muted: #555;
-      --accent: #666;
-      --acc-txt: #fff;
       --inset: #d0d0d0;
       --div: #bbb;
       --pickleball: #2e7d32;
@@ -45,12 +43,38 @@
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg: #1a1a1a; --win: #2e2e2e; --surface: #3a3a3a; --btn: #3c3c3c;
-        --border: #606060; --text: #eee; --muted: #aaa; --accent: #aaa;
-        --acc-txt: #fff; --inset: #222; --div: #444; --pickleball: #7edc82; --pickleball-active: #2e7d32;
-        --volleyball: #facc15; --volleyball-active: #facc15; --volleyball-active-text: #111; --reserve: #66a8ff; --reserve-active: #026cdf; --badminton: #ff6b7a; --badminton-active: #a60d25;
-        --dropin: #ff6bd6; --dropin-active: #ff6bd6; --dropin-active-text: #111;
-        --free: #72d38d; --attended: #72d38d; --cancelled: #ff7777; --centre: #9bdcff; --centre-active: #1e6fa8; --centre-active-text: #fff; --mixed: #ff9a5c; --link: #a9ccff; --filter-accent: #777; --detail-text: #ddd; --dropdown: #454545;
+        --bg: #1a1a1a;
+        --win: #2e2e2e;
+        --surface: #3a3a3a;
+        --btn: #3c3c3c;
+        --border: #606060;
+        --text: #eee;
+        --muted: #aaa;
+        --inset: #222;
+        --div: #444;
+        --pickleball: #7edc82;
+        --pickleball-active: #2e7d32;
+        --volleyball: #facc15;
+        --volleyball-active: #facc15;
+        --volleyball-active-text: #111;
+        --reserve: #66a8ff;
+        --reserve-active: #026cdf;
+        --badminton: #ff6b7a;
+        --badminton-active: #a60d25;
+        --dropin: #ff6bd6;
+        --dropin-active: #ff6bd6;
+        --dropin-active-text: #111;
+        --free: #72d38d;
+        --attended: #72d38d;
+        --cancelled: #ff7777;
+        --centre: #9bdcff;
+        --centre-active: #1e6fa8;
+        --centre-active-text: #fff;
+        --mixed: #ff9a5c;
+        --link: #a9ccff;
+        --filter-accent: #777;
+        --detail-text: #ddd;
+        --dropdown: #454545;
       }
     }
     html { font: -apple-system-body; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
@@ -64,7 +88,7 @@
     .content { max-width: 920px; margin: 0 auto; padding: 14px 14px 60px; font-size: calc(100% + 1px); }
     .home-bar { background: var(--win); border: 1px solid var(--border); padding: 7px 12px; margin-bottom: 12px; font-size: calc(.6875rem + 1px); color: var(--muted); text-align: center; }
     .bottom-bar { margin-top: 14px; margin-bottom: 0; }
-    .cost-panel { background: var(--surface); border: 0; margin-bottom: 12px; }
+    .cost-panel { background: var(--surface); margin-bottom: 12px; }
     .cost-title { background: var(--filter-accent); color: #fff; padding: 5px 9px; font-size: calc(.625rem + 1px); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
     .cost-grid { display: grid; grid-template-columns: repeat(5, 1fr); }
     .cost-stat { padding: 11px; text-align: center; border-right: 1px solid var(--div); }
@@ -79,13 +103,17 @@
     .break-even-fill { height: 100%; width: 0; background: var(--attended); transition: width .3s; }
     .break-even-midpoint { position: absolute; z-index: 2; left: 80%; top: 0; bottom: 0; width: 2px; background: var(--text); transform: translateX(-1px); }
     .break-even-scale { position: relative; height: 14px; margin-top: 3px; font-size: calc(.5625rem + 1px); color: var(--muted); }
-    .break-even-scale span { position: absolute; white-space: nowrap; }.break-even-scale span:nth-child(1) { left: 0; }.break-even-scale span:nth-child(2) { left: 80%; transform: translateX(-50%); font-weight: bold; color: var(--text); }.break-even-scale span:nth-child(3) { right: 0; }
-    .source-notice { background: var(--surface); border: 0; padding: 8px 12px; font-size: calc(.6875rem + 1px); color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
+    .break-even-scale span { position: absolute; white-space: nowrap; }
+    .break-even-scale span:nth-child(1) { left: 0; }
+    .break-even-scale span:nth-child(2) { left: 80%; transform: translateX(-50%); font-weight: bold; color: var(--text); }
+    .break-even-scale span:nth-child(3) { right: 0; }
+    .source-notice { background: var(--surface); padding: 8px 12px; font-size: calc(.6875rem + 1px); color: var(--muted); margin-bottom: 12px; line-height: 1.5; }
     .source-notice a { color: var(--link); font-weight: bold; }
     .filter-label { font-size: calc(.625rem + 1px); color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 3px; font-weight: bold; }
     .chips { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 6px; }
     .chip { min-height: 30px; padding: 2px 6px; font-size: calc(.75rem + 1px); font-weight: bold; cursor: pointer; background: var(--btn); color: var(--text); border: 0; user-select: none; }
-    .chip:hover { background: var(--inset); }.chip.active { background: var(--filter-accent); color: #fff; }
+    .chip:hover { background: var(--inset); }
+    .chip.active { background: var(--filter-accent); color: #fff; }
     .chip.active-location { background: var(--centre-active); color: var(--centre-active-text); }
     .chip.active-pickleball { background: var(--pickleball-active); color: #fff; }
     .chip.active-volleyball { background: var(--volleyball-active); color: var(--volleyball-active-text); }
@@ -97,10 +125,9 @@
     .chip.active-available { background: var(--muted); color: #fff; }
     .centre-picker, .week-picker { width: min(360px, 100%); margin-bottom: 6px; }
     .centre-summary, .week-filter-summary { flex-wrap: wrap; overflow: visible; margin-bottom: 0; padding-bottom: 0; }
-    .centre-expanded, .week-expanded { display: grid; grid-template-columns: repeat(2, max-content); width: fit-content; max-width: 100%; gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--dropdown); border: .5px solid var(--border); }
+    .centre-expanded, .week-expanded { display: grid; grid-template-columns: repeat(2, max-content); width: fit-content; max-width: 100%; gap: 5px; padding: 7px; margin: 4px 0 0; overflow: visible; background: var(--dropdown); border: .5px solid var(--border); justify-items: start; }
     .centre-expanded[hidden], .week-expanded[hidden] { display: none; }
     .centre-expanded .chip, .week-expanded .chip { min-width: 0; }
-    .centre-expanded, .week-expanded { justify-items: start; }
     .day-chips { width: fit-content; max-width: 100%; flex-wrap: wrap; overflow: visible; }
     .week-group { margin-bottom: 10px; }
     .week-hdr { display: flex; align-items: center; gap: 7px; border-bottom: 1px solid var(--div); padding: 12px 0 6px; margin-bottom: 4px; cursor: pointer; list-style: none; }
@@ -121,22 +148,27 @@
     .session-primary-info { white-space: nowrap; }
     .session-primary-info .cost-tag { font-size: calc(.5rem + 3px); padding: 0 2px; vertical-align: middle; }
     .time-badge { background: transparent; color: var(--text); border-color: var(--text); }
-    .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }.sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }.sport-tag.badminton { color: var(--badminton); border-color: var(--badminton); }
-    .centre-tag { color: var(--centre); border-color: var(--centre); background: transparent; text-decoration: none; }a.centre-tag { display: inline-block; }.session-info { min-width: 0; font-size: calc(.6875rem + 3px); color: var(--detail-text); }.cancelled-note { color: var(--cancelled); font-weight: bold; }
+    .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }
+    .sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }
+    .sport-tag.badminton { color: var(--badminton); border-color: var(--badminton); }
+    .centre-tag { color: var(--centre); border-color: var(--centre); background: transparent; text-decoration: none; }
+    a.centre-tag { display: inline-block; }
+    .session-info { min-width: 0; font-size: calc(.6875rem + 3px); color: var(--detail-text); }
     .access-tag.dropin { color: var(--dropin); border-color: var(--dropin); }
     .access-tag.reserve { color: var(--reserve); border-color: var(--reserve); }
     .access-tag.both { color: var(--mixed); border-color: var(--mixed); }
     .reserve-link { font-size: calc(.625rem + 3px); color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
     .session-info-row .status-btn { margin-left: auto; }
     .status-btn { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: 2px 8px; min-width: 88px; min-height: 26px; font-family: inherit; font-size: calc(.625rem + 1px); font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
-    .status-btn:hover { background: var(--surface); }.status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
-    .status-btn:disabled { cursor: not-allowed; opacity: .5; }.empty-note { text-align: center; color: var(--muted); font-size: calc(.75rem + 3px); padding: 28px 0; }
+    .status-btn:hover { background: var(--surface); }
+    .status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
+    .empty-note { text-align: center; color: var(--muted); font-size: calc(.75rem + 3px); padding: 28px 0; }
     @media (max-width: 560px) {
       body { font-size: .875rem; }
       header { padding: 12px 10px; }
       .content { padding: 10px 8px 40px; }
       .cost-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
-      .cost-stat, .cost-stat:nth-child(4), .cost-stat:nth-child(5) { grid-column: auto; min-width: 0; padding: 6px 2px; border-bottom: 0; border-right: 1px solid var(--div); }
+      .cost-stat { grid-column: auto; min-width: 0; padding: 6px 2px; border-bottom: 0; border-right: 1px solid var(--div); }
       .cost-stat:last-child { border-right: 0; }
       .cost-title { font-size: calc(.5rem + 1px); letter-spacing: .7px; }
       .cost-num { font-size: calc(.7rem + 1px); white-space: nowrap; }
@@ -144,17 +176,14 @@
       .break-even { padding: 6px 8px 8px; }
       .break-even-row { flex-direction: row; gap: 6px; font-size: calc(.53125rem + 1px); }
       .chips { flex-wrap: nowrap; overflow-x: auto; padding-bottom: 2px; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
-      .centre-summary, .week-filter-summary { width: fit-content; max-width: 100%; flex-wrap: wrap; overflow: visible; }
-      .centre-expanded, .week-expanded, .day-chips { max-width: 100%; overflow: visible; }
-      .centre-expanded, .week-expanded { padding: 7px; }
-      .day-chips { flex-wrap: wrap; }
-      .chip { flex: 0 0 auto; min-height: 30px; padding: 2px 6px; font-size: .75rem; }
+      .centre-summary, .week-filter-summary { width: fit-content; max-width: 100%; }
+      .chip { flex: 0 0 auto; font-size: .75rem; }
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
       .week-hdr { gap: 5px; padding: 9px 0 4px; }
       .session-item { padding: 3px 7px; }
-      .session-left { gap: 0; }
-      .session-top, .session-info-row { flex-wrap: wrap; column-gap: 3px; row-gap: 1px; }
+      .session-left { gap: .5px; }
+      .session-top, .session-info-row { column-gap: 3px; row-gap: 1px; }
       .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.53125rem + 3px); white-space: nowrap; }
       .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: .5px 3px; }
       .session-info { line-height: 1.15; }
@@ -196,21 +225,8 @@
 
   <div class="filter-label">Centre</div>
   <div class="centre-picker">
-    <div class="chips centre-summary" id="centreSummaryChips">
-      <button class="chip active" data-val="all">All</button>
-      <button class="chip" data-val="canoe">Canoe</button>
-      <button class="chip" data-val="yonge">Yonge</button>
-      <button class="chip" data-val="stlawrence">St. Lawrence</button>
-      <button class="chip" id="centreMoreButton" type="button" aria-expanded="false" aria-controls="centreChips" aria-label="Show all centres">…</button>
-    </div>
-    <div class="chips centre-expanded" id="centreChips" hidden>
-      <button class="chip active" data-val="all">All</button>
-      <button class="chip" data-val="canoe">Canoe</button>
-      <button class="chip" data-val="yonge">Yonge</button>
-      <button class="chip" data-val="stlawrence">St. Lawrence</button>
-      <button class="chip" data-val="johninnes">John Innes</button>
-      <button class="chip" data-val="eastbayfront">East Bay</button>
-    </div>
+    <div class="chips centre-summary" id="centreSummaryChips"></div>
+    <div class="chips centre-expanded" id="centreChips" hidden></div>
   </div>
 
   <div class="filter-label">Sport</div>
@@ -298,63 +314,62 @@ const TARGET_SESSION_COST = 4.96;
 const BREAK_EVEN_SESSIONS = Math.ceil(PASS_COST / TARGET_SESSION_COST);
 const CENTRES = {
   canoe: { name: 'Canoe Landing', address: '45 Fort York Blvd', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3643', throughWeek: 4, patterns: [
-    ['Badminton', 'adult', 'thursday', '07:00 PM - 08:30 PM', 'reserve'],
-    ['Badminton', 'adult', 'thursday', '08:30 PM - 10:00 PM', 'reserve'],
-    ['Badminton', 'adult', 'sunday', '01:00 PM - 02:30 PM', 'reserve'],
-    ['Pickleball', 'adult', 'tuesday', '06:00 PM - 08:00 PM', 'both'],
-    ['Pickleball', 'adult', 'tuesday', '08:00 PM - 10:00 PM', 'both'],
-    ['Pickleball', 'adult', 'wednesday', '06:00 PM - 08:00 PM', 'both'],
-    ['Pickleball', 'adult', 'wednesday', '08:00 PM - 10:00 PM', 'both'],
-    ['Pickleball', 'adult', 'thursday', '05:45 PM - 07:45 PM', 'dropin'],
-    ['Volleyball', 'adult', 'tuesday', '08:00 PM - 10:00 PM', 'reserve'],
-    ['Volleyball', 'adult', 'sunday', '03:30 PM - 05:30 PM', 'reserve']
+    ['Badminton', 'thursday', '07:00 PM - 08:30 PM', 'reserve'],
+    ['Badminton', 'thursday', '08:30 PM - 10:00 PM', 'reserve'],
+    ['Badminton', 'sunday', '01:00 PM - 02:30 PM', 'reserve'],
+    ['Pickleball', 'tuesday', '06:00 PM - 08:00 PM', 'both'],
+    ['Pickleball', 'tuesday', '08:00 PM - 10:00 PM', 'both'],
+    ['Pickleball', 'wednesday', '06:00 PM - 08:00 PM', 'both'],
+    ['Pickleball', 'wednesday', '08:00 PM - 10:00 PM', 'both'],
+    ['Pickleball', 'thursday', '05:45 PM - 07:45 PM', 'dropin'],
+    ['Volleyball', 'tuesday', '08:00 PM - 10:00 PM', 'reserve'],
+    ['Volleyball', 'sunday', '03:30 PM - 05:30 PM', 'reserve']
   ]},
   yonge: { name: 'One Yonge', address: '24 Freeland St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3732', patterns: [
-    ['Badminton', 'adult', 'thursday', '11:30 AM - 01:30 PM', 'dropin'],
-    ['Badminton', 'adult', 'friday', '07:30 PM - 09:30 PM', 'dropin'],
-    ['Badminton', 'adult', 'sunday', '05:30 PM - 07:30 PM', 'dropin'],
-    ['Pickleball', 'adult', 'friday', '11:30 AM - 01:30 PM', 'dropin'],
-    ['Pickleball', 'adult', 'saturday', '09:30 AM - 11:30 AM', 'dropin'],
-    ['Pickleball', 'adult', 'saturday', '12:00 PM - 02:00 PM', 'dropin'],
-    ['Pickleball', 'adult', 'tuesday', '05:15 PM - 07:15 PM', 'dropin'],
-    ['Pickleball', 'adult', 'tuesday', '07:30 PM - 09:30 PM', 'dropin'],
-    ['Pickleball', 'adult', 'sunday', '01:30 PM - 03:30 PM', 'dropin'],
-    ['Volleyball', 'adult', 'thursday', '05:15 PM - 07:15 PM', 'dropin'],
-    ['Volleyball', 'adult', 'thursday', '07:30 PM - 09:30 PM', 'dropin'],
-    ['Volleyball', 'adult', 'saturday', '05:30 PM - 07:30 PM', 'dropin']
+    ['Badminton', 'thursday', '11:30 AM - 01:30 PM', 'dropin'],
+    ['Badminton', 'friday', '07:30 PM - 09:30 PM', 'dropin'],
+    ['Badminton', 'sunday', '05:30 PM - 07:30 PM', 'dropin'],
+    ['Pickleball', 'friday', '11:30 AM - 01:30 PM', 'dropin'],
+    ['Pickleball', 'saturday', '09:30 AM - 11:30 AM', 'dropin'],
+    ['Pickleball', 'saturday', '12:00 PM - 02:00 PM', 'dropin'],
+    ['Pickleball', 'tuesday', '05:15 PM - 07:15 PM', 'dropin'],
+    ['Pickleball', 'tuesday', '07:30 PM - 09:30 PM', 'dropin'],
+    ['Pickleball', 'sunday', '01:30 PM - 03:30 PM', 'dropin'],
+    ['Volleyball', 'thursday', '05:15 PM - 07:15 PM', 'dropin'],
+    ['Volleyball', 'thursday', '07:30 PM - 09:30 PM', 'dropin'],
+    ['Volleyball', 'saturday', '05:30 PM - 07:30 PM', 'dropin']
   ]},
   stlawrence: { name: 'St. Lawrence', address: '230 The Esplanade', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=272', startDate: '2026-08-15', patterns: [
-    ['Badminton', 'adult', 'saturday', '11:00 AM - 02:00 PM', 'dropin'],
-    ['Pickleball', 'adult', 'saturday', '02:30 PM - 04:30 PM', 'dropin'],
-    ['Volleyball', 'adult', 'sunday', '12:30 PM - 03:45 PM', 'dropin'],
-    ['Badminton', 'adult', 'sunday', '04:00 PM - 07:00 PM', 'dropin'],
-    ['Pickleball', 'adult', 'tuesday', '06:30 PM - 08:45 PM', 'dropin'],
-    ['Volleyball', 'adult', 'wednesday', '06:30 PM - 08:45 PM', 'dropin'],
-    ['Badminton', 'adult', 'thursday', '06:30 PM - 08:45 PM', 'dropin']
+    ['Badminton', 'saturday', '11:00 AM - 02:00 PM', 'dropin'],
+    ['Pickleball', 'saturday', '02:30 PM - 04:30 PM', 'dropin'],
+    ['Volleyball', 'sunday', '12:30 PM - 03:45 PM', 'dropin'],
+    ['Badminton', 'sunday', '04:00 PM - 07:00 PM', 'dropin'],
+    ['Pickleball', 'tuesday', '06:30 PM - 08:45 PM', 'dropin'],
+    ['Volleyball', 'wednesday', '06:30 PM - 08:45 PM', 'dropin'],
+    ['Badminton', 'thursday', '06:30 PM - 08:45 PM', 'dropin']
   ]},
   johninnes: { name: 'John Innes', address: '150 Sherbourne St', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=63', startDate: '2026-08-15', free: true, patterns: [
-    ['Badminton', 'adult', 'saturday', '01:15 PM - 04:45 PM', 'dropin'],
-    ['Pickleball', 'adult', 'sunday', '02:30 PM - 04:30 PM', 'dropin'],
-    ['Badminton', 'adult', 'monday', '08:00 PM - 09:30 PM', 'dropin'],
-    ['Pickleball', 'adult', 'tuesday', '05:15 PM - 07:15 PM', 'dropin']
+    ['Badminton', 'saturday', '01:15 PM - 04:45 PM', 'dropin'],
+    ['Pickleball', 'sunday', '02:30 PM - 04:30 PM', 'dropin'],
+    ['Badminton', 'monday', '08:00 PM - 09:30 PM', 'dropin'],
+    ['Pickleball', 'tuesday', '05:15 PM - 07:15 PM', 'dropin']
   ]},
   eastbayfront: { name: 'East Bayfront', address: '261 Queens Quay East', url: 'https://www.toronto.ca/explore-enjoy/parks-recreation/places-spaces/parks-and-recreation-facilities/location/?id=3857', startDate: '2026-08-15', patterns: [
-    ['Pickleball', 'adult', 'saturday', '11:45 AM - 01:45 PM', 'dropin', 4],
-    ['Pickleball (2SLGBTQ+)', 'adult', 'saturday', '02:00 PM - 03:30 PM', 'dropin', 4],
-    ['Volleyball (2SLGBTQ+)', 'adult', 'saturday', '03:45 PM - 05:15 PM', 'dropin', 4],
-    ['Badminton', 'adult', 'sunday', '11:30 AM - 01:30 PM', 'dropin'],
-    ['Pickleball', 'adult', 'sunday', '05:45 PM - 07:45 PM', 'dropin', 4],
-    ['Pickleball', 'adult', 'monday', '08:30 AM - 10:30 AM', 'dropin', 4],
-    ['Pickleball', 'adult', 'wednesday', '08:30 AM - 10:30 AM', 'dropin', 4],
-    ['Badminton (Women)', 'adult', 'thursday', '04:30 PM - 06:30 PM', 'dropin'],
-    ['Pickleball', 'adult', 'friday', '08:30 AM - 10:30 AM', 'dropin', 4],
-    ['Badminton', 'adult', 'friday', '04:30 PM - 06:30 PM', 'dropin'],
-    ['Volleyball', 'adult', 'friday', '06:45 PM - 08:45 PM', 'dropin']
+    ['Pickleball', 'saturday', '11:45 AM - 01:45 PM', 'dropin', 4],
+    ['Pickleball (2SLGBTQ+)', 'saturday', '02:00 PM - 03:30 PM', 'dropin', 4],
+    ['Volleyball (2SLGBTQ+)', 'saturday', '03:45 PM - 05:15 PM', 'dropin', 4],
+    ['Badminton', 'sunday', '11:30 AM - 01:30 PM', 'dropin'],
+    ['Pickleball', 'sunday', '05:45 PM - 07:45 PM', 'dropin', 4],
+    ['Pickleball', 'monday', '08:30 AM - 10:30 AM', 'dropin', 4],
+    ['Pickleball', 'wednesday', '08:30 AM - 10:30 AM', 'dropin', 4],
+    ['Badminton (Women)', 'thursday', '04:30 PM - 06:30 PM', 'dropin'],
+    ['Pickleball', 'friday', '08:30 AM - 10:30 AM', 'dropin', 4],
+    ['Badminton', 'friday', '04:30 PM - 06:30 PM', 'dropin'],
+    ['Volleyball', 'friday', '06:45 PM - 08:45 PM', 'dropin']
   ]}
 };
 const DAY_OFFSET = { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4, saturday: 5, sunday: 6 };
 const AGE_LABELS = { adult: '19+' };
-const STATUSES = ['available', 'attended'];
 const STATUS_LABELS = { available: '○ Not Attended', attended: '✓ Attended' };
 const ACCESS_LABELS = { dropin: 'Drop-in', reserve: 'Reserve', both: 'Drop-in + Res' };
 const RESERVE_URL = 'https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/';
@@ -368,17 +383,17 @@ function clock24(label) {
 }
 function time24(label) { return clock24(label.split(' - ')[0]); }
 function formatTime(label) { return label.split(' - ').map(clock24).join('–'); }
-function isScheduled(info, pattern, week, date) {
+function isScheduled(info, throughWeek, week, date) {
   if (info.startDate && date < info.startDate) return false;
   if (info.throughWeek !== undefined && week > info.throughWeek) return false;
-  if (pattern[5] !== undefined && week > pattern[5]) return false;
+  if (throughWeek !== undefined && week > throughWeek) return false;
   return true;
 }
 const STATIC_SESSIONS = STATIC_WEEKS.flatMap(({ id: week, start: weekStart }) => Object.entries(CENTRES).flatMap(([centre, info]) =>
-  info.patterns.flatMap((p, index) => {
-    const date = datePlus(weekStart, DAY_OFFSET[p[2]]);
-    if (!isScheduled(info, p, week, date)) return [];
-    return [{ id: `${centre}-${week}-${index}`, centre, week, date, name: p[0], age: p[1], day: p[2], time: p[3], access: p[4], sport: sportFrom(p[0]), timestamp: new Date(`${date}T${time24(p[3])}:00`).getTime(), status: 'active' }];
+  info.patterns.flatMap(([name, day, time, access, throughWeek], index) => {
+    const date = datePlus(weekStart, DAY_OFFSET[day]);
+    if (!isScheduled(info, throughWeek, week, date)) return [];
+    return [{ id: `${centre}-${week}-${index}`, centre, week, date, name, age: 'adult', day, time, access, sport: sportFrom(name), timestamp: new Date(`${date}T${time24(time)}:00`).getTime(), status: 'active' }];
   })
 ));
 const GENERATED_SESSIONS = GENERATED_DATA.sessions
@@ -393,9 +408,11 @@ const GENERATED_SESSIONS = GENERATED_DATA.sessions
   }));
 const SESSIONS = [...STATIC_SESSIONS, ...GENERATED_SESSIONS]
   .sort((a, b) => a.timestamp - b.timestamp || a.centre.localeCompare(b.centre));
-function sessionsForWeek(week) {
-  return SESSIONS.filter(session => String(session.week) === String(week.id));
-}
+const SESSIONS_BY_WEEK = new Map(WEEKS.map(week => [
+  String(week.id),
+  SESSIONS.filter(session => String(session.week) === String(week.id))
+]));
+function sessionsForWeek(week) { return SESSIONS_BY_WEEK.get(String(week.id)) || []; }
 function isElapsedWeek(week) {
   const sessions = sessionsForWeek(week);
   return sessions.length > 0 && sessions.every(session => session.timestamp < Date.now());
@@ -419,8 +436,7 @@ const filters = {
   access: new Set(),
   status: new Set()
 };
-let centreQuickAnchor = null;
-let weekQuickAnchor = null;
+const quickAnchors = { centre: null, week: null };
 const CENTRE_FILTER_LABELS = {
   all: 'All', canoe: 'Canoe', yonge: 'Yonge', stlawrence: 'St. Lawrence',
   johninnes: 'John Innes', eastbayfront: 'East Bay'
@@ -430,15 +446,10 @@ const DAY_FILTER_LABELS = { monday: 'Mon', tuesday: 'Tue', wednesday: 'Wed', thu
 const collapsedWeeks = new Set(WEEKS
   .filter(isElapsedWeek)
   .map(week => String(week.id)));
-function getState(id) {
-  const saved = state[id] || { status: 'available', notes: '' };
-  return { ...saved, status: saved.status === 'attended' ? 'attended' : 'available' };
-}
-function setState(id, key, value) { if (!state[id]) state[id] = { status: 'available', notes: '' }; state[id][key] = value; saveState(); updateStats(); }
-
+function getStatus(id) { return state[id]?.status === 'attended' ? 'attended' : 'available'; }
 function cycleStatus(id) {
-  const current = getState(id).status;
-  setState(id, 'status', STATUSES[(STATUSES.indexOf(current) + 1) % STATUSES.length]);
+  state[id] = { ...state[id], status: getStatus(id) === 'attended' ? 'available' : 'attended' };
+  saveState();
   render();
 }
 
@@ -454,48 +465,66 @@ function formatWeek(iso) {
     : `${startLabel}–${month.format(end)} ${end.getDate()}`;
 }
 
-function visibleSessions() {
-  return SESSIONS.filter(s => matchesFilter('centre', s.centre))
-    .filter(s => matchesFilter('sport', s.sport))
-    .filter(s => matchesFilter('week', s.week))
-    .filter(s => matchesFilter('day', s.day))
-    .filter(s => matchesFilter('access', s.access))
-    .filter(s => matchesFilter('status', getState(s.id).status));
+function visibleSessions(exclude) {
+  return SESSIONS.filter(session => Object.entries(filters).every(([name, selected]) => {
+    if (name === exclude || selected.size === 0) return true;
+    const value = name === 'status' ? getStatus(session.id) : session[name];
+    return selected.has(String(value));
+  }));
 }
 
-function matchesFilter(name, value) {
-  return filters[name].size === 0 || filters[name].has(String(value));
+function makeChip(value, label, selected = false, activeClass = 'active') {
+  const chip = document.createElement('button');
+  chip.className = 'chip';
+  chip.dataset.val = value;
+  chip.textContent = label;
+  chip.setAttribute('aria-pressed', String(selected));
+  if (selected) chip.classList.add(activeClass);
+  return chip;
+}
+
+function makeMoreChip(name, panel) {
+  const chip = makeChip('', '…');
+  chip.id = `${name}MoreButton`;
+  chip.removeAttribute('aria-pressed');
+  chip.setAttribute('aria-label', panel.hidden ? `Show all ${name}s` : `Hide ${name} list`);
+  chip.setAttribute('aria-expanded', String(!panel.hidden));
+  chip.setAttribute('aria-controls', `${name}Chips`);
+  return chip;
+}
+
+function toggleFilter(name, value) {
+  const selected = filters[name];
+  if (value === 'all') {
+    selected.clear();
+    if (name in quickAnchors) quickAnchors[name] = null;
+  } else if (selected.has(value)) {
+    selected.delete(value);
+    if (name in quickAnchors) quickAnchors[name] = selected.size ? [...selected].pop() : null;
+  } else {
+    selected.add(value);
+    if (name in quickAnchors) quickAnchors[name] = value;
+  }
 }
 
 function renderDayChips() {
-  const available = new Set(SESSIONS
-    .filter(s => matchesFilter('centre', s.centre))
-    .filter(s => matchesFilter('sport', s.sport))
-    .filter(s => matchesFilter('week', s.week))
-    .filter(s => matchesFilter('access', s.access))
-    .filter(s => matchesFilter('status', getState(s.id).status))
-    .map(s => s.day));
+  const available = new Set(visibleSessions('day').map(session => session.day));
   [...filters.day].forEach(day => { if (!available.has(day)) filters.day.delete(day); });
   const panel = document.getElementById('dayChips');
   panel.replaceChildren();
-  ['all', ...Object.keys(DAY_FILTER_LABELS).filter(day => available.has(day))].forEach(value => {
-    const button = document.createElement('button');
-    button.className = 'chip';
-    button.dataset.val = value;
-    button.textContent = value === 'all' ? 'All' : DAY_FILTER_LABELS[value];
-    panel.appendChild(button);
-  });
+  ['all', ...Object.keys(DAY_FILTER_LABELS).filter(day => available.has(day))]
+    .forEach(value => panel.appendChild(makeChip(value, value === 'all' ? 'All' : DAY_FILTER_LABELS[value])));
   updateChipStates('dayChips', 'day', () => 'active');
 }
 
 function buildItem(session) {
-  const tracked = getState(session.id); const centre = CENTRES[session.centre];
+  const tracked = getStatus(session.id); const centre = CENTRES[session.centre];
   const audience = session.name.match(/\((.+)\)/)?.[1];
   const reserveLink = ['reserve', 'both'].includes(session.access)
     ? ` · <a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Res · Thu 08:00</a>`
     : '';
   const item = document.createElement('div');
-  item.className = `session-item ${tracked.status}` + (session.status === 'cancelled' ? ' cancelled' : '');
+  item.className = `session-item ${tracked}` + (session.status === 'cancelled' ? ' cancelled' : '');
   item.innerHTML = `
     <div class="session-left">
       <div class="session-top">
@@ -506,7 +535,7 @@ function buildItem(session) {
       </div>
       <div class="session-info-row">
         <span class="session-info"><span class="session-primary-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}${centre.free ? ' · <span class="cost-tag">Free</span>' : ''}</span><br><a class="centre-tag" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
-        <button class="status-btn ${tracked.status}" type="button">${STATUS_LABELS[tracked.status]}</button>
+        <button class="status-btn ${tracked}" type="button">${STATUS_LABELS[tracked]}</button>
       </div>
     </div>`;
   item.querySelector('.status-btn').addEventListener('click', () => cycleStatus(session.id));
@@ -531,7 +560,7 @@ function render() {
 }
 
 function updateStats() {
-  const attended = SESSIONS.filter(s => getState(s.id).status === 'attended').length;
+  const attended = SESSIONS.filter(s => getStatus(s.id) === 'attended').length;
   document.getElementById('remainingCount').textContent = SESSIONS.length - attended;
   document.getElementById('attendedCount').textContent = attended;
   document.getElementById('costPerSession').textContent = attended ? `$${(PASS_COST / attended).toFixed(2)}` : '—';
@@ -544,7 +573,7 @@ function updateStats() {
   document.getElementById('breakEvenBar').style.width = `${breakEvenProgress}%`;
   breakEvenTrack.setAttribute('aria-valuenow', String(attended));
   breakEvenTrack.setAttribute('aria-valuetext', `${breakEvenPercent} percent, ${attended} sessions attended`);
-  const now = Date.now(); const next = SESSIONS.find(s => s.timestamp >= now && getState(s.id).status !== 'attended');
+  const now = Date.now(); const next = SESSIONS.find(s => s.timestamp >= now && getStatus(s.id) !== 'attended');
   document.getElementById('nextCount').textContent = next ? formatDate(next.date).split(',')[0] : '—';
   const shown = visibleSessions().length;
   document.getElementById('homeBar').textContent = `${attended} attended · ${shown} of ${SESSIONS.length} sessions shown · ${WEEKS.length} tracked weeks · updated ${UPDATED_LABEL}`;
@@ -557,22 +586,25 @@ function populateDerivedFilters() {
     document.getElementById(`${sport}Total`).textContent = total;
   });
 
+  const centreChips = document.getElementById('centreChips');
+  centreChips.replaceChildren(
+    makeChip('all', 'All'),
+    ...CENTRE_FILTER_ORDER.map(value => makeChip(value, CENTRE_FILTER_LABELS[value]))
+  );
+
   const weekChips = document.getElementById('weekChips');
-  WEEK_FILTER_ORDER.forEach(week => {
-    const button = document.createElement('button');
-    button.className = 'chip';
-    button.dataset.val = String(week.id);
-    button.textContent = formatWeek(week.start);
-    weekChips.appendChild(button);
-  });
+  WEEK_FILTER_ORDER.forEach(week =>
+    weekChips.appendChild(makeChip(String(week.id), formatWeek(week.start)))
+  );
 }
 
 function renderCentreSummary() {
   const summary = document.getElementById('centreSummaryChips');
   const panel = document.getElementById('centreChips');
+  const anchor = quickAnchors.centre;
   const selectedValues = [
-    ...(centreQuickAnchor && filters.centre.has(centreQuickAnchor) ? [centreQuickAnchor] : []),
-    ...CENTRE_FILTER_ORDER.filter(value => filters.centre.has(value) && value !== centreQuickAnchor)
+    ...(anchor && filters.centre.has(anchor) ? [anchor] : []),
+    ...CENTRE_FILTER_ORDER.filter(value => filters.centre.has(value) && value !== anchor)
   ];
   const unselectedValues = CENTRE_FILTER_ORDER
     .filter(value => !filters.centre.has(value))
@@ -580,56 +612,22 @@ function renderCentreSummary() {
   const values = ['all', ...selectedValues, ...unselectedValues];
   summary.replaceChildren();
   values.forEach(value => {
-    const button = document.createElement('button');
-    button.className = 'chip';
-    button.dataset.val = value;
-    button.textContent = CENTRE_FILTER_LABELS[value];
     const selected = value === 'all' || filters.centre.has(value);
-    if (selected) button.classList.add(value === 'all' ? 'active' : 'active-location');
-    button.setAttribute('aria-pressed', String(selected));
-    summary.appendChild(button);
+    summary.appendChild(makeChip(
+      value,
+      CENTRE_FILTER_LABELS[value],
+      selected,
+      value === 'all' ? 'active' : 'active-location'
+    ));
   });
-  const more = document.createElement('button');
-  more.className = 'chip';
-  more.id = 'centreMoreButton';
-  more.type = 'button';
-  more.textContent = '…';
-  more.setAttribute('aria-label', panel.hidden ? 'Show all centres' : 'Hide centre list');
-  more.setAttribute('aria-expanded', String(!panel.hidden));
-  more.setAttribute('aria-controls', 'centreChips');
-  summary.appendChild(more);
+  summary.appendChild(makeMoreChip('centre', panel));
 }
-
-document.getElementById('centreSummaryChips').addEventListener('click', event => {
-  const button = event.target.closest('.chip'); if (!button) return;
-  const panel = document.getElementById('centreChips');
-  const keepOpen = !panel.hidden;
-  if (button.id === 'centreMoreButton') {
-    panel.hidden = !panel.hidden;
-    renderCentreSummary();
-    return;
-  }
-  const value = button.dataset.val;
-  if (value === 'all') {
-    filters.centre.clear();
-    centreQuickAnchor = null;
-  } else if (filters.centre.has(value)) {
-    filters.centre.delete(value);
-    centreQuickAnchor = filters.centre.size ? [...filters.centre].pop() : null;
-  } else {
-    filters.centre.add(value);
-    centreQuickAnchor = value;
-  }
-  panel.hidden = !keepOpen;
-  updateChipStates('centreChips', 'centre', selected => selected === 'all' ? 'active' : 'active-location');
-  renderCentreSummary();
-  render();
-});
 
 function renderWeekSummary() {
   const summary = document.getElementById('weekSummaryChips');
   const panel = document.getElementById('weekChips');
-  const anchorIndex = WEEKS.findIndex(week => String(week.id) === weekQuickAnchor);
+  const anchor = quickAnchors.week;
+  const anchorIndex = WEEKS.findIndex(week => String(week.id) === anchor);
   const quickWeeks = anchorIndex === -1
     ? WEEK_FILTER_ORDER.slice(0, 3)
     : [
@@ -638,10 +636,10 @@ function renderWeekSummary() {
       ];
   const quickValues = quickWeeks.map(week => String(week.id));
   const selectedValues = [
-    ...(weekQuickAnchor && filters.week.has(weekQuickAnchor) ? [weekQuickAnchor] : []),
+    ...(anchor && filters.week.has(anchor) ? [anchor] : []),
     ...WEEK_FILTER_ORDER
       .map(week => String(week.id))
-      .filter(value => filters.week.has(value) && value !== weekQuickAnchor)
+      .filter(value => filters.week.has(value) && value !== anchor)
   ];
   const unselectedValues = quickValues.filter(value => !filters.week.has(value));
   const previousValue = anchorIndex > 0 ? String(WEEKS[anchorIndex - 1].id) : null;
@@ -655,84 +653,52 @@ function renderWeekSummary() {
   const values = ['all', ...new Set(orderedValues)];
   summary.replaceChildren();
   values.forEach(value => {
-    const button = document.createElement('button');
-    button.className = 'chip';
-    button.dataset.val = value;
-    button.textContent = value === 'all'
+    const selected = value === 'all' || filters.week.has(value);
+    const label = value === 'all'
       ? 'All Weeks'
       : formatWeek(WEEKS.find(week => String(week.id) === value).start);
-    const selected = value === 'all' || filters.week.has(value);
-    if (selected) button.classList.add('active');
-    button.setAttribute('aria-pressed', String(selected));
-    summary.appendChild(button);
+    summary.appendChild(makeChip(value, label, selected));
   });
-  const more = document.createElement('button');
-  more.className = 'chip';
-  more.id = 'weekMoreButton';
-  more.type = 'button';
-  more.textContent = '…';
-  more.setAttribute('aria-label', panel.hidden ? 'Show all weeks' : 'Hide week list');
-  more.setAttribute('aria-expanded', String(!panel.hidden));
-  more.setAttribute('aria-controls', 'weekChips');
-  summary.appendChild(more);
+  summary.appendChild(makeMoreChip('week', panel));
 }
 
-document.getElementById('weekSummaryChips').addEventListener('click', event => {
-  const button = event.target.closest('.chip'); if (!button) return;
-  const panel = document.getElementById('weekChips');
-  const keepOpen = !panel.hidden;
-  if (button.id === 'weekMoreButton') {
-    panel.hidden = !panel.hidden;
-    renderWeekSummary();
-    return;
-  }
-  const value = button.dataset.val;
-  if (value === 'all') {
-    filters.week.clear();
-    weekQuickAnchor = null;
-  } else if (filters.week.has(value)) {
-    filters.week.delete(value);
-    weekQuickAnchor = filters.week.size ? [...filters.week].pop() : null;
-  } else {
-    filters.week.add(value);
-    weekQuickAnchor = value;
-  }
-  panel.hidden = !keepOpen;
-  updateChipStates('weekChips', 'week', () => 'active');
-  renderWeekSummary();
-  render();
-});
+function wireSummary(name, activeClass, rerender) {
+  document.getElementById(`${name}SummaryChips`).addEventListener('click', event => {
+    const chip = event.target.closest('.chip');
+    if (!chip) return;
+    const panel = document.getElementById(`${name}Chips`);
+    if (chip.id === `${name}MoreButton`) {
+      panel.hidden = !panel.hidden;
+      rerender();
+      return;
+    }
+    const keepOpen = !panel.hidden;
+    toggleFilter(name, chip.dataset.val);
+    updateChipStates(`${name}Chips`, name, activeClass);
+    rerender();
+    panel.hidden = !keepOpen;
+    render();
+  });
+}
 
 function closeSelectorsOutside(event) {
   const path = typeof event.composedPath === 'function' ? event.composedPath() : [];
-  const centrePanel = document.getElementById('centreChips');
-  const centreSummary = document.getElementById('centreSummaryChips');
-  const insideCentre = path.includes(centrePanel) || path.includes(centreSummary)
-    || centrePanel.contains(event.target) || centreSummary.contains(event.target);
-  if (!insideCentre && !centrePanel.hidden) {
-    centrePanel.hidden = true;
-    renderCentreSummary();
-  }
-  const weekPanel = document.getElementById('weekChips');
-  const weekSummary = document.getElementById('weekSummaryChips');
-  const insideWeek = path.includes(weekPanel) || path.includes(weekSummary)
-    || weekPanel.contains(event.target) || weekSummary.contains(event.target);
-  if (!insideWeek && !weekPanel.hidden) {
-    weekPanel.hidden = true;
-    renderWeekSummary();
-  }
+  [['centre', renderCentreSummary], ['week', renderWeekSummary]].forEach(([name, rerender]) => {
+    const panel = document.getElementById(`${name}Chips`);
+    const summary = document.getElementById(`${name}SummaryChips`);
+    const inside = path.includes(panel) || path.includes(summary)
+      || panel.contains(event.target) || summary.contains(event.target);
+    if (inside || panel.hidden) return;
+    panel.hidden = true;
+    rerender();
+  });
 }
 
 window.addEventListener('pointerdown', closeSelectorsOutside, { capture: true });
-window.addEventListener('touchstart', closeSelectorsOutside, { capture: true, passive: true });
-window.addEventListener('mousedown', closeSelectorsOutside, { capture: true });
-window.addEventListener('click', closeSelectorsOutside, { capture: true });
 
 document.addEventListener('keydown', event => {
   if (event.key !== 'Escape') return;
-  const centrePanel = document.getElementById('centreChips');
-  centrePanel.hidden = true;
-  document.getElementById('weekChips').hidden = true;
+  ['centre', 'week'].forEach(name => { document.getElementById(`${name}Chips`).hidden = true; });
   renderCentreSummary();
   renderWeekSummary();
 });
@@ -752,21 +718,7 @@ function wireChips(containerId, filterName, activeClass) {
     const chip = event.target.closest('.chip'); if (!chip) return;
     const container = document.getElementById(containerId);
     const keepOpen = (filterName === 'centre' || filterName === 'week') && !container.hidden;
-    const value = chip.dataset.val;
-    const selected = filters[filterName];
-    if (value === 'all') {
-      selected.clear();
-      if (filterName === 'centre') centreQuickAnchor = null;
-      if (filterName === 'week') weekQuickAnchor = null;
-    } else if (selected.has(value)) {
-      selected.delete(value);
-      if (filterName === 'centre') centreQuickAnchor = selected.size ? [...selected].pop() : null;
-      if (filterName === 'week') weekQuickAnchor = selected.size ? [...selected].pop() : null;
-    } else {
-      selected.add(value);
-      if (filterName === 'centre') centreQuickAnchor = value;
-      if (filterName === 'week') weekQuickAnchor = value;
-    }
+    toggleFilter(filterName, chip.dataset.val);
     updateChipStates(containerId, filterName, activeClass);
     if (filterName === 'centre') renderCentreSummary();
     if (filterName === 'week') renderWeekSummary();
@@ -778,9 +730,11 @@ function wireChips(containerId, filterName, activeClass) {
 populateDerivedFilters();
 wireChips('centreChips', 'centre', value => value === 'all' ? 'active' : 'active-location');
 renderCentreSummary();
+wireSummary('centre', value => value === 'all' ? 'active' : 'active-location', renderCentreSummary);
 wireChips('sportChips', 'sport', value => value === 'all' ? 'active' : `active-${value}`);
 wireChips('weekChips', 'week', () => 'active');
 renderWeekSummary();
+wireSummary('week', () => 'active', renderWeekSummary);
 wireChips('dayChips', 'day', () => 'active');
 wireChips('accessChips', 'access', value => value === 'all' ? 'active' : `active-${value}`);
 wireChips('statusChips', 'status', value => value === 'all' ? 'active' : `active-${value}`);
