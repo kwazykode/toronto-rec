@@ -137,9 +137,10 @@
     .week-group:not([open]) .week-hdr { margin-bottom: 0; }
     .week-hdr-label { font-size: calc(.6875rem + 3px); text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
     .session-item { background: var(--win); border: 1px solid var(--border); padding: 7px 9px; margin-bottom: 2px; }
-    .session-item.attended { opacity: .55; }
+    .session-item.attended { opacity: .78; }
     .session-item.cancelled { border-left: 3px solid var(--cancelled); }
-    .session-left { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+    .session-left { display: grid; grid-template-columns: minmax(0, 1fr) 31px; gap: 10px; align-items: center; min-width: 0; }
+    .session-content { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
     .session-top { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
     .session-info-row { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
     .date-badge { font-size: calc(.625rem + 3px); font-weight: bold; color: var(--detail-text); min-width: 62px; text-transform: uppercase; }
@@ -158,10 +159,9 @@
     .access-tag.reserve { color: var(--reserve); border-color: var(--reserve); }
     .access-tag.both { color: var(--mixed); border-color: var(--mixed); }
     .reserve-link { font-size: calc(.625rem + 3px); color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
-    .session-info-row .status-btn { margin-left: auto; }
-    .status-btn { display: inline-flex; align-items: center; justify-content: center; flex: 0 0 auto; padding: 2px 8px; min-width: 88px; min-height: 26px; font-family: inherit; font-size: calc(.625rem + 1px); font-weight: bold; cursor: pointer; border: 1px solid var(--border); background: var(--btn); color: var(--text); user-select: none; white-space: nowrap; }
+    .status-btn { width: 28px; height: 28px; padding: 0; font-family: inherit; font-size: .625rem; font-weight: bold; color: #aaa; cursor: pointer; border: 1px solid var(--border); background: var(--btn); }
     .status-btn:hover { background: var(--surface); }
-    .status-btn.attended { background: var(--attended); border-color: var(--attended); color: #fff; }
+    .status-btn.attended { background: #14532d; border-color: #14532d; }
     .empty-note { text-align: center; color: var(--muted); font-size: calc(.75rem + 3px); padding: 28px 0; }
     @media (max-width: 560px) {
       body { font-size: .875rem; }
@@ -182,15 +182,15 @@
       .source-notice { padding: 8px 9px; }
       .week-hdr { gap: 5px; padding: 9px 0 4px; }
       .session-item { padding: 3px 7px; }
-      .session-left { gap: 1.3px; }
-      .session-top, .session-info-row { column-gap: 3px; row-gap: 1px; }
+      .session-content { gap: 1.3px; }
+      .session-top { column-gap: 3px; row-gap: 1px; }
       .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.53125rem + 3px); white-space: nowrap; }
       .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: .5px 3px; }
       .session-info { line-height: 1.15; }
       .session-primary-info { font-size: calc(.6875rem + 1px); }
       .session-primary-info .cost-tag { font-size: inherit; }
-      a.centre-tag { margin-top: .5px; }
-      .status-btn { min-width: 86.5px; min-height: 28.5px; border-width: .5px; }
+      a.centre-tag { margin-top: 1.3px; }
+      .status-btn { border-width: .5px; }
       .date-badge { min-width: auto; }
       .reserve-link { display: inline-block; padding: 0; line-height: 1.15; }
       .bottom-bar { line-height: 1.5; }
@@ -370,7 +370,7 @@ const CENTRES = {
 };
 const DAY_OFFSET = { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4, saturday: 5, sunday: 6 };
 const AGE_LABELS = { adult: '19+' };
-const STATUS_LABELS = { available: '○ Not Attended', attended: '✓ Attended' };
+const STATUS_LABELS = { available: 'Not Attended', attended: 'Attended' };
 const ACCESS_LABELS = { dropin: 'Drop-in', reserve: 'Reserve', both: 'Drop-in + Res' };
 const RESERVE_URL = 'https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/';
 
@@ -527,16 +527,18 @@ function buildItem(session) {
   item.className = `session-item ${tracked}` + (session.status === 'cancelled' ? ' cancelled' : '');
   item.innerHTML = `
     <div class="session-left">
-      <div class="session-top">
-        <span class="date-badge">${formatDate(session.date)}</span>
-        <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
-        <span class="time-badge">${formatTime(session.time)}</span>
-        <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
+      <div class="session-content">
+        <div class="session-top">
+          <span class="date-badge">${formatDate(session.date)}</span>
+          <span class="sport-tag ${session.sport}">${session.sport[0].toUpperCase() + session.sport.slice(1)}</span>
+          <span class="time-badge">${formatTime(session.time)}</span>
+          <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
+        </div>
+        <div class="session-info-row">
+          <span class="session-info"><span class="session-primary-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}${centre.free ? ' · <span class="cost-tag">Free</span>' : ''}</span><br><a class="centre-tag" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
+        </div>
       </div>
-      <div class="session-info-row">
-        <span class="session-info"><span class="session-primary-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}${centre.free ? ' · <span class="cost-tag">Free</span>' : ''}</span><br><a class="centre-tag" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
-        <button class="status-btn ${tracked}" type="button">${STATUS_LABELS[tracked]}</button>
-      </div>
+      <button class="status-btn ${tracked}" type="button" aria-label="${STATUS_LABELS[tracked]}" title="${STATUS_LABELS[tracked]}">${tracked === 'available' ? 'N' : ''}</button>
     </div>`;
   item.querySelector('.status-btn').addEventListener('click', () => cycleStatus(session.id));
   return item;
