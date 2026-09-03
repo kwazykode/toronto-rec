@@ -31,6 +31,7 @@
       --badminton-active: #a60d25;
       --free: #2f9e55;
       --attended: #166534;
+      --attended-letter: #fff;
       --cancelled: #991b1b;
       --centre: #278fd0;
       --centre-active: #1e6fa8;
@@ -66,6 +67,7 @@
         --dropin-active-text: #111;
         --free: #72d38d;
         --attended: #72d38d;
+        --attended-letter: #555;
         --cancelled: #ff7777;
         --centre: #9bdcff;
         --centre-active: #1e6fa8;
@@ -161,7 +163,7 @@
     .reserve-link { font-size: calc(.625rem + 3px); color: var(--link); font-weight: normal; white-space: nowrap; text-decoration: underline; }
     .status-btn { width: 28px; height: 28px; padding: 0; font-family: inherit; font-size: .625rem; font-weight: bold; color: #aaa; cursor: pointer; border: 1px solid var(--border); background: var(--btn); }
     .status-btn:hover { background: var(--surface); }
-    .status-btn.attended { background: #14532d; border-color: #14532d; }
+    .status-btn.attended { background: #14532d; border-color: #14532d; color: var(--attended-letter); }
     .empty-note { text-align: center; color: var(--muted); font-size: calc(.75rem + 3px); padding: 28px 0; }
     @media (max-width: 560px) {
       body { font-size: .875rem; }
@@ -181,11 +183,11 @@
       .filter-label { margin-top: 2px; }
       .source-notice { padding: 8px 9px; }
       .week-hdr { gap: 5px; padding: 9px 0 4px; }
-      .session-item { padding: 3px 7px; }
+      .session-item { padding: 3px 7px; margin-bottom: 0; }
       .session-content { gap: 1.3px; }
       .session-top { column-gap: 3px; row-gap: 1px; }
       .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.53125rem + 3px); white-space: nowrap; }
-      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: .5px 3px; }
+      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: 2px 3px; border-width: .6px; }
       .session-info { line-height: 1.15; }
       .session-primary-info { font-size: calc(.6875rem + 1px); }
       .session-primary-info .cost-tag { font-size: inherit; }
@@ -196,7 +198,8 @@
       .bottom-bar { line-height: 1.5; }
     }
     @media (prefers-color-scheme: light) and (max-width: 560px) {
-      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { padding-top: .7px; }
+      .time-badge, .sport-tag, .centre-tag, .access-tag { line-height: 1.15; }
+      .session-primary-info .cost-tag { line-height: 1; padding: 2px 1px; }
     }
   </style>
 </head>
@@ -541,7 +544,7 @@ function buildItem(session) {
           <span class="session-info"><span class="session-primary-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}${centre.free ? ' · <span class="cost-tag">Free</span>' : ''}</span><br><a class="centre-tag" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
         </div>
       </div>
-      <button class="status-btn ${tracked}" type="button" aria-label="${STATUS_LABELS[tracked]}" title="${STATUS_LABELS[tracked]}">${tracked === 'available' ? 'N' : ''}</button>
+      <button class="status-btn ${tracked}" type="button" aria-label="${STATUS_LABELS[tracked]}" title="${STATUS_LABELS[tracked]}">${tracked === 'available' ? 'N' : 'A'}</button>
     </div>`;
   item.querySelector('.status-btn').addEventListener('click', () => cycleStatus(session.id));
   return item;
