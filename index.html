@@ -147,14 +147,14 @@
     .session-info-row { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
     .date-badge { font-size: calc(.625rem + 3px); font-weight: bold; color: var(--detail-text); min-width: 62px; text-transform: uppercase; }
     .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.625rem + 3px); font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
-    .cost-tag { color: var(--free); border-color: var(--free); }
+    .cost-tag { color: var(--free); border: 0; }
     .session-primary-info { white-space: nowrap; }
-    .session-primary-info .cost-tag { vertical-align: middle; }
+    .session-primary-info .cost-tag { padding: .8px; vertical-align: middle; }
     .time-badge { background: transparent; color: var(--text); border-color: var(--text); }
     .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }
     .sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }
     .sport-tag.badminton { color: var(--badminton); border-color: var(--badminton); }
-    .centre-tag { color: var(--centre); border-color: var(--centre); background: transparent; text-decoration: none; }
+    .centre-tag { color: var(--centre); border: 0; background: transparent; text-decoration: none; }
     a.centre-tag { display: inline-block; }
     .session-info { min-width: 0; font-size: calc(.6875rem + 3px); color: var(--detail-text); }
     .access-tag.dropin { color: var(--dropin); border-color: var(--dropin); }
@@ -192,7 +192,6 @@
       .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: 2.5px 2px 1.3px; border-width: 1px; }
       .session-info { line-height: 1.15; }
       .session-primary-info { font-size: calc(.6875rem + 2px); }
-      a.centre-tag { margin-top: .8px; }
       .status-btn { width: 36px; height: 36px; font-size: calc(.625rem + 4px); border-width: .5px; }
       .date-badge { min-width: auto; }
       .reserve-link { display: inline-block; padding: 0; line-height: 1.15; }
@@ -527,7 +526,7 @@ function buildItem(session) {
   const tracked = getStatus(session.id); const centre = CENTRES[session.centre];
   const audience = session.name.match(/\((.+)\)/)?.[1];
   const reserveLink = ['reserve', 'both'].includes(session.access)
-    ? ` · <a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Res · Thu 08:00</a>`
+    ? `<br><a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Res · Thu 08:00</a>`
     : '';
   const item = document.createElement('div');
   item.className = `session-item ${tracked}` + (session.status === 'cancelled' ? ' cancelled' : '');
@@ -541,7 +540,7 @@ function buildItem(session) {
           <span class="access-tag ${session.access}">${ACCESS_LABELS[session.access]}</span>
         </div>
         <div class="session-info-row">
-          <span class="session-info"><span class="session-primary-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address}${centre.free ? ' · <span class="cost-tag">Free</span>' : ''}</span><br><a class="centre-tag" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${reserveLink}</span>
+          <span class="session-info"><span class="session-primary-info">${AGE_LABELS[session.age]}${audience ? ` · ${audience}` : ''} · ${centre.address} · <a class="centre-tag" href="${centre.url}" target="_blank" rel="noreferrer">${centre.name}</a>${centre.free ? ' · <span class="cost-tag">Free</span>' : ''}</span>${reserveLink}</span>
         </div>
       </div>
       <button class="status-btn ${tracked}" type="button" aria-label="${STATUS_LABELS[tracked]}" title="${STATUS_LABELS[tracked]}">${tracked === 'available' ? 'N' : 'A'}</button>
