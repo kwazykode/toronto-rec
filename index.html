@@ -139,7 +139,7 @@
     .week-group:not([open]) .week-hdr { margin-bottom: 0; }
     .week-hdr-label { font-size: calc(.6875rem + 3px); text-transform: uppercase; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
     .session-item { background: var(--win); border: 1px solid var(--border); padding: 7px 9px; margin-bottom: 2px; }
-    .session-item.attended { opacity: .78; }
+    .session-item.attended { opacity: .72; }
     .session-item.cancelled { border-left: 3px solid var(--cancelled); }
     .session-left { display: grid; grid-template-columns: minmax(0, 1fr) 31px; gap: 10px; align-items: center; min-width: 0; }
     .session-content { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
@@ -149,7 +149,7 @@
     .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.625rem + 3px); font-weight: bold; line-height: 1.2; border: 1px solid; padding: 1px 6px; }
     .cost-tag { color: var(--free); border-color: var(--free); }
     .session-primary-info { white-space: nowrap; }
-    .session-primary-info .cost-tag { font-size: calc(.5rem + 3px); padding: 0 2px; vertical-align: middle; }
+    .session-primary-info .cost-tag { vertical-align: middle; }
     .time-badge { background: transparent; color: var(--text); border-color: var(--text); }
     .sport-tag.pickleball { color: var(--pickleball); border-color: var(--pickleball); }
     .sport-tag.volleyball { color: var(--volleyball); border-color: var(--volleyball); }
@@ -187,10 +187,9 @@
       .session-content { gap: 1.3px; }
       .session-top { column-gap: 3px; row-gap: 1px; }
       .date-badge, .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { font-size: calc(.53125rem + 3px); white-space: nowrap; }
-      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: 2.5px 3px 1.3px; border-width: .6px; }
+      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1; padding: 2.5px 2px 1.3px; border-width: 1px; }
       .session-info { line-height: 1.15; }
       .session-primary-info { font-size: calc(.6875rem + 1px); }
-      .session-primary-info .cost-tag { font-size: inherit; }
       a.centre-tag { margin-top: 1.3px; }
       .status-btn { border-width: .5px; }
       .date-badge { min-width: auto; }
@@ -198,8 +197,7 @@
       .bottom-bar { line-height: 1.5; }
     }
     @media (prefers-color-scheme: light) and (max-width: 560px) {
-      .time-badge, .sport-tag, .centre-tag, .access-tag { line-height: 1.15; }
-      .session-primary-info .cost-tag { line-height: 1; padding: 2.5px 1px 1.3px; }
+      .time-badge, .sport-tag, .centre-tag, .access-tag, .cost-tag { line-height: 1.15; }
     }
   </style>
 </head>
