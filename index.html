@@ -377,7 +377,7 @@ const DAY_OFFSET = { monday: 0, tuesday: 1, wednesday: 2, thursday: 3, friday: 4
 const AGE_LABELS = { adult: '19+' };
 const STATUS_LABELS = { available: 'Not Attended', attended: 'Attended' };
 const ACCESS_LABELS = { dropin: 'Drop-in', reserve: 'Reserve', both: 'Drop-in + Res' };
-const RESERVE_URL = 'https://www.toronto.ca/explore-enjoy/parks-recreation/program-activities/sports/drop-in-sports-map/';
+const RESERVE_URL = 'https://anc.ca.apm.activecommunities.com/toronto/activity/search/detail/';
 
 function sportFrom(name) { return name.toLowerCase().split(' ')[0]; }
 function datePlus(iso, days) { const d = new Date(iso + 'T12:00:00'); d.setDate(d.getDate() + days); return d.toISOString().slice(0, 10); }
@@ -525,8 +525,8 @@ function renderDayChips() {
 function buildItem(session) {
   const tracked = getStatus(session.id); const centre = CENTRES[session.centre];
   const audience = session.name.match(/\((.+)\)/)?.[1];
-  const reserveLink = ['reserve', 'both'].includes(session.access)
-    ? `<br><a class="reserve-link" href="${RESERVE_URL}" target="_blank" rel="noreferrer">Res · Thu 08:00</a>`
+  const reserveLink = ['reserve', 'both'].includes(session.access) && session.reserveId
+    ? `<br><a class="reserve-link" href="${RESERVE_URL}${session.reserveId}?onlineSiteId=0&amp;from_original_cui=true" target="_blank" rel="noreferrer">Res · Thu 08:00</a>`
     : '';
   const item = document.createElement('div');
   item.className = `session-item ${tracked}` + (session.status === 'cancelled' ? ' cancelled' : '');

@@ -737,7 +737,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "tuesday",
       "time": "06:00 PM - 08:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 200697
     },
     {
       "id": "city-yonge-2026-09-22-0700-pickleball",
@@ -764,7 +765,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 200699
     },
     {
       "id": "city-canoe-2026-09-22-2000-volleyball",
@@ -773,7 +775,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 200707
     },
     {
       "id": "city-yonge-2026-09-22-1200-pickleball",
@@ -791,7 +794,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "06:00 PM - 08:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 200695
     },
     {
       "id": "city-stlawrence-2026-09-23-1830-volleyball",
@@ -818,7 +822,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 200696
     },
     {
       "id": "city-eastbayfront-2026-09-23-0915-pickleball",
@@ -881,7 +886,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "07:00 PM - 08:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 200709
     },
     {
       "id": "city-yonge-2026-09-24-1930-volleyball",
@@ -899,7 +905,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "08:30 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 200710
     },
     {
       "id": "city-eastbayfront-2026-09-24-0915-pickleball-women",
@@ -989,7 +996,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "sunday",
       "time": "01:00 PM - 02:30 PM",
-      "access": "reserve"
+      "access": "reserve",
+      "reserveId": 200705
     },
     {
       "id": "city-yonge-2026-09-27-1330-pickleball",
@@ -1016,7 +1024,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "sunday",
       "time": "03:30 PM - 05:30 PM",
-      "access": "reserve"
+      "access": "reserve",
+      "reserveId": 200706
     },
     {
       "id": "city-stlawrence-2026-09-27-1600-badminton",
@@ -1133,7 +1142,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195185
     },
     {
       "id": "city-canoe-2026-09-29-2000-volleyball",
@@ -1142,7 +1152,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195238
     },
     {
       "id": "city-yonge-2026-09-29-1200-pickleball",
@@ -1160,7 +1171,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "06:00 PM - 08:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195183
     },
     {
       "id": "city-stlawrence-2026-09-30-1830-volleyball",
@@ -1178,7 +1190,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195182
     },
     {
       "id": "city-eastbayfront-2026-09-30-0915-pickleball",
@@ -1223,7 +1236,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "07:00 PM - 08:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195280
     },
     {
       "id": "city-yonge-2026-10-01-1930-volleyball",
@@ -1241,7 +1255,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "08:30 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195282
     },
     {
       "id": "city-eastbayfront-2026-10-01-0915-pickleball-women",
@@ -1349,7 +1364,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "sunday",
       "time": "01:00 PM - 02:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195305
     },
     {
       "id": "city-yonge-2026-10-04-1330-pickleball",
@@ -1376,7 +1392,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "sunday",
       "time": "03:30 PM - 05:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195252
     },
     {
       "id": "city-yonge-2026-10-04-1730-badminton",
@@ -1475,7 +1492,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195186
     },
     {
       "id": "city-canoe-2026-10-06-2000-volleyball",
@@ -1484,7 +1502,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195239
     },
     {
       "id": "city-yonge-2026-10-06-1200-pickleball",
@@ -1502,7 +1521,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "06:00 PM - 08:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195199
     },
     {
       "id": "city-canoe-2026-10-07-2000-pickleball",
@@ -1511,7 +1531,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195200
     },
     {
       "id": "city-eastbayfront-2026-10-07-0915-pickleball",
@@ -1547,7 +1568,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "07:00 PM - 08:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195283
     },
     {
       "id": "city-yonge-2026-10-08-1930-volleyball",
@@ -1565,7 +1587,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "08:30 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195284
     },
     {
       "id": "city-eastbayfront-2026-10-08-0915-pickleball-women",
@@ -1655,7 +1678,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "sunday",
       "time": "01:00 PM - 02:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195306
     },
     {
       "id": "city-yonge-2026-10-11-1330-pickleball",
@@ -1682,7 +1706,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "sunday",
       "time": "03:30 PM - 05:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195253
     },
     {
       "id": "city-yonge-2026-10-11-1730-badminton",
@@ -1745,7 +1770,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195187
     },
     {
       "id": "city-canoe-2026-10-13-2000-volleyball",
@@ -1754,7 +1780,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195240
     },
     {
       "id": "city-yonge-2026-10-13-1200-pickleball",
@@ -1772,7 +1799,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "06:00 PM - 08:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195201
     },
     {
       "id": "city-stlawrence-2026-10-14-1830-volleyball",
@@ -1790,7 +1818,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195202
     },
     {
       "id": "city-eastbayfront-2026-10-14-0915-pickleball",
@@ -1835,7 +1864,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "07:00 PM - 08:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195286
     },
     {
       "id": "city-yonge-2026-10-15-1930-volleyball",
@@ -1853,7 +1883,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "08:30 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195285
     },
     {
       "id": "city-eastbayfront-2026-10-15-0915-pickleball-women",
@@ -1961,7 +1992,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "sunday",
       "time": "01:00 PM - 02:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195307
     },
     {
       "id": "city-yonge-2026-10-18-1330-pickleball",
@@ -1988,7 +2020,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "sunday",
       "time": "03:30 PM - 05:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195254
     },
     {
       "id": "city-stlawrence-2026-10-18-1600-badminton",
@@ -2105,7 +2138,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195188
     },
     {
       "id": "city-canoe-2026-10-20-2000-volleyball",
@@ -2114,7 +2148,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195241
     },
     {
       "id": "city-yonge-2026-10-20-1200-pickleball",
@@ -2132,7 +2167,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "06:00 PM - 08:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195203
     },
     {
       "id": "city-stlawrence-2026-10-21-1830-volleyball",
@@ -2150,7 +2186,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195204
     },
     {
       "id": "city-eastbayfront-2026-10-21-0915-pickleball",
@@ -2195,7 +2232,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "07:00 PM - 08:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195287
     },
     {
       "id": "city-yonge-2026-10-22-1930-volleyball",
@@ -2213,7 +2251,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "08:30 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195288
     },
     {
       "id": "city-eastbayfront-2026-10-22-0915-pickleball-women",
@@ -2321,7 +2360,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "sunday",
       "time": "01:00 PM - 02:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195309
     },
     {
       "id": "city-yonge-2026-10-25-1330-pickleball",
@@ -2348,7 +2388,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "sunday",
       "time": "03:30 PM - 05:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195255
     },
     {
       "id": "city-stlawrence-2026-10-25-1600-badminton",
@@ -2438,7 +2479,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195189
     },
     {
       "id": "city-canoe-2026-10-27-2000-volleyball",
@@ -2447,7 +2489,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Volleyball",
       "day": "tuesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195242
     },
     {
       "id": "city-yonge-2026-10-27-1200-pickleball",
@@ -2465,7 +2508,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "06:00 PM - 08:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195205
     },
     {
       "id": "city-stlawrence-2026-10-28-1830-volleyball",
@@ -2483,7 +2527,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Pickleball",
       "day": "wednesday",
       "time": "08:00 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195206
     },
     {
       "id": "city-eastbayfront-2026-10-28-0915-pickleball",
@@ -2528,7 +2573,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "07:00 PM - 08:30 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195289
     },
     {
       "id": "city-yonge-2026-10-29-1930-volleyball",
@@ -2546,7 +2592,8 @@ window.TORONTO_REC_GENERATED = {
       "name": "Badminton",
       "day": "thursday",
       "time": "08:30 PM - 10:00 PM",
-      "access": "both"
+      "access": "both",
+      "reserveId": 195290
     },
     {
       "id": "city-eastbayfront-2026-10-29-0915-pickleball-women",
