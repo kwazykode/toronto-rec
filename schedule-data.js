@@ -1,5 +1,5 @@
 window.TORONTO_REC_GENERATED = {
-  "updated": "2026-09-17",
+  "updated": "2026-11-04",
   "sessions": [
     {
       "id": "city-eastbayfront-2026-09-08-1330-badminton",
@@ -2617,6 +2617,2203 @@ window.TORONTO_REC_GENERATED = {
       "id": "city-yonge-2026-10-29-1200-badminton",
       "centre": "yonge",
       "date": "2026-10-29",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-10-30-1415-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-10-30",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "02:15 PM - 04:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-10-30-1845-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-10-30",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "06:45 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-10-30-1930-badminton",
+      "centre": "yonge",
+      "date": "2026-10-30",
+      "name": "Badminton",
+      "day": "friday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-10-30-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-10-30",
+      "name": "Pickleball",
+      "day": "friday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-10-31-1315-badminton",
+      "centre": "johninnes",
+      "date": "2026-10-31",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "01:15 PM - 04:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-10-31-1430-pickleball",
+      "centre": "stlawrence",
+      "date": "2026-10-31",
+      "name": "Pickleball",
+      "day": "saturday",
+      "time": "02:30 PM - 04:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-10-31-1730-volleyball",
+      "centre": "yonge",
+      "date": "2026-10-31",
+      "name": "Volleyball",
+      "day": "saturday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-10-31-1100-badminton",
+      "centre": "stlawrence",
+      "date": "2026-10-31",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "11:00 AM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-01-1300-badminton",
+      "centre": "canoe",
+      "date": "2026-11-01",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "01:00 PM - 02:30 PM",
+      "access": "both",
+      "reserveId": 195310
+    },
+    {
+      "id": "city-yonge-2026-11-01-1330-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-01",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-01-1400-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-01",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "02:00 PM - 04:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-01-1530-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-01",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "03:30 PM - 05:30 PM",
+      "access": "both",
+      "reserveId": 195256
+    },
+    {
+      "id": "city-stlawrence-2026-11-01-1600-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-01",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "04:00 PM - 07:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-01-1730-badminton",
+      "centre": "yonge",
+      "date": "2026-11-01",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-01-1745-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-01",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "05:45 PM - 07:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-01-1130-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-01",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "11:30 AM - 01:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-01-1230-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-01",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "12:30 PM - 03:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-02-2000-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-02",
+      "name": "Badminton",
+      "day": "monday",
+      "time": "08:00 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-02-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-02",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-02-0930-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-02",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-02-1145-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-02",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "11:45 AM - 01:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-03-1330-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-03",
+      "name": "Badminton",
+      "day": "tuesday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-03-1715-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-03",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-03-1930-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-03",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-03-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-03",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195190
+    },
+    {
+      "id": "city-canoe-2026-11-03-2000-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-03",
+      "name": "Volleyball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195243
+    },
+    {
+      "id": "city-yonge-2026-11-03-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-03",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-04-1800-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-04",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "06:00 PM - 08:00 PM",
+      "access": "both",
+      "reserveId": 195207
+    },
+    {
+      "id": "city-stlawrence-2026-11-04-1830-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-04",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-04-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-04",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195208
+    },
+    {
+      "id": "city-eastbayfront-2026-11-04-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-04",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-04-1200-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-04",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-05-1715-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-05",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-05-1830-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-05",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-05-1900-badminton",
+      "centre": "canoe",
+      "date": "2026-11-05",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "07:00 PM - 08:30 PM",
+      "access": "both",
+      "reserveId": 195292
+    },
+    {
+      "id": "city-yonge-2026-11-05-1930-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-05",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-05-2030-badminton",
+      "centre": "canoe",
+      "date": "2026-11-05",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "08:30 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195291
+    },
+    {
+      "id": "city-eastbayfront-2026-11-05-0915-pickleball-women",
+      "centre": "eastbayfront",
+      "date": "2026-11-05",
+      "name": "Pickleball (Women)",
+      "day": "thursday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-05-0930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-05",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-05-1200-badminton",
+      "centre": "yonge",
+      "date": "2026-11-05",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-06-1415-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-06",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "02:15 PM - 04:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-06-1845-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-06",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "06:45 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-06-1930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-06",
+      "name": "Badminton",
+      "day": "friday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-06-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-06",
+      "name": "Pickleball",
+      "day": "friday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-07-1315-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-07",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "01:15 PM - 04:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-07-1430-pickleball",
+      "centre": "stlawrence",
+      "date": "2026-11-07",
+      "name": "Pickleball",
+      "day": "saturday",
+      "time": "02:30 PM - 04:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-07-1730-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-07",
+      "name": "Volleyball",
+      "day": "saturday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-07-1100-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-07",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "11:00 AM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-08-1300-badminton",
+      "centre": "canoe",
+      "date": "2026-11-08",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "01:00 PM - 02:30 PM",
+      "access": "both",
+      "reserveId": 195311
+    },
+    {
+      "id": "city-yonge-2026-11-08-1330-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-08",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-08-1400-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-08",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "02:00 PM - 04:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-08-1530-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-08",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "03:30 PM - 05:30 PM",
+      "access": "both",
+      "reserveId": 195257
+    },
+    {
+      "id": "city-stlawrence-2026-11-08-1600-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-08",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "04:00 PM - 07:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-08-1730-badminton",
+      "centre": "yonge",
+      "date": "2026-11-08",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-08-1745-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-08",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "05:45 PM - 07:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-08-1130-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-08",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "11:30 AM - 01:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-08-1230-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-08",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "12:30 PM - 03:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-09-2000-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-09",
+      "name": "Badminton",
+      "day": "monday",
+      "time": "08:00 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-09-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-09",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-09-0930-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-09",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-09-1145-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-09",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "11:45 AM - 01:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-10-1330-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-10",
+      "name": "Badminton",
+      "day": "tuesday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-10-1715-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-10",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-10-1930-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-10",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-10-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-10",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195191
+    },
+    {
+      "id": "city-canoe-2026-11-10-2000-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-10",
+      "name": "Volleyball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195244
+    },
+    {
+      "id": "city-yonge-2026-11-10-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-10",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-11-1800-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-11",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "06:00 PM - 08:00 PM",
+      "access": "both",
+      "reserveId": 195209
+    },
+    {
+      "id": "city-stlawrence-2026-11-11-1830-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-11",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-11-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-11",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195211
+    },
+    {
+      "id": "city-eastbayfront-2026-11-11-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-11",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-11-1200-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-11",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-12-1715-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-12",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-12-1830-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-12",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-12-1900-badminton",
+      "centre": "canoe",
+      "date": "2026-11-12",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "07:00 PM - 08:30 PM",
+      "access": "both",
+      "reserveId": 195293
+    },
+    {
+      "id": "city-yonge-2026-11-12-1930-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-12",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-12-2030-badminton",
+      "centre": "canoe",
+      "date": "2026-11-12",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "08:30 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195294
+    },
+    {
+      "id": "city-eastbayfront-2026-11-12-0915-pickleball-women",
+      "centre": "eastbayfront",
+      "date": "2026-11-12",
+      "name": "Pickleball (Women)",
+      "day": "thursday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-12-0930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-12",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-12-1200-badminton",
+      "centre": "yonge",
+      "date": "2026-11-12",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-13-1415-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-13",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "02:15 PM - 04:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-13-1845-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-13",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "06:45 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-13-1930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-13",
+      "name": "Badminton",
+      "day": "friday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-13-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-13",
+      "name": "Pickleball",
+      "day": "friday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-14-1315-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-14",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "01:15 PM - 04:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-14-1430-pickleball",
+      "centre": "stlawrence",
+      "date": "2026-11-14",
+      "name": "Pickleball",
+      "day": "saturday",
+      "time": "02:30 PM - 04:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-14-1730-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-14",
+      "name": "Volleyball",
+      "day": "saturday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-14-1100-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-14",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "11:00 AM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-15-1300-badminton",
+      "centre": "canoe",
+      "date": "2026-11-15",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "01:00 PM - 02:30 PM",
+      "access": "both",
+      "reserveId": 195312
+    },
+    {
+      "id": "city-yonge-2026-11-15-1330-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-15",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-15-1400-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-15",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "02:00 PM - 04:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-15-1530-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-15",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "03:30 PM - 05:30 PM",
+      "access": "both",
+      "reserveId": 195258
+    },
+    {
+      "id": "city-stlawrence-2026-11-15-1600-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-15",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "04:00 PM - 07:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-15-1730-badminton",
+      "centre": "yonge",
+      "date": "2026-11-15",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-15-1745-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-15",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "05:45 PM - 07:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-15-1130-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-15",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "11:30 AM - 01:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-15-1230-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-15",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "12:30 PM - 03:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-16-2000-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-16",
+      "name": "Badminton",
+      "day": "monday",
+      "time": "08:00 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-16-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-16",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-16-0930-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-16",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-16-1145-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-16",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "11:45 AM - 01:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-17-1330-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-17",
+      "name": "Badminton",
+      "day": "tuesday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-17-1715-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-17",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-17-1930-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-17",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-17-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-17",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195192
+    },
+    {
+      "id": "city-canoe-2026-11-17-2000-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-17",
+      "name": "Volleyball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195245
+    },
+    {
+      "id": "city-yonge-2026-11-17-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-17",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-18-1800-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-18",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "06:00 PM - 08:00 PM",
+      "access": "both",
+      "reserveId": 195212
+    },
+    {
+      "id": "city-stlawrence-2026-11-18-1830-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-18",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-18-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-18",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195213
+    },
+    {
+      "id": "city-eastbayfront-2026-11-18-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-18",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-18-1200-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-18",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-19-1715-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-19",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-19-1830-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-19",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-19-1900-badminton",
+      "centre": "canoe",
+      "date": "2026-11-19",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "07:00 PM - 08:30 PM",
+      "access": "both",
+      "reserveId": 195295
+    },
+    {
+      "id": "city-yonge-2026-11-19-1930-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-19",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-19-2030-badminton",
+      "centre": "canoe",
+      "date": "2026-11-19",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "08:30 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195296
+    },
+    {
+      "id": "city-eastbayfront-2026-11-19-0915-pickleball-women",
+      "centre": "eastbayfront",
+      "date": "2026-11-19",
+      "name": "Pickleball (Women)",
+      "day": "thursday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-19-0930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-19",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-19-1200-badminton",
+      "centre": "yonge",
+      "date": "2026-11-19",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-20-1415-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-20",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "02:15 PM - 04:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-20-1845-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-20",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "06:45 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-20-1930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-20",
+      "name": "Badminton",
+      "day": "friday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-20-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-20",
+      "name": "Pickleball",
+      "day": "friday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-21-1315-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-21",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "01:15 PM - 04:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-21-1430-pickleball",
+      "centre": "stlawrence",
+      "date": "2026-11-21",
+      "name": "Pickleball",
+      "day": "saturday",
+      "time": "02:30 PM - 04:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-21-1730-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-21",
+      "name": "Volleyball",
+      "day": "saturday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-21-1100-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-21",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "11:00 AM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-22-1300-badminton",
+      "centre": "canoe",
+      "date": "2026-11-22",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "01:00 PM - 02:30 PM",
+      "access": "both",
+      "reserveId": 195313
+    },
+    {
+      "id": "city-yonge-2026-11-22-1330-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-22",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-22-1400-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-22",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "02:00 PM - 04:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-22-1530-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-22",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "03:30 PM - 05:30 PM",
+      "access": "both",
+      "reserveId": 195259
+    },
+    {
+      "id": "city-stlawrence-2026-11-22-1600-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-22",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "04:00 PM - 07:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-22-1730-badminton",
+      "centre": "yonge",
+      "date": "2026-11-22",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-22-1745-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-22",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "05:45 PM - 07:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-22-1130-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-22",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "11:30 AM - 01:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-22-1230-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-22",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "12:30 PM - 03:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-23-2000-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-23",
+      "name": "Badminton",
+      "day": "monday",
+      "time": "08:00 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-23-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-23",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-23-0930-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-23",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-23-1145-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-23",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "11:45 AM - 01:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-24-1330-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-24",
+      "name": "Badminton",
+      "day": "tuesday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-24-1715-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-24",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-24-1930-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-24",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-24-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-24",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195193
+    },
+    {
+      "id": "city-canoe-2026-11-24-2000-volleyball",
+      "centre": "canoe",
+      "date": "2026-11-24",
+      "name": "Volleyball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195246
+    },
+    {
+      "id": "city-yonge-2026-11-24-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-24",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-25-1800-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-25",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "06:00 PM - 08:00 PM",
+      "access": "both",
+      "reserveId": 195214
+    },
+    {
+      "id": "city-stlawrence-2026-11-25-1830-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-25",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-25-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-11-25",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195215
+    },
+    {
+      "id": "city-eastbayfront-2026-11-25-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-25",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-25-1200-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-25",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-26-1715-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-26",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-26-1830-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-26",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-26-1900-badminton",
+      "centre": "canoe",
+      "date": "2026-11-26",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "07:00 PM - 08:30 PM",
+      "access": "both",
+      "reserveId": 195297
+    },
+    {
+      "id": "city-yonge-2026-11-26-1930-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-26",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-11-26-2030-badminton",
+      "centre": "canoe",
+      "date": "2026-11-26",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "08:30 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195298
+    },
+    {
+      "id": "city-eastbayfront-2026-11-26-0915-pickleball-women",
+      "centre": "eastbayfront",
+      "date": "2026-11-26",
+      "name": "Pickleball (Women)",
+      "day": "thursday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-26-0930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-26",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-26-1200-badminton",
+      "centre": "yonge",
+      "date": "2026-11-26",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-27-1415-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-27",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "02:15 PM - 04:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-27-1845-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-11-27",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "06:45 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-27-1930-badminton",
+      "centre": "yonge",
+      "date": "2026-11-27",
+      "name": "Badminton",
+      "day": "friday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-27-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-27",
+      "name": "Pickleball",
+      "day": "friday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-28-1315-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-28",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "01:15 PM - 04:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-28-1430-pickleball",
+      "centre": "stlawrence",
+      "date": "2026-11-28",
+      "name": "Pickleball",
+      "day": "saturday",
+      "time": "02:30 PM - 04:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-28-1730-volleyball",
+      "centre": "yonge",
+      "date": "2026-11-28",
+      "name": "Volleyball",
+      "day": "saturday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-28-1100-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-28",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "11:00 AM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-29-1330-pickleball",
+      "centre": "yonge",
+      "date": "2026-11-29",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-29-1400-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-29",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "02:00 PM - 04:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-29-1600-badminton",
+      "centre": "stlawrence",
+      "date": "2026-11-29",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "04:00 PM - 07:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-11-29-1730-badminton",
+      "centre": "yonge",
+      "date": "2026-11-29",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-29-1745-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-29",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "05:45 PM - 07:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-29-1130-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-11-29",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "11:30 AM - 01:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-11-29-1230-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-11-29",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "12:30 PM - 03:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-30-2000-badminton",
+      "centre": "johninnes",
+      "date": "2026-11-30",
+      "name": "Badminton",
+      "day": "monday",
+      "time": "08:00 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-11-30-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-11-30",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-30-0930-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-30",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-11-30-1145-pickleball",
+      "centre": "johninnes",
+      "date": "2026-11-30",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "11:45 AM - 01:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-12-01-1330-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-12-01",
+      "name": "Badminton",
+      "day": "tuesday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-01-1715-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-01",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-01-0700-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-01",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "07:00 AM - 09:00 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-01-1930-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-01",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-01-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-12-01",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195194
+    },
+    {
+      "id": "city-canoe-2026-12-01-2000-volleyball",
+      "centre": "canoe",
+      "date": "2026-12-01",
+      "name": "Volleyball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195247
+    },
+    {
+      "id": "city-yonge-2026-12-01-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-01",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-02-1800-pickleball",
+      "centre": "canoe",
+      "date": "2026-12-02",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "06:00 PM - 08:00 PM",
+      "access": "both",
+      "reserveId": 195216
+    },
+    {
+      "id": "city-stlawrence-2026-12-02-1830-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-12-02",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-02-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-12-02",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195217
+    },
+    {
+      "id": "city-eastbayfront-2026-12-02-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-12-02",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-02-1200-volleyball",
+      "centre": "yonge",
+      "date": "2026-12-02",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-03-1715-volleyball",
+      "centre": "yonge",
+      "date": "2026-12-03",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-12-03-1830-badminton",
+      "centre": "stlawrence",
+      "date": "2026-12-03",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-03-1900-badminton",
+      "centre": "canoe",
+      "date": "2026-12-03",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "07:00 PM - 08:30 PM",
+      "access": "both",
+      "reserveId": 195299
+    },
+    {
+      "id": "city-yonge-2026-12-03-1930-volleyball",
+      "centre": "yonge",
+      "date": "2026-12-03",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-03-2030-badminton",
+      "centre": "canoe",
+      "date": "2026-12-03",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "08:30 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195300
+    },
+    {
+      "id": "city-eastbayfront-2026-12-03-0915-pickleball-women",
+      "centre": "eastbayfront",
+      "date": "2026-12-03",
+      "name": "Pickleball (Women)",
+      "day": "thursday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-03-0930-badminton",
+      "centre": "yonge",
+      "date": "2026-12-03",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-03-1200-badminton",
+      "centre": "yonge",
+      "date": "2026-12-03",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-12-04-1415-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-12-04",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "02:15 PM - 04:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-12-04-1845-volleyball",
+      "centre": "eastbayfront",
+      "date": "2026-12-04",
+      "name": "Volleyball",
+      "day": "friday",
+      "time": "06:45 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-04-0700-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-04",
+      "name": "Pickleball",
+      "day": "friday",
+      "time": "07:00 AM - 09:00 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-04-1930-badminton",
+      "centre": "yonge",
+      "date": "2026-12-04",
+      "name": "Badminton",
+      "day": "friday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-04-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-04",
+      "name": "Pickleball",
+      "day": "friday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-12-05-1315-badminton",
+      "centre": "johninnes",
+      "date": "2026-12-05",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "01:15 PM - 04:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-12-05-1430-pickleball",
+      "centre": "stlawrence",
+      "date": "2026-12-05",
+      "name": "Pickleball",
+      "day": "saturday",
+      "time": "02:30 PM - 04:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-05-1730-volleyball",
+      "centre": "yonge",
+      "date": "2026-12-05",
+      "name": "Volleyball",
+      "day": "saturday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-12-05-1100-badminton",
+      "centre": "stlawrence",
+      "date": "2026-12-05",
+      "name": "Badminton",
+      "day": "saturday",
+      "time": "11:00 AM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-06-1300-badminton",
+      "centre": "canoe",
+      "date": "2026-12-06",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "01:00 PM - 02:30 PM",
+      "access": "both",
+      "reserveId": 195315
+    },
+    {
+      "id": "city-yonge-2026-12-06-1330-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-06",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-12-06-1400-pickleball",
+      "centre": "johninnes",
+      "date": "2026-12-06",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "02:00 PM - 04:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-06-1530-volleyball",
+      "centre": "canoe",
+      "date": "2026-12-06",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "03:30 PM - 05:30 PM",
+      "access": "both",
+      "reserveId": 195261
+    },
+    {
+      "id": "city-stlawrence-2026-12-06-1600-badminton",
+      "centre": "stlawrence",
+      "date": "2026-12-06",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "04:00 PM - 07:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-06-1730-badminton",
+      "centre": "yonge",
+      "date": "2026-12-06",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "05:30 PM - 07:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-12-06-1745-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-12-06",
+      "name": "Pickleball",
+      "day": "sunday",
+      "time": "05:45 PM - 07:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-12-06-1130-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-12-06",
+      "name": "Badminton",
+      "day": "sunday",
+      "time": "11:30 AM - 01:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-12-06-1230-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-12-06",
+      "name": "Volleyball",
+      "day": "sunday",
+      "time": "12:30 PM - 03:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-07-0700-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-07",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "07:00 AM - 09:00 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-12-07-2000-badminton",
+      "centre": "johninnes",
+      "date": "2026-12-07",
+      "name": "Badminton",
+      "day": "monday",
+      "time": "08:00 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-12-07-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-12-07",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-12-07-0930-pickleball",
+      "centre": "johninnes",
+      "date": "2026-12-07",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-johninnes-2026-12-07-1145-pickleball",
+      "centre": "johninnes",
+      "date": "2026-12-07",
+      "name": "Pickleball",
+      "day": "monday",
+      "time": "11:45 AM - 01:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-eastbayfront-2026-12-08-1330-badminton",
+      "centre": "eastbayfront",
+      "date": "2026-12-08",
+      "name": "Badminton",
+      "day": "tuesday",
+      "time": "01:30 PM - 03:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-08-0700-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-08",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "07:00 AM - 09:00 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-08-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-12-08",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195195
+    },
+    {
+      "id": "city-canoe-2026-12-08-2000-volleyball",
+      "centre": "canoe",
+      "date": "2026-12-08",
+      "name": "Volleyball",
+      "day": "tuesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195248
+    },
+    {
+      "id": "city-yonge-2026-12-08-1200-pickleball",
+      "centre": "yonge",
+      "date": "2026-12-08",
+      "name": "Pickleball",
+      "day": "tuesday",
+      "time": "12:00 PM - 02:00 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-09-1800-pickleball",
+      "centre": "canoe",
+      "date": "2026-12-09",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "06:00 PM - 08:00 PM",
+      "access": "both",
+      "reserveId": 195218
+    },
+    {
+      "id": "city-stlawrence-2026-12-09-1830-volleyball",
+      "centre": "stlawrence",
+      "date": "2026-12-09",
+      "name": "Volleyball",
+      "day": "wednesday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-09-2000-pickleball",
+      "centre": "canoe",
+      "date": "2026-12-09",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "08:00 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195219
+    },
+    {
+      "id": "city-eastbayfront-2026-12-09-0915-pickleball",
+      "centre": "eastbayfront",
+      "date": "2026-12-09",
+      "name": "Pickleball",
+      "day": "wednesday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-10-1715-volleyball",
+      "centre": "yonge",
+      "date": "2026-12-10",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "05:15 PM - 07:15 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-stlawrence-2026-12-10-1830-badminton",
+      "centre": "stlawrence",
+      "date": "2026-12-10",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "06:30 PM - 08:45 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-10-1900-badminton",
+      "centre": "canoe",
+      "date": "2026-12-10",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "07:00 PM - 08:30 PM",
+      "access": "both",
+      "reserveId": 195301
+    },
+    {
+      "id": "city-yonge-2026-12-10-1930-volleyball",
+      "centre": "yonge",
+      "date": "2026-12-10",
+      "name": "Volleyball",
+      "day": "thursday",
+      "time": "07:30 PM - 09:30 PM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-canoe-2026-12-10-2030-badminton",
+      "centre": "canoe",
+      "date": "2026-12-10",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "08:30 PM - 10:00 PM",
+      "access": "both",
+      "reserveId": 195302
+    },
+    {
+      "id": "city-eastbayfront-2026-12-10-0915-pickleball-women",
+      "centre": "eastbayfront",
+      "date": "2026-12-10",
+      "name": "Pickleball (Women)",
+      "day": "thursday",
+      "time": "09:15 AM - 11:15 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-10-0930-badminton",
+      "centre": "yonge",
+      "date": "2026-12-10",
+      "name": "Badminton",
+      "day": "thursday",
+      "time": "09:30 AM - 11:30 AM",
+      "access": "dropin"
+    },
+    {
+      "id": "city-yonge-2026-12-10-1200-badminton",
+      "centre": "yonge",
+      "date": "2026-12-10",
       "name": "Badminton",
       "day": "thursday",
       "time": "12:00 PM - 02:00 PM",
