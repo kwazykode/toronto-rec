@@ -1,0 +1,65 @@
+name: Weekly schedule preview
+
+on:
+  schedule:
+    - cron: "48 17 * * 4"
+      timezone: "America/Toronto"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Fetch and validate Toronto schedule
+        run: |
+          max_attempts=9
+          attempt=1
+          while ! python3 scripts/update_schedule.py --summary weekly-preview.md; do
+            if [ "$attempt" -ge "$max_attempts" ]; then
+              echo "Toronto schedule could not be fetched after $attempt attempts."
+              exit 1
+            fi
+            if [ "$attempt" -eq 1 ]; then
+              delay=600
+            else
+              delay=1200
+            fi
+            echo "Attempt $attempt failed; retrying in $((delay / 60)) minutes."
+            sleep "$delay"
+            attempt=$((attempt + 1))
+          done
+      - name: Run updater tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Upload proposed schedule
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-schedule-preview
+          path: |
+            schedule-data.js
+            weekly-preview.md
+          retention-days: 30
+      - name: Add preview to run summary
+        run: cat weekly-preview.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Create or update review issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          RUN_ID: ${{ github.run_id }}
+        run: |
+          cp weekly-preview.md issue-body.md
+          printf '\n### Approval\n\n1. Open the [workflow run](%s) and inspect its `weekly-schedule-preview` artifact.\n2. If it looks right, run **Apply weekly schedule preview** with preview run ID `%s`.\n3. Review and merge the pull request it creates to publish.\n' "$RUN_URL" "$RUN_ID" >> issue-body.md
+          issue_number="$(gh issue list --state open --search 'Weekly schedule preview in:title' --json number --jq '.[0].number')"
+          if [ -n "$issue_number" ]; then
+            gh issue edit "$issue_number" --title "Weekly schedule preview" --body-file issue-body.md
+          else
+            gh issue create --title "Weekly schedule preview" --body-file issue-body.md
+          fi

@@ -1,0 +1,56 @@
+name: Apply weekly schedule preview
+
+on:
+  workflow_dispatch:
+    inputs:
+      preview_run_id:
+        description: Run ID shown in the approved weekly preview issue
+        required: true
+        type: string
+
+permissions:
+  actions: read
+  contents: write
+  pull-requests: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Download approved preview
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PREVIEW_RUN_ID: ${{ inputs.preview_run_id }}
+        run: gh run download "$PREVIEW_RUN_ID" --name weekly-schedule-preview --dir approved-preview
+      - name: Validate and stage approved schedule
+        run: |
+          python3 scripts/update_schedule.py --validate-file approved-preview/schedule-data.js
+          python3 -m unittest discover -s tests -v
+          cp approved-preview/schedule-data.js schedule-data.js
+      - name: Open schedule update pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PREVIEW_RUN_ID: ${{ inputs.preview_run_id }}
+        run: |
+          branch="automation/weekly-schedule-${PREVIEW_RUN_ID}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add schedule-data.js
+          if git diff --cached --quiet; then
+            echo "The approved preview matches the current schedule; no pull request is needed."
+            exit 0
+          fi
+          git commit -m "Update weekly Toronto recreation sessions"
+          git push origin "$branch"
+          gh pr create \
+            --base "${{ github.event.repository.default_branch }}" \
+            --head "$branch" \
+            --title "Update weekly Toronto recreation sessions" \
+            --body "Applies the reviewed schedule artifact from preview run ${PREVIEW_RUN_ID}. Merge this pull request to publish the update."
